@@ -121,6 +121,8 @@ main {
 .main-section--form__container {
     display: flex;
     flex-direction: column;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .main-section--form__container label {
     font-size: 1.4rem;
@@ -132,10 +134,7 @@ main {
     width: 90%;
     height: 30px;
     border-radius: 5px;
-    /* background: transparent; */
     border: 2px solid white;
-    /* padding-left: 30px; */
-    /* color: white; */
-    /* letter-spacing: 0.1rem; */
     font-size: 0.9rem;
+    text-align: center;
 } 
