@@ -27,46 +27,113 @@
         <section class="main-section">
             <div class="main-section--title">
                 <p class="h2">Cuestionario</p>
-                <hr>
+                <hr class="space">
             </div>
-            <article>
                 <form class="main-section--form">
                     <div class="main-section--form__container">
-                        <label for="cursos">Juzgado Civil de proceso Oral</label>
-                        <input list="cursos" class="selectors"/>
-                        <datalist id="cursos">
-                            <option value="JavaScript">1</option>
-                            <option value="HTML5">2</option>
-                            <option value="CSS3">3</option>
-                            <option value="PYTHON">4</option>
-                            <option value="php">5</option>
-                            <option value="d">6</option>
-                            <option value="C++">7</option>
-                            <option value="jAVA">8</option>
-                            <option value="GO">9</option>
-                            <option value="RUBY">10</option>
-                            <option value="FORTRAN">11</option>
-                        </datalist>
+                        <p class="questions">Seleccione el Juzgado Civil Oral</p>
+                        <div class="main-section--form__container-juzgado">
+                            <input list="cursos" class="selectors" placeholder="Seleccione el Juzgado Civil Oral"/>
+                            <datalist id="cursos">
+                                <option value="Primero Civil Oral"></option>
+                                <option value="Segundo Civil Oral"></option>
+                                <option value="Tercero Civil Oral"></option>
+                                <option value="Cuarto Civil Oral"></option>
+                                <option value="21° MTRO. FELIPE DE JESÚS RODRÍGUEZ DE MENDOZA"></option>
+                                <option value="44°MTRA. FRANCISCO JAVIER JIMÉNEZ RODRÍGUEZ."></option>
+                            </datalist>
+                        </div>
                     </div>
+                    <hr class="space">
                     <div class="main-section--form__container">
-                        <label for="kindPeople">Parte:</label>
-                        <input type="checkbox" />Actora
-                        <input type="checkbox" />Demandada
-                        <input type="checkbox" />Otro
+                        <p class="questions">Parte:</p>
+                        <div class="main-section--form__container-parte">
+                            <input class="radioElement" type="radio" name="parte" id="actora" value="1">
+                            <label class="radioTitle" for="actora">Actora</label>
+
+                            <input class="radioElement" type="radio" name="parte" id="demandada" value="2">
+                            <label class="radioTitle" for="demandada">Demandada</label> 
+
+                            <input class="radioElement" type="radio" name="parte" id="otro" value="3">
+                            <label class="radioTitle" for="otro">Otro</label> 
+                        </div>
                     </div>
+                    <hr class="space">
                     <div class="main-section--form__container">
-                        <p>¿La Juez o el Juez utilizó un lenguaje claro y entendible?</p>
-                        <label for="qOneYes">Si</label>
-                        <input type="radio" id="qOneYes" value="1" name="questionOne"/>
-                        <label for="qOneNo">No</label>
-                        <input type="radio" id="qOneNo" value="2" name="questionOne"/>
+                        <p class="questions">1. ¿La Juez o el Juez utilizó un lenguaje claro y entendible?</p>
+                        <div class="main-section--form__container-siNo">
+                            <input class="radioElement" type="radio" name="questionOne" id="qOneYes" value="1"/>
+                            <label class="radioTitleYN" for="qOneYes">Si</label>
+                            <input class="radioElement" type="radio" name="questionOne" id="qOneNo" value="2"/>
+                            <label class="radioTitleYN" for="qOneNo">No</label>
+                        </div>
+                        <hr class="space">
+                        <p class="questions">2. ¿La Juez o el Juez explicó el motivo de la audiencia?</p>
+                        <div class="main-section--form__container-siNo">
+                            <input class="radioElement" type="radio" name="questionTwo" id="qTwoYes" value="1"/>
+                            <label class="radioTitleYN" for="qTwoYes">Si</label>
+                            <input class="radioElement" type="radio" name="questionTwo" id="qTwoNo" value="2"/>
+                            <label class="radioTitleYN" for="qTwoNo">No</label>
+                        </div>
+                        <hr class="space">
+
+                        <p class="questions">3.	¿La Juez o el Juez, durante la audiencia, se comunicó en forma directa y constante con usted?</p>
+                        <div class="main-section--form__container-siNo">
+                            <input class="radioElement" type="radio" name="questionThree" id="qThreeYes" value="1"/>
+                            <label class="radioTitleYN" for="qThreeYes">Si</label>
+                            <input class="radioElement" type="radio" name="questionThree" id="qThreeNo" value="2"/>
+                            <label class="radioTitleYN" for="qThreeNo">No</label>
+                        </div>
+                        <hr class="space">
+
+                        <p class="questions">4.	¿La Juez o el Juez le permitió hablar, si usted pidió el uso de la palabra?</p>
+                        <div class="main-section--form__container-siNo">
+                            <input class="radioElement" type="radio" name="questionFour" id="qFourYes" value="1"/>
+                            <label class="radioTitleYN" for="qFourYes">Si</label>
+                            <input class="radioElement" type="radio" name="questionFour" id="qFourNo" value="2"/>
+                            <label class="radioTitleYN" for="qFourNo">No</label>
+                        </div>
+                        <hr class="space">
+
+                        <p class="questions">5.	¿Por parte de la Jueza o Juez, recibió usted el mismo trato que su contrarío?</p>
+                        <div class="main-section--form__container-siNo">
+                            <input class="radioElement" type="radio" name="questionFive" id="qFiveYes" value="1"/>
+                            <label class="radioTitleYN" for="qFiveYes">Si</label>
+                            <input class="radioElement" type="radio" name="questionFive" id="qFiveNo" value="2"/>
+                            <label class="radioTitleYN" for="qFiveNo">No</label>
+                        </div>
+                        <hr class="space">
+
+                        <p class="questions">6.	¿La Jueza o el Juez le preguntarón si quería hacer uso de la palabra?</p>
+                        <div class="main-section--form__container-siNo">
+                            <input class="radioElement" type="radio" name="questionSix" id="qSixYes" value="1"/>
+                            <label class="radioTitleYN" for="qSixYes">Si</label>
+                            <input class="radioElement" type="radio" name="questionSix" id="qSixNo" value="2"/>
+                            <label class="radioTitleYN" for="qSixNo">No</label>
+                        </div>
+                        <hr class="space">
+
+                        <p class="questions">7.	¿Usted entendió y comprendió lo sucedido en la audiencia?</p>
+                        <div class="main-section--form__container-siNo">
+                            <input class="radioElement" type="radio" name="questionSeven" id="qSevenYes" value="1"/>
+                            <label class="radioTitleYN" for="qSevenYes">Si</label>
+                            <input class="radioElement" type="radio" name="questionSeven" id="qSevenNo" value="2"/>
+                            <label class="radioTitleYN" for="qSevenNo">No</label>
+                        </div>
+                        <hr class="space">
+
+                        <p class="questions">8.	¿Desea agregar un comentario?</p>
+                        <div class="main-section--form__container-comments">
+                            <textarea class="myComment" name="comments" id="comment" cols="30" rows="10" placeholder="Escriba su comentario..."></textarea>
+                        </div>
+                        
+                        <hr class="space">
                     </div>
-                    <!-- <button>Enviar</button> -->
+
+                    <button class="btn">Enviar</button>
                 </form>
-            </article>
         </section>
     </main>
-    <footer></footer>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
