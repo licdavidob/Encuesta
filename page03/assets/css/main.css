@@ -159,14 +159,12 @@ main {
     text-align: center;
 } 
 
-
 .main-section--form__container-parte {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
 }
-
 
 .radioElement[type="radio"]{
     display: none;
@@ -241,10 +239,6 @@ main {
     color: var(--m-blue);
     border-color: var(--m-blue);
 }
-
-
-
-
 .btn {
     height: 40px;
     border-radius: 5px;
