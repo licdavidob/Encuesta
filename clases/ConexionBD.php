@@ -17,11 +17,11 @@
 			
 		}
 
-		public function Sentencias_Consulta_Encuesta($ID = 0){
+		public function Sentencias_Consulta_Encuesta($ID = 0, $Fecha = ""){
 			$Sentencias_Consulta = array(
 				"Consultar_Encuestas" => "SELECT ID_Encuesta, Juzgado, Expediente FROM encuesta a INNER JOIN cat_juzgado b ON a.ID_Juzgado = b.ID_Juzgado WHERE (Estatus = 1 );",
 				"Consultar_Encuesta_ID" => "SELECT Juzgado, Expediente, Parte, P1, P2, P3, P4, P5, P6, P7, P8 FROM encuesta a INNER JOIN cat_juzgado b ON a.ID_Juzgado = b.ID_Juzgado WHERE (Estatus = 1 ) AND (ID_Encuesta ='$ID');",
-				"Consultar_Encuesta_Fecha" => "",
+				"Consultar_Encuestas_Fecha" => "SELECT ID_Encuesta, Juzgado, Expediente FROM encuesta a INNER JOIN cat_juzgado b ON a.ID_Juzgado = b.ID_Juzgado WHERE (Estatus = 1 ) AND (Fecha_Registro BETWEEN '2022-01-01' AND '$Fecha');",
 				"" => "",
 			);
 			return $Sentencias_Consulta;

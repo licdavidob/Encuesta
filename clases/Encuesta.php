@@ -65,7 +65,41 @@
             }
             $Datos['Encuestas'] = $General_Encuestas;
             $Datos['Total_Encuestas'] = $Contador;
-            $Datos['Totales_Juzgado'] = $Totales_Juzgado;
+            $Datos['Total_Juzgado'] = $Totales_Juzgado;
+            echo json_encode($Datos);
+        }
+
+        public function Consultar_Encuestas_Fecha($Fecha){
+            $Juzgado = new Juzgado();
+            $Juzgados = $Juzgado->Obtener_Info_General();
+            $Encuesta = array();
+            $General_Encuestas = array();
+            $Totales_Juzgado = array();
+            $Contador = 0;
+            $Conectar_Base = $this->Conectar();
+            $Sentencias_Consulta = $this->Sentencias_Consulta_Encuesta($ID = 0,$Fecha);
+            $ResultadoConsulta = $Conectar_Base->query($Sentencias_Consulta["Consultar_Encuestas_Fecha"]);
+            $Conectar_Base->close();
+            while ($Resultado = $ResultadoConsulta->fetch_row()){
+                $Encuesta['ID_Encuesta'] = $Resultado[0];
+                $Encuesta['Juzgado'] = $Resultado[1];
+                $Encuesta['Expediente'] = $Resultado[2];
+                $General_Encuestas[$Contador] = $Encuesta;
+                foreach ($Juzgados as $Juzgado) {
+                    if($Juzgado['Juzgado'] == $Encuesta['Juzgado']){
+                        if(array_key_exists($Juzgado['Juzgado'], $Totales_Juzgado)){
+                            $Totales_Juzgado[$Juzgado['Juzgado']]++;
+                        }else{
+                            $Totales_Juzgado[$Juzgado['Juzgado']] = 0;
+                            $Totales_Juzgado[$Juzgado['Juzgado']]++;
+                        }                        
+                    }
+                } 
+        		$Contador++;
+            }
+            $Datos['Encuestas'] = $General_Encuestas;
+            $Datos['Total_Encuestas'] = $Contador;
+            $Datos['Total_Juzgado'] = $Totales_Juzgado;
             echo json_encode($Datos);
         }
 

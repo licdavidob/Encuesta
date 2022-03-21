@@ -32,9 +32,13 @@
             break;
         case 'GET':
             $Encuesta_ID = (isset($_GET["Encuesta"]) && !empty($_GET["Encuesta"])) ? $_GET["Encuesta"] : false;
-            if($Encuesta_ID == false){
+            $Fecha = (isset($_GET["Fecha"]) && !empty($_GET["Fecha"])) ? $_GET["Fecha"] : false;
+            if($Encuesta_ID == false && $Fecha == false){
                 $Encuesta->Consultar_Encuestas();
-            }else{
+            }elseif ($Encuesta_ID == false) {
+                $Encuesta->Consultar_Encuestas_Fecha($Fecha);
+            }
+            else{
                 $Encuesta->Consultar_Encuesta_ID($Encuesta_ID);
             }
             break;
