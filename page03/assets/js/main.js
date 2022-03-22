@@ -12,29 +12,41 @@ function miVal() {
     const in7     = parseInt(document.full_form.questionSeven.value);
     const in8     = document.full_form.comments.value; 
 
-    // if (document.full_form.checked === true) {
-    //     console.log("revisa tus datos");
-    // }
-    // else {
-    //     console.log("todo ok");
-    //     // const respuestas = [juzgado, parte, in1, in2, in3, in4, in5, in6 ,in7, in8];
-    // }
     const respuestas = [juzgado, parte, in1, in2, in3, in4, in5, in6 ,in7, in8];
 
+}
 
+function AgregarCJP(juzgado, parte, in1, in2, in3, in4, in5, in6 ,in7, in8) {
+var parametros = {
+    Juzgado: juzgado,
+    Parte: parte,
+    P1: in1,
+    P2: in2,
+    P3: in3,
+    P4: in4,
+    P5: in5,
+    P6: in6,
+    P7: in7,
+    Comentario: in8,
 
-
-
-
-    // for (let i = 0; i < respuestas.length; i++) {
-
-    //     console.log(`Respuesta[${i}]: ${respuestas[i]}`);
-    //     // if (isNaN(respuestas)=== false) {
-    //     //     console.log("todo ok");
-    //     // } else {
-    //     //     console.log("alto ahí loca");
-    //     //     break;
-    //     // }
-
-    // }
+};
+$.ajax({
+    data: parametros,
+    url: "..",
+    dataType: "json",
+    type: "post",
+    beforeSend: function () {
+    console.log(parametros);
+    },
+    success: function (response) {
+    if (response.Bandera == false) {
+        alert(response.Mensaje);
+    } else {
+        var table = $("#tabla").DataTable();
+        table.ajax.reload(null, false);
+        $("#Modal_Agregar").modal("hide");
+        LimpiarModal();
+    }
+    },
+});
 }
