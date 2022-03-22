@@ -158,6 +158,28 @@ main {
     font-size: 0.9rem;
     text-align: center;
 } 
+.main-section--form__container-expediente {
+    width: 100%;
+    min-width: 288px;
+    max-width: 900px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    /* flex-direction: column; */
+    margin-bottom: 10px;
+}
+.main-section--form__container-expediente input {
+    width: 55%;
+    height: 30px;
+    border-radius: 5px;
+    border: 2px solid var(--m-blue);
+    font-size: 0.9rem;
+    text-align: center;
+}
+.main-section--form__container-expediente .questions {
+    width: 30%;
+    font-size: 1.6rem;
+}
 
 .main-section--form__container-parte {
     display: flex;
