@@ -1,3 +1,4 @@
+const formulario = document.getElementById('full_form');
 // Preguntas
 function miVal() {
   const auxj = document.full_form.juzgado.value;
@@ -55,7 +56,7 @@ function AgregarEncuesta(
   in8
 ) {
   // function AgregarEncuesta() {
-  var parametros = {
+  const parametros = {
     Juzgado: juzgado,
     Expediente: expediente,
     Parte: parte,
@@ -68,6 +69,11 @@ function AgregarEncuesta(
     P7: in7,
     Comentario: in8,
   };
+
+  formulario.addEventListener('submit', (e) => {
+    e.preventDefault();
+  });
+
   $.ajax({
     data: parametros,
     url: "/api/CRUD_Encuesta.php",
@@ -80,6 +86,7 @@ function AgregarEncuesta(
       document
         .getElementById("formulario__mensaje-exito")
         .classList.add("formulario__mensaje-exito-activo");
+        formulario.reset();
       setTimeout(() => {
         document
           .getElementById("formulario__mensaje-exito")
