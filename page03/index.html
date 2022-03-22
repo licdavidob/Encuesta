@@ -30,18 +30,18 @@
                 <p class="h2">Cuestionario</p>
                 <hr class="space">
             </div>
-                <form class="main-section--form">
+                <form class="main-section--form" name="full_form">
                     <div class="main-section--form__container">
                         <p class="questions">Seleccione el Juzgado Civil Oral</p>
                         <div class="main-section--form__container-juzgado">
-                            <input list="cursos" class="selectors" placeholder="Seleccione el Juzgado Civil Oral"/>
+                            <input list="cursos" class="selectors" placeholder="Seleccione el Juzgado Civil Oral" name="juzgado"/>
                             <datalist id="cursos">
-                                <option value="Primero Civil Oral"></option>
-                                <option value="Segundo Civil Oral"></option>
-                                <option value="Tercero Civil Oral"></option>
-                                <option value="Cuarto Civil Oral"></option>
-                                <option value="21° MTRO. FELIPE DE JESÚS RODRÍGUEZ DE MENDOZA"></option>
-                                <option value="44°MTRA. FRANCISCO JAVIER JIMÉNEZ RODRÍGUEZ."></option>
+                                <option value="01° Primero Civil Oral"></option>
+                                <option value="02° Segundo Civil Oral"></option>
+                                <option value="03° Tercero Civil Oral"></option>
+                                <option value="04° Cuarto Civil Oral"></option>
+                                <option value="05° MTRO. FELIPE DE JESÚS RODRÍGUEZ DE MENDOZA"></option>
+                                <option value="16°MTRA. FRANCISCO JAVIER JIMÉNEZ RODRÍGUEZ."></option>
                             </datalist>
                         </div>
                     </div>
@@ -130,8 +130,7 @@
                         
                         <hr class="space">
                     </div>
-
-                    <button class="btn">Enviar</button>
+                    <button class="btn" type="button" onclick="miVal()">Enviar</button>
                 </form>
         </section>
     </main>
