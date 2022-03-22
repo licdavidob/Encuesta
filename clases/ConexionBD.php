@@ -18,20 +18,20 @@
 		}
 
 		public function Sentencias_Consulta_Encuesta($ID = 0, $Fecha = ""){
-			$Sentencias_Consulta = array(
+			$Sentencias_Consulta_Encuesta = array(
 				"Consultar_Encuestas" => "SELECT ID_Encuesta, Juzgado, Expediente FROM encuesta a INNER JOIN cat_juzgado b ON a.ID_Juzgado = b.ID_Juzgado WHERE (Estatus = 1 );",
 				"Consultar_Encuesta_ID" => "SELECT Juzgado, Expediente, Parte, P1, P2, P3, P4, P5, P6, P7, P8 FROM encuesta a INNER JOIN cat_juzgado b ON a.ID_Juzgado = b.ID_Juzgado WHERE (Estatus = 1 ) AND (ID_Encuesta ='$ID');",
 				"Consultar_Encuestas_Fecha" => "SELECT ID_Encuesta, Juzgado, Expediente FROM encuesta a INNER JOIN cat_juzgado b ON a.ID_Juzgado = b.ID_Juzgado WHERE (Estatus = 1 ) AND (Fecha_Registro BETWEEN '2022-01-01' AND '$Fecha');",
 				"" => "",
 			);
-			return $Sentencias_Consulta;
+			return $Sentencias_Consulta_Encuesta;
 		}
 
 		public function Sentencias_Registro_Encuesta($Juzgado,$Juez,$Expediente,$Parte,$P1,$P2,$P3,$P4,$P5,$P6,$P7,$P8){
-			$Sentencias_Registro = array(
+			$Sentencias_Registro_Encuesta = array(
 				"Registrar_Encuesta_Publico" => "INSERT INTO `encuesta`(`ID_Juzgado`,`Juez`,`Expediente`,`Parte`,`P1`,`P2`,`P3`,`P4`,`P5`,`P6`,`P7`,`P8`,`Fecha_Registro`) VALUES ('$Juzgado','$Juez','$Expediente','$Parte','$P1','$P2','$P3','$P4','$P5','$P6','$P7','$P8',CURRENT_DATE());",
 			);
-			return $Sentencias_Registro;
+			return $Sentencias_Registro_Encuesta;
 		}
 		
 		public function Sentencias_Consulta_Juzgado($ID = null){
@@ -42,6 +42,15 @@
 				"Consultar_Info_General" => "SELECT * FROM cat_juzgado;",
 			);
 			return $Sentencias_Consulta_Juzgado;
+		}
+
+		public function Sentencias_Consultar_Usuario($ID = 0,$Correo){
+			$Sentencias_Consultar_Usuario = array(
+				"Consultar_Usuario_ID" => "SELECT Nombre, Paterno, Materno, Correo, Contraseña, Rol FROM usuario WHERE (Estatus = 1) AND (ID_Usuario = '$ID')",
+				"Consultar_Usuario_Correo" => "SELECT Nombre, Paterno, Materno, Correo, Contraseña, Rol FROM usuario WHERE (Estatus = 1) AND (Correo = '$Correo')",
+				"Consultar_Usuario_Activo" => "SELECT Nombre, Paterno, Materno, Correo FROM usuario WHERE (Estatus = 1)",
+			);
+			return $Sentencias_Consultar_Usuario;
 		}
 
 	}

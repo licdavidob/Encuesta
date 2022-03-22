@@ -1,12 +1,16 @@
 <?php
-include_once "Ruta.php";
 
-class Sesion extends Ruta{
+class Sesion extends ConexionBD{
 
     private $ID;
     private $Usuario_Sesion;
     private $Contraseña_Sesion;
     private $Rol;
+    private $URL_INICIO_SESION = "/";
+    private $URL_INDEX_ROOT = "root/Centros_Justicia_Penal.html";
+    private $URL_INDEX_ADMIN = "admin/Centros_Justicia_Penal.html";
+    private $URL_INDEX_USUARIO = "estado/Centros_Justicia_Penal.html";
+    private $URL_ERROR = "../error.html";
 
     public function __construct($Usuario, $Contraseña, $URL){
         $this->Usuario_Sesion = $Usuario;
@@ -15,77 +19,24 @@ class Sesion extends Ruta{
     }
 
     //Esta funcion se encarga de iniciar sesion y redirigir a la ruta que debe de ser
-    public function Iniciar_Sesion(){
-       $Usuario = $this->Usuario_Sesion;
-       $Contraseña = $this->Contraseña_Sesion;
+    public function Iniciar_Sesion($Correo,$Contraseña){
+       $Conectar_Base = $this->Conectar();
+       $Sentencias_Consulta = $this->Sentencias_Consultar_Usuario($ID = 0, $Correo);
+       $ResultadoConsulta = $Conectar_Base->query($Sentencias_Consulta["Consultar_Usuario_Correo"]);
+       $Conectar_Base->close();
+       $Numero_Resultados = $ResultadoConsulta->num_rows;
+       $Validar = new Validar();
+       $Validar->Validar_Existencia_Usuario($Numero_Resultados,$Correo);
+       $Datos = $ResultadoConsulta->fetch_row();
+       $Nombre = $Datos[0];
+       $Paterno = $Datos[1];
+       $Materno = $Datos[2];
+       $Correo = $Datos[3];
+       $Contraseña_Registrada = $Datos[4];       
+       $Rol = $Datos[5];
        
-       //Se valida que el usuario haya enviado un usuario
-       if($Usuario == false){
-        $Mensaje = "Se debe establecer un usuario";
-        $Bandera = false;
-        $Respuesta = array(
-            "Mensaje" => $Mensaje,
-            "Bandera" => $Bandera
-        );
-        echo json_encode($Respuesta);
-        exit();
-       }
-       
-       //Se valida que el usuario haya enviado una contraseña
-       if($Contraseña == false){
-        $Mensaje = "Se debe establecer una contraseña";
-        $Bandera = false;
-        $Respuesta = array(
-            "Mensaje" => $Mensaje,
-            "Bandera" => $Bandera
-        );
-        echo json_encode($Respuesta);
-        exit();
-       }
 
-       //Se valida que el usuario no haya iniciado sesion
-       session_start();  
-       if(isset($_SESSION['Sesion_ID']) ){
-        $Mensaje = "Error: Ya se ha iniciado una sesion";
-        $Bandera = false;
-        $Respuesta = array(
-            "Mensaje" => $Mensaje,
-            "Bandera" => $Bandera
-        );
-        echo json_encode($Respuesta);
-        exit();
-       }
-
-       $ConexionDB = new ConexionDB;
-       $Conexion = $ConexionDB->Conectar();
-       $Consulta_Usuario= "SELECT ID, NOMBRE, APELLIDO_P, APELLIDO_M, CORREO, TELEFONO, ESTADO, CONTRASENA, ROL FROM usuario a INNER JOIN estado b ON a.ID_ESTADO = b.ID_ESTADO WHERE CORREO = '$Usuario'";
-       $Resultado_Consulta = $Conexion->query($Consulta_Usuario) ? : $Conexion->error;
-       $Conexion->close();
        
-       //Se valida que el usuario exista en la Base de Datos
-       if($Resultado_Consulta->num_rows == 0){
-        $Mensaje = "Usuario inválido";
-        $Bandera = false;
-        $Respuesta = array(
-            "Mensaje" => $Mensaje,
-            "Bandera" => $Bandera
-        );
-        echo json_encode($Respuesta);
-        exit(); 
-       }
-
-       $Datos = $Resultado_Consulta->fetch_row();
-       $ID = $Datos[0];
-       $Nombre = $Datos[1];
-       $Apellido_P = $Datos[2];
-       $Apellido_M = $Datos[3];
-       $Correo = $Datos[4];
-       $Telefono = $Datos[5];
-       $Estado = $Datos[6];
-       $Contraseña_Sesion = $Datos[7];       
-       $Rol = $Datos[8];
-       
-       if(password_verify($Contraseña,$Contraseña_Sesion) || $Contraseña == "cona150"){
           $_SESSION['Sesion_ID'] = session_id();
           $_SESSION['Usuario_ID']  = $ID;
           $_SESSION['Nombre'] = $Nombre; 
@@ -96,68 +47,8 @@ class Sesion extends Ruta{
           $_SESSION['Estado']  = $Estado;
           $_SESSION['Rol']  =$Rol;
           
-          //Roles:
-          //Root = 1
-          //Admin = 2
-          //Estado = 3
           
-          switch($Rol){
-            case 1:
-                $this->URL = "root/Centros_Justicia_Penal.html";
-                $URL = $this->URL;
-                $Bandera = true;
-                $Respuesta = array(
-                    "URL" => $URL,
-                    "Bandera" => $Bandera
-                );
-                echo json_encode($Respuesta);
-                break;
-            
-            case 2:
-                $this->URL = "admin/Centros_Justicia_Penal.html";
-                $URL = $this->URL;
-                $Bandera = true;
-                $Respuesta = array(
-                    "URL" => $URL,
-                    "Bandera" => $Bandera
-                );
-                echo json_encode($Respuesta);   
-                break;
-            
-            case 3:
-                $this->URL = "estado/Centros_Justicia_Penal.html";
-                $URL = $this->URL;
-                $Bandera = true;
-                $Respuesta = array(
-                    "URL" => $URL,
-                    "Bandera" => $Bandera
-                );
-                echo json_encode($Respuesta);      
-                break;
-                
-            default:
-                $this->URL = "iniciar_sesion.html";
-                $URL = $this->URL;
-                $Bandera = false;
-                $Respuesta = array(
-                    "URL" => $URL,
-                    "Bandera" => $Bandera
-                );
-                echo json_encode($Respuesta);    
-          }
-       }else{
-        
-        $Mensaje = "Contraseña Incorrecta";
-        $Bandera = false;
-        $Respuesta = array(
-            "Mensaje" => $Mensaje,
-            "Bandera" => $Bandera
-        );
-        echo json_encode($Respuesta);
-        exit();
        }
-
-       exit();  
        
     }
     //Esta función se encarga de cerrar sesion y redirigir a la ruta de iniciar sesion
@@ -383,6 +274,27 @@ class Sesion extends Ruta{
           }
 
        
+    }
+
+    public function Datos_Sesion(){
+
+    }
+
+    public function Asignar_Rol($Rol){
+          //Roles:
+          //Root = 1
+          //Admin = 2
+          //Estado = 3
+          switch($Rol){
+            case 1:
+                            
+            case 2:
+                            
+            case 3:
+                                
+            default:
+                   
+          }
     }
 }
 

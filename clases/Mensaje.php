@@ -18,5 +18,15 @@
             exit();
         }
 
+        public function EnviarCorrectoInicioSesion($URL,$Mensaje="Sin mensaje asignado"){            
+            $Respuesta = array(
+                "Mensaje" => $Mensaje,
+                "URL" => $URL,
+                "Bandera" => true
+            );
+            echo json_encode($Respuesta);
+            exit();
+        }
+
     }
 ?>
