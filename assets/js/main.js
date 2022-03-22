@@ -13,19 +13,19 @@ function miVal() {
   const in7 = parseInt(document.full_form.questionSeven.value);
   const in8 = document.full_form.comments.value;
 
-  const respuestas = [
-    juzgado,
-    expediente,
-    parte,
-    in1,
-    in2,
-    in3,
-    in4,
-    in5,
-    in6,
-    in7,
-    in8,
-  ];
+  // const respuestas = [
+  //   juzgado,
+  //   expediente,
+  //   parte,
+  //   in1,
+  //   in2,
+  //   in3,
+  //   in4,
+  //   in5,
+  //   in6,
+  //   in7,
+  //   in8,
+  // ];
   // console.log(respuestas);
   AgregarEncuesta(
     juzgado,
