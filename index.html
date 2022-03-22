@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@100;300;500;700;900&display=swap" rel="stylesheet">
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/tablet.css" media="(min-width:768px)">
+    <title>TSJCDMX</title>
+</head>
+<body>
+    <header>
+        <img src="/assets/img/PJCDMX.png" alt="">
+        <div class="header--title-container">
+            <h1>Bienvenido</h1>
+            <p>
+                El Poder Judicial de la Ciudad de México, escucha tus sugerencias, por favor llena la siguiente encuesta, nos interesa saber tu opinión 
+            </p>
+            <a href="#" class="header--button">Políticas de privacidad <span></span> </a>
+        </div>
+    </header>
+    <main>
+        <section class="main-section">
+            <div class="main-section--title">
+                <p class="h2">Cuestionario</p>
+                <hr class="space">
+            </div>
+                <form class="main-section--form" name="full_form" method="post"> 
+                    <div class="main-section--form__container">
+                        <p class="questions">Seleccione el Juzgado Civil Oral</p>
+                        <div class="main-section--form__container-juzgado">
+                            <input list="cursos" class="selectors" placeholder="Seleccione el Juzgado Civil Oral" name="juzgado"/>
+                            <datalist id="cursos">
+                                <option value="01° Primero Civil Oral"></option>
+                                <option value="02° Segundo Civil Oral"></option>
+                                <option value="03° Tercero Civil Oral"></option>
+                                <option value="04° Cuarto Civil Oral"></option>
+                                <option value="05° MTRO. FELIPE DE JESÚS RODRÍGUEZ DE MENDOZA"></option>
+                                <option value="16°MTRA. FRANCISCO JAVIER JIMÉNEZ RODRÍGUEZ."></option>
+                            </datalist>
+                        </div>
+                    </div>
+                    <hr class="space">
+                    <div class="main-section--form__container">
+                        <p class="questions">Parte:</p>
+                        <div class="main-section--form__container-parte">
+                            <input class="radioElement" type="radio" name="parte" id="actora" value="1">
+                            <label class="radioTitle" for="actora">Actora</label>
+
+                            <input class="radioElement" type="radio" name="parte" id="demandada" value="2">
+                            <label class="radioTitle" for="demandada">Demandada</label> 
+
+                            <input class="radioElement" type="radio" name="parte" id="otro" value="3">
+                            <label class="radioTitle" for="otro">Otro</label> 
+                        </div>
+                    </div>
+                    <hr class="space">
+                    <div class="main-section--form__container">
+                        <p class="questions">1. ¿La Juez o el Juez utilizó un lenguaje claro y entendible?</p>
+                        <div class="main-section--form__container-siNo">
+                            <input class="radioElement" type="radio" name="questionOne" id="qOneYes" value="1"/>
+                            <label class="radioTitleYN" for="qOneYes">Si</label>
+                            <input class="radioElement" type="radio" name="questionOne" id="qOneNo" value="2"/>
+                            <label class="radioTitleYN" for="qOneNo">No</label>
+                        </div>
+                        <hr class="space">
+                        <p class="questions">2. ¿La Juez o el Juez explicó el motivo de la audiencia?</p>
+                        <div class="main-section--form__container-siNo">
+                            <input class="radioElement" type="radio" name="questionTwo" id="qTwoYes" value="1"/>
+                            <label class="radioTitleYN" for="qTwoYes">Si</label>
+                            <input class="radioElement" type="radio" name="questionTwo" id="qTwoNo" value="2"/>
+                            <label class="radioTitleYN" for="qTwoNo">No</label>
+                        </div>
+                        <hr class="space">
+
+                        <p class="questions">3.	¿La Juez o el Juez, durante la audiencia, se comunicó en forma directa y constante con usted?</p>
+                        <div class="main-section--form__container-siNo">
+                            <input class="radioElement" type="radio" name="questionThree" id="qThreeYes" value="1"/>
+                            <label class="radioTitleYN" for="qThreeYes">Si</label>
+                            <input class="radioElement" type="radio" name="questionThree" id="qThreeNo" value="2"/>
+                            <label class="radioTitleYN" for="qThreeNo">No</label>
+                        </div>
+                        <hr class="space">
+
+                        <p class="questions">4.	¿La Juez o el Juez le permitió hablar, si usted pidió el uso de la palabra?</p>
+                        <div class="main-section--form__container-siNo">
+                            <input class="radioElement" type="radio" name="questionFour" id="qFourYes" value="1"/>
+                            <label class="radioTitleYN" for="qFourYes">Si</label>
+                            <input class="radioElement" type="radio" name="questionFour" id="qFourNo" value="2"/>
+                            <label class="radioTitleYN" for="qFourNo">No</label>
+                        </div>
+                        <hr class="space">
+
+                        <p class="questions">5.	¿Por parte de la Jueza o Juez, recibió usted el mismo trato que su contrarío?</p>
+                        <div class="main-section--form__container-siNo">
+                            <input class="radioElement" type="radio" name="questionFive" id="qFiveYes" value="1"/>
+                            <label class="radioTitleYN" for="qFiveYes">Si</label>
+                            <input class="radioElement" type="radio" name="questionFive" id="qFiveNo" value="2"/>
+                            <label class="radioTitleYN" for="qFiveNo">No</label>
+                        </div>
+                        <hr class="space">
+
+                        <p class="questions">6.	¿La Jueza o el Juez le preguntarón si quería hacer uso de la palabra?</p>
+                        <div class="main-section--form__container-siNo">
+                            <input class="radioElement" type="radio" name="questionSix" id="qSixYes" value="1"/>
+                            <label class="radioTitleYN" for="qSixYes">Si</label>
+                            <input class="radioElement" type="radio" name="questionSix" id="qSixNo" value="2"/>
+                            <label class="radioTitleYN" for="qSixNo">No</label>
+                        </div>
+                        <hr class="space">
+
+                        <p class="questions">7.	¿Usted entendió y comprendió lo sucedido en la audiencia?</p>
+                        <div class="main-section--form__container-siNo">
+                            <input class="radioElement" type="radio" name="questionSeven" id="qSevenYes" value="1"/>
+                            <label class="radioTitleYN" for="qSevenYes">Si</label>
+                            <input class="radioElement" type="radio" name="questionSeven" id="qSevenNo" value="2"/>
+                            <label class="radioTitleYN" for="qSevenNo">No</label>
+                        </div>
+                        <hr class="space">
+
+                        <p class="questions">8.	¿Desea agregar un comentario?</p>
+                        <div class="main-section--form__container-comments">
+                            <textarea class="myComment" name="comments" id="comment" cols="30" rows="10" placeholder="Escriba su comentario..."></textarea>
+                        </div>
+                        
+                        <hr class="space">
+                    </div>
+                    <button class="btn" type="button" onclick="miVal()">Enviar</button>
+                </form>
+        </section>
+    </main>
+    <script src="assets/js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</body>
+</html>
