@@ -1,9 +1,10 @@
 <?php
 header('Content-Type: application/json');
+session_start();
+
 include_once "../clases/Mensaje.php";
 include_once "../clases/Validar.php";
 include_once "../clases/Sesion.php";
-include_once "../clases/ConexionBD.php";
 
 $Peticion = $_SERVER['REQUEST_METHOD'];
 $Validar = new Validar();
@@ -17,9 +18,8 @@ switch ($Peticion) {
             "Correo" => $Correo,
             "Contraseña" => $Contraseña
         );
-        $Validar->Validar_Varibles_False($Variables);
+        $Validar->Validar_Variables_False($Variables);
         $Validar->Validar_Sesion_Activa();
-
         break;
     case 'GET':
         

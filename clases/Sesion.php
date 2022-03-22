@@ -1,4 +1,5 @@
 <?php
+include_once "../clases/ConexionBD.php";
 
 class Sesion extends ConexionBD{
 
@@ -34,18 +35,18 @@ class Sesion extends ConexionBD{
        $Correo = $Datos[3];
        $Contraseña_Registrada = $Datos[4];       
        $Rol = $Datos[5];
-       $Validar->Validar_Contraseña_Usuario($Contraseña)
+       $Validar->Validar_Contraseña_Usuario($Contraseña,$Contraseña_Registrada);
 
        
-          $_SESSION['Sesion_ID'] = session_id();
-          $_SESSION['Usuario_ID']  = $ID;
-          $_SESSION['Nombre'] = $Nombre; 
-          $_SESSION['Apellido_P']  = $Apellido_P;
-          $_SESSION['Apellido_M']  = $Apellido_M;
-          $_SESSION['Correo']  = $Correo;
-          $_SESSION['Telefono']  = $Telefono;
-          $_SESSION['Estado']  = $Estado;
-          $_SESSION['Rol']  =$Rol;
+        //   $_SESSION['Sesion_ID'] = session_id();
+        //   $_SESSION['Usuario_ID']  = $ID;
+        //   $_SESSION['Nombre'] = $Nombre; 
+        //   $_SESSION['Apellido_P']  = $Apellido_P;
+        //   $_SESSION['Apellido_M']  = $Apellido_M;
+        //   $_SESSION['Correo']  = $Correo;
+        //   $_SESSION['Telefono']  = $Telefono;
+        //   $_SESSION['Estado']  = $Estado;
+        //   $_SESSION['Rol']  =$Rol;
        
     }
     //Esta función se encarga de cerrar sesion y redirigir a la ruta de iniciar sesion
@@ -280,42 +281,6 @@ class Sesion extends ConexionBD{
     public function Asignar_Rol($Rol){
           
     }
-}
-
-
-//Valido que petición exista y no venga vacia, caso contrario se asigna: "Sin Peticion"
-$Peticion = isset($_POST["Peticion"]) ? $_POST["Peticion"] : "Sin Peticion";
-
-//Valido que Nombre, Apellido Paterno y ID exista y no venga vacia, caso contrario se asigna valor bool: false
-$Usuario = (isset($_POST["Usuario"]) && !empty($_POST["Usuario"])) ? $_POST["Usuario"] : false;
-$Contraseña = (isset($_POST["Contraseña"]) && !empty($_POST["Contraseña"])) ? $_POST["Contraseña"] : false;
-$URL = (isset($_POST["URL"]) && !empty($_POST["URL"])) ? $_POST["URL"] : false;
-
-switch ($Peticion){
-    case 'Iniciar_Sesion':
-        $Iniciar_Sesion = new Sesion($Usuario,$Contraseña, $URL);
-        $Iniciar_Sesion->Iniciar_Sesion();
-        break;
-    
-    case 'Cerrar_Sesion':
-        $Cerrar_Sesion = new Sesion($Usuario,$Contraseña, $URL);
-        $Cerrar_Sesion->Cerrar_Sesion();
-        break;
-        
-    case 'Validar_Sesion':
-        $Validar_Sesion = new Sesion($Usuario,$Contraseña, $URL);
-        $Validar_Sesion->Validar_Sesion();
-        break;    
-
-    default:
-        $Mensaje = "No es una petición válida";
-        $Bandera = false;
-        $Respuesta = array(
-            "Mensaje" => $Mensaje,
-            "Bandera" => $Bandera
-        );
-        echo json_encode($Respuesta);
-        exit();
 }
 
 ?>

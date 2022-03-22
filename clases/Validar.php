@@ -49,7 +49,7 @@
             }
         }
 
-        public function Validar_Varibles_False($Variables){
+        public function Validar_Variables_False($Variables){
             while (($Faltante = current($Variables)) !== false){
                 if($Faltante == 0){
                     $Error = new Mensaje();
