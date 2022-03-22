@@ -1,10 +1,10 @@
 <?php
+    header('Content-Type: application/json');
     include_once "../clases/ConexionBD.php"; //Realiza Conexion a BD 
     include_once "../clases/Validar.php"; 
     include_once "../clases/Encuesta.php"; 
     include_once "../clases/Mensaje.php";
     include_once "../clases/Juzgado.php";  
-    header('Content-Type: application/json');
 
     $Peticion = $_SERVER['REQUEST_METHOD'];
     $Encuesta = new Encuesta();
@@ -43,7 +43,7 @@
             }
             break;
         default:
-            # code...
+            $Mensaje->EnviarError("No se encuentra definida esa petición");
             break;
     }
 ?>

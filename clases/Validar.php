@@ -35,19 +35,20 @@
             }    
         }
 
-        public function Validar_Ejecucion_Query($Conectar_Base){
-            if($Conectar_Base->error){
+        public function Validar_Variables_Registro_Usuario($Nombre,$Apellido_P,$Apellido_M,$Telefono,$Correo,$Rol){
+            if($Nombre == false || $Apellido_P == false || $Apellido_M == false || $Telefono == false || $Correo == false || $Rol == false){
                 $Error = new Mensaje();
-                $Error->EnviarError("Error al ejecutar Query: " . $Conectar_Base->error);
+                $Error->EnviarError("No se definio una variable");
                 exit();
-            } else {
+            }elseif(!filter_var($Correo, FILTER_VALIDATE_EMAIL)){
+                $Error = new Mensaje();
+                $Error->EnviarError("El correo electrónico no es válido");
+                exit();
+            }else{
                 return true;
             }
         }
-
-        public function Validar_Tipo_Variable_ID($ID){
-            return true;
-        }
+        
     }
 
 ?>
