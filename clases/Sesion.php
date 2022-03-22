@@ -34,7 +34,7 @@ class Sesion extends ConexionBD{
        $Correo = $Datos[3];
        $Contraseña_Registrada = $Datos[4];       
        $Rol = $Datos[5];
-       
+       $Validar->Validar_Contraseña_Usuario($Contraseña)
 
        
           $_SESSION['Sesion_ID'] = session_id();
@@ -46,9 +46,6 @@ class Sesion extends ConexionBD{
           $_SESSION['Telefono']  = $Telefono;
           $_SESSION['Estado']  = $Estado;
           $_SESSION['Rol']  =$Rol;
-          
-          
-       }
        
     }
     //Esta función se encarga de cerrar sesion y redirigir a la ruta de iniciar sesion
@@ -281,20 +278,7 @@ class Sesion extends ConexionBD{
     }
 
     public function Asignar_Rol($Rol){
-          //Roles:
-          //Root = 1
-          //Admin = 2
-          //Estado = 3
-          switch($Rol){
-            case 1:
-                            
-            case 2:
-                            
-            case 3:
-                                
-            default:
-                   
-          }
+          
     }
 }
 

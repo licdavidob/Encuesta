@@ -18,7 +18,7 @@
             exit();
         }
 
-        public function EnviarCorrectoInicioSesion($URL,$Mensaje="Sin mensaje asignado"){            
+        public function EnviarCorrectoInicioSesion($URL,$Mensaje){            
             $Respuesta = array(
                 "Mensaje" => $Mensaje,
                 "URL" => $URL,

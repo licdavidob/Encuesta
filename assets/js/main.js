@@ -1,4 +1,4 @@
-const formulario = document.getElementById('full_form');
+const formulario = document.getElementById("full_form");
 // Preguntas
 function miVal() {
   const auxj = document.full_form.juzgado.value;
@@ -70,7 +70,7 @@ function AgregarEncuesta(
     Comentario: in8,
   };
 
-  formulario.addEventListener('submit', (e) => {
+  formulario.addEventListener("submit", (e) => {
     e.preventDefault();
   });
 
@@ -83,26 +83,22 @@ function AgregarEncuesta(
       console.log(parametros);
     },
     success: function (response) {
-      document
-        .getElementById("formulario__mensaje-exito")
-        .classList.add("formulario__mensaje-exito-activo");
-        formulario.reset();
-      setTimeout(() => {
-        document
-          .getElementById("formulario__mensaje-exito")
-          .classList.remove("formulario__mensaje-exito-activo");
-      }, 4000);
-      console.log(response);
-    },
-    error: function (e) {
-      document
-        .getElementById("formulario__mensaje")
-        .classList.add("formulario__mensaje-activo");
-      setTimeout(() => {
+      console.log(response.Bandera);
+      if (response.Bandera == false) {
         document
           .getElementById("formulario__mensaje")
-          .classList.remove("formulario__mensaje-activo");
-      }, 4000);
+          .classList.add("formulario__mensaje-activo");
+      } else {
+        document
+          .getElementById("formulario__mensaje-exito")
+          .classList.add("formulario__mensaje-exito-activo");
+        formulario.reset();
+        setTimeout(() => {
+          document
+            .getElementById("formulario__mensaje-exito")
+            .classList.remove("formulario__mensaje-exito-activo");
+        }, 4000);
+      }
     },
   });
 }
