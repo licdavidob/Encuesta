@@ -10,14 +10,14 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@100;300;500;700;900&display=swap" rel="stylesheet">
     <!-- Styles -->
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/tablet.css" media="(min-width:768px)">
+    <!-- <link rel="stylesheet" href="assets/css/tablet.css" media="(min-width:768px)"> -->
     <title>TSJCDMX</title>
 </head>
 <body>
     <header>
         <img src="/assets/img/PJCDMX.png" alt="">
         <div class="header--title-container">
-            <h1>Bienvenido</h1>
+            <h1>Bienvenida</h1>
             <p>
                 El Poder Judicial de la Ciudad de México, escucha tus sugerencias, por favor llena la siguiente encuesta, nos interesa saber tu opinión 
             </p>
@@ -30,7 +30,7 @@
                 <p class="h2">Cuestionario</p>
                 <hr class="space">
             </div>
-                <form class="main-section--form" name="full_form" method="post"> 
+                <form class="main-section--form" name="full_form" method="" id="full_form"> 
                     <div class="main-section--form__container">
                         <p class="questions">Seleccione el Juzgado Civil Oral</p>
                         <div class="main-section--form__container-juzgado">
@@ -74,6 +74,7 @@
                             <label class="radioTitleYN" for="qOneYes">Si</label>
                             <input class="radioElement" type="radio" name="questionOne" id="qOneNo" value="2"/>
                             <label class="radioTitleYN" for="qOneNo">No</label>
+                            <button class="btn" type="button" onclick="holi()">Probar</button>
                         </div>
                         <hr class="space">
                         <p class="questions">2. ¿La Juez o el Juez explicó el motivo de la audiencia?</p>
@@ -137,11 +138,19 @@
                         
                         <hr class="space">
                     </div>
-                    <button class="btn" type="button" onclick="miVal()">Enviar</button>
+                    <!-- Mensaje de error -->
+                    <div class="formulario__mensaje" id="formulario__mensaje">
+                        <p><b>Error:</b> Por favor rellena el formulario correctamente. </p>
+                    </div>
+                    <!-- <button class="btn" type="submit" onclick="miVal()">Enviar</button> -->
+                    <div class="formulario__mensaje-exito" id="formulario__mensaje-exito">
+                        <p>Formulario enviado exitosamente</p>
+                    </div>
+                    <button class="btn" type="submit">Enviar</button>
                 </form>
         </section>
     </main>
-    <script src="assets/js/main.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="assets/js/main1.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
 </body>
 </html>
