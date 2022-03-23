@@ -18,11 +18,11 @@ switch ($Peticion) {
         $Contraseña = (isset($_POST["Contraseña"]) && !empty($_POST["Contraseña"])) ? $_POST["Contraseña"] : 0;
         $URL = (isset($_POST["URL"]) && !empty($_POST["URL"])) ? $_POST["URL"] : 0;
         if($URL === 0){
-            $Variables = array(
+            $Obligatorias = array(
                 "Correo" => $Correo,
                 "Contraseña" => $Contraseña
             );
-            $Validar->Validar_Variables_False($Variables);
+            $Validar->Validar_Variables_Obligatorias($Obligatorias);
     
             if(!$Validar->Validar_Sesion_Activa()){
                 $Sesion->Iniciar_Sesion($Correo,$Contraseña);
@@ -37,9 +37,7 @@ switch ($Peticion) {
             }else {
                 $Mensaje->EnviarFalloValidarSesion($Sesion->URL_Index,"Error al validar sesion");
             }
-
         }
-        
         break;
     case 'GET':
         if($Sesion->Cerrar_Sesion()){

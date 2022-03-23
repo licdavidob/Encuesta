@@ -56,7 +56,7 @@ class Sesion extends ConexionBD{
 
     //Esta funcion se encarga de que el usuario no pueda acceder a otras vistas que no le corresponde
     public function Validar_Sesion($URL){
-        $URL = $this->URL;
+        $URL
 
         //Se valida que el usuario haya enviado un URL
        if($URL == false){

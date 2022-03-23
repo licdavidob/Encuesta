@@ -41,7 +41,12 @@
             $Encuesta = array();
             $General_Encuestas = array();
             $Totales_Juzgado = array();
+            $Top_10 = array();
+            $Total_Actor = 0;
+            $Total_Demandado = 0;
+            $Total_Otro = 0;
             $Contador = 0;
+            $Detener_Foreach = 0;
             $Conectar_Base = $this->Conectar();
             $Sentencias_Consulta = $this->Sentencias_Consulta_Encuesta();
             $ResultadoConsulta = $Conectar_Base->query($Sentencias_Consulta["Consultar_Encuestas"]);
@@ -50,6 +55,7 @@
                 $Encuesta['ID_Encuesta'] = $Resultado[0];
                 $Encuesta['Juzgado'] = $Resultado[1];
                 $Encuesta['Expediente'] = $Resultado[2];
+                $Encuesta['Fecha'] = $Resultado[4];
                 $General_Encuestas[$Contador] = $Encuesta;
                 foreach ($Juzgados as $Juzgado) {
                     if($Juzgado['Juzgado'] == $Encuesta['Juzgado']){
@@ -60,30 +66,51 @@
                             $Totales_Juzgado[$Juzgado['Juzgado']]++;
                         }                        
                     }
-                } 
+                }
+                if($Resultado[3] == 1){$Total_Actor++;} 
+                if($Resultado[3] == 2){$Total_Demandado++;} 
+                if($Resultado[3] == 3){$Total_Otro++;} 
         		$Contador++;
             }
+
+            arsort($Totales_Juzgado);
+            foreach ($Totales_Juzgado as $Juzgado => $Valor) {
+                $Top_10[$Juzgado] = $Valor;
+                $Detener_Foreach++;
+                if($Detener_Foreach == 10){break;}
+            }
+
             $Datos['Encuestas'] = $General_Encuestas;
             $Datos['Total_Encuestas'] = $Contador;
+            $Datos['Total_Actor'] = $Total_Actor;
+            $Datos['Total_Demandado'] = $Total_Demandado;
+            $Datos['Total_Otro'] = $Total_Otro;
             $Datos['Total_Juzgado'] = $Totales_Juzgado;
+            $Datos['Top_10'] = $Top_10;
             echo json_encode($Datos);
         }
 
-        public function Consultar_Encuestas_Fecha($Fecha){
+        public function Consultar_Encuestas_Fecha($Inicio, $Fin){
             $Juzgado = new Juzgado();
             $Juzgados = $Juzgado->Obtener_Info_General();
             $Encuesta = array();
             $General_Encuestas = array();
             $Totales_Juzgado = array();
+            $Top_10 = array();
+            $Total_Actor = 0;
+            $Total_Demandado = 0;
+            $Total_Otro = 0;
             $Contador = 0;
+            $Detener_Foreach = 0;
             $Conectar_Base = $this->Conectar();
-            $Sentencias_Consulta = $this->Sentencias_Consulta_Encuesta($ID = 0,$Fecha);
+            $Sentencias_Consulta = $this->Sentencias_Consulta_Encuesta($ID = 0,$Inicio,$Fin);
             $ResultadoConsulta = $Conectar_Base->query($Sentencias_Consulta["Consultar_Encuestas_Fecha"]);
             $Conectar_Base->close();
             while ($Resultado = $ResultadoConsulta->fetch_row()){
                 $Encuesta['ID_Encuesta'] = $Resultado[0];
                 $Encuesta['Juzgado'] = $Resultado[1];
                 $Encuesta['Expediente'] = $Resultado[2];
+                $Encuesta['Fecha'] = $Resultado[4];
                 $General_Encuestas[$Contador] = $Encuesta;
                 foreach ($Juzgados as $Juzgado) {
                     if($Juzgado['Juzgado'] == $Encuesta['Juzgado']){
@@ -94,13 +121,41 @@
                             $Totales_Juzgado[$Juzgado['Juzgado']]++;
                         }                        
                     }
-                } 
+                }
+                if($Resultado[3] == 1){$Total_Actor++;} 
+                if($Resultado[3] == 2){$Total_Demandado++;} 
+                if($Resultado[3] == 3){$Total_Otro++;} 
         		$Contador++;
             }
+            
+            arsort($Totales_Juzgado);
+            foreach ($Totales_Juzgado as $Juzgado => $Valor) {
+                $Top_10[$Juzgado] = $Valor;
+                $Detener_Foreach++;
+                if($Detener_Foreach == 10){break;}
+            }
+
             $Datos['Encuestas'] = $General_Encuestas;
             $Datos['Total_Encuestas'] = $Contador;
+            $Datos['Total_Actor'] = $Total_Actor;
+            $Datos['Total_Demandado'] = $Total_Demandado;
+            $Datos['Total_Otro'] = $Total_Otro;
             $Datos['Total_Juzgado'] = $Totales_Juzgado;
+            $Datos['Top_10'] = $Top_10;
             echo json_encode($Datos);
+        }
+
+        public function Eliminar_Encuesta_ID($ID){
+            $Conectar_Base = $this->Conectar();
+            $Sentencias_Consulta = $this->Sentencias_Consulta_Encuesta($ID);
+            $ResultadoConsulta = $Conectar_Base->query($Sentencias_Consulta["Consultar_Encuesta_ID"]);
+            $Numero_Resultados = $ResultadoConsulta->num_rows;
+            $Validar = new Validar();
+            $Validar->Validar_Resultado_ID($Numero_Resultados,$ID);
+            $Sentencias_Eliminar = $this->Sentencias_Eliminar_Encuesta($ID);
+            $Conectar_Base->query($Sentencias_Eliminar["Sentencias_Eliminar_Encuesta"]);
+            $Conectar_Base->close();
+            return true;
         }
 
     }
