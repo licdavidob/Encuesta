@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YameKuda</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Custom fonts for this template-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+
+    <!-- Custom styles for this template-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <!-- Styles -->
+    <link href="assets/css/login.css" rel="stylesheet" />
+  </head>
+  <!-- <body onload="Validar_Sesion();"> -->
+  <body>
+    <div class="container-fluid">
+      <div class="row renglon_index">
+        <div
+          class="col-lg-4 col-md-7 col-sm-12 align-self-center"
+          id="Formulario"
+        >
+          <div class="p-5">
+            <div class="text-center">
+              <img src="/assets/img/PJCDMX.png" class="img-fluid img-p" alt="" />
+            </div>
+            <form class="formulario">
+              <div class="form-group">
+                <input
+                  type="email"
+                  class="form-control form-control-user input-p mt-3"
+                  id="Usuario"
+                  aria-describedby="emailHelp"
+                  placeholder="Correo Electrónico"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="password"
+                  class="form-control form-control-user mt-3"
+                  id="Contraseña"
+                  placeholder="Contraseña"
+                />
+              </div>
+              <input
+                type="submit"
+                name="go"
+                value="Iniciar Sesion"
+                class="btn-p"
+                onclick="Iniciar_Sesion($('#Usuario').val(), $('#Contraseña').val());return false;"
+              />
+            </form>
+
+            <div class="text-center mt-3"></div>
+          </div>
+        </div>
+
+        <div id="Imagen" class="col-lg-8 col-md-5 p-0 d-none d-md-block">
+          <div
+            id="carousel"
+            class="carousel slide carousel-fade"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-inner">
+              <!-- Agregar cada item desde código CSS -->
+              <div class="carousel-item item-1 active"></div>
+              <!-- <div class="carousel-item item-2"></div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Mis funciones AJAX-->
+    <script src="/assets/js/valida_sesion.js"></script>
+    <script src="/assets/js/iniciar_sesion.js"></script>
+  </body>
+</html>

@@ -5,6 +5,7 @@
     --m-green:    #7B9C5F;
     --soft-blue:  #bfe0f5;
     --light-white:#EDEDED;
+    --tribunal:   rgba(25,88,82,.9);
 }
 * {
     box-sizing: border-box;
@@ -26,7 +27,7 @@ header {
     min-width: 320px;
     height: 300px;
     text-align: center;
-    background-image: linear-gradient(to right top, #0048b3, #0451c5, #075bd7, #0b64ea, #0d6efd);
+    background-color: var(--tribunal);
 }
 header img {
     width: 130px;
