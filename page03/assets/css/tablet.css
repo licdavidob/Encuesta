@@ -1,0 +1,23 @@
+header {
+    height: 350px;
+}
+header img {
+    width: 260px;
+    height: 140px;
+}
+.header--title-container h1 {
+    font-size: 4rem;
+}
+.header--title-container p {
+    font-size: 1.8rem;
+    line-height: 2rem;
+}
+.main-section--title .h2 {
+    font-size: 3rem;
+}
+.main-section--form__container-parte {
+    flex-direction: row;
+}
+.radioTitle {
+    margin-right: 20px;
+}
