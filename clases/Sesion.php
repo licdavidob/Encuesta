@@ -1,5 +1,6 @@
 <?php
 include_once "../clases/ConexionBD.php";
+include_once "../clases/Mensaje.php";
 
 class Sesion extends ConexionBD{
 
@@ -7,16 +8,11 @@ class Sesion extends ConexionBD{
     private $Usuario_Sesion;
     private $Contraseña_Sesion;
     private $Rol;
-    private $URL_INICIO_SESION = "/";
-    private $URL_INDEX_ROOT = "root/Centros_Justicia_Penal.html";
-    private $URL_INDEX_ADMIN = "admin/Centros_Justicia_Penal.html";
-    private $URL_INDEX_USUARIO = "estado/Centros_Justicia_Penal.html";
-    private $URL_ERROR = "../error.html";
+    public $URL_Index = "/";
+    public $URL_Panel; 
 
-    public function __construct($Usuario, $Contraseña, $URL){
-        $this->Usuario_Sesion = $Usuario;
-        $this->Contraseña_Sesion = $Contraseña;
-        $this->URL = $URL;
+    public function __construct(){
+        
     }
 
     //Esta funcion se encarga de iniciar sesion y redirigir a la ruta que debe de ser
@@ -36,50 +32,30 @@ class Sesion extends ConexionBD{
        $Contraseña_Registrada = $Datos[4];       
        $Rol = $Datos[5];
        $Validar->Validar_Contraseña_Usuario($Contraseña,$Contraseña_Registrada);
-
        
-        //   $_SESSION['Sesion_ID'] = session_id();
-        //   $_SESSION['Usuario_ID']  = $ID;
-        //   $_SESSION['Nombre'] = $Nombre; 
-        //   $_SESSION['Apellido_P']  = $Apellido_P;
-        //   $_SESSION['Apellido_M']  = $Apellido_M;
-        //   $_SESSION['Correo']  = $Correo;
-        //   $_SESSION['Telefono']  = $Telefono;
-        //   $_SESSION['Estado']  = $Estado;
-        //   $_SESSION['Rol']  =$Rol;
-       
+       $_SESSION['Sesion_ID'] = session_id();
+       $_SESSION['Nombre']  = $Nombre;
+       $_SESSION['Paterno'] = $Paterno; 
+       $_SESSION['Materno']  = $Materno;
+       $_SESSION['Correo']  = $Correo;
+       $_SESSION['Rol']  = $Rol;
+       $this->Asignar_Permisos($Rol);
+       return true;
     }
+
     //Esta función se encarga de cerrar sesion y redirigir a la ruta de iniciar sesion
     public function Cerrar_Sesion(){ 
-       session_start();
-
-       //Se valida que el usuario haya iniciado sesion
-       if(!isset($_SESSION['Sesion_ID'])){
-        $Mensaje = "Error: No se ha iniciado una sesion";
-        $Bandera = false;
-        $Respuesta = array(
-            "Mensaje" => $Mensaje,
-            "Bandera" => $Bandera
-        );
-        echo json_encode($Respuesta);
-        exit();
+        $Validar = new Validar();
+       if($Validar->Validar_Sesion_Activa()){
+        session_destroy();
+        return true; 
        }else{
-        session_destroy();   
-        $Mensaje = "Se ha cerrado la sesion correctamente";   
-        $URL = "../";
-        $Bandera = true;
-        $Respuesta = array(
-            "Mensaje" => $Mensaje,
-            "URL" => $URL,
-            "Bandera" => $Bandera
-        );
-        echo json_encode($Respuesta);   
-       }
-        
-
+        return false;
+       }  
     }
+
     //Esta funcion se encarga de que el usuario no pueda acceder a otras vistas que no le corresponde
-    public function Validar_Sesion(){
+    public function Validar_Sesion($URL){
         $URL = $this->URL;
 
         //Se valida que el usuario haya enviado un URL
@@ -274,12 +250,42 @@ class Sesion extends ConexionBD{
        
     }
 
-    public function Datos_Sesion(){
-
+    public function Imprimir_Datos_Sesion(){
+        if(isset($_SESSION['Sesion_ID']) ){
+            $Datos_Sesion = array(
+                "Sesion_ID" => $_SESSION['Sesion_ID'],
+                "Nombre" => $_SESSION['Nombre'],
+                "Paterno" => $_SESSION['Paterno'],
+                "Materno" => $_SESSION['Materno'],
+                "Correo" => $_SESSION['Correo'],
+                "Rol" => $_SESSION['Rol'],
+            );
+            echo json_encode($Datos_Sesion);
+        }else{
+            $Mensaje = new Mensaje();
+            $Mensaje->EnviarCorrecto("No existe una sesión iniciada");
+            exit();
+        }  
     }
 
-    public function Asignar_Rol($Rol){
+    public function Asignar_Permisos($Rol){
           
+        switch ($Rol) {
+            case '1': //Root
+                $this->URL_Panel = "Root.html";
+                break;
+            case '2': //Admin
+                $this->URL_Panel = "Admin.html";
+                break;
+            case '3': //Magistrado
+                $this->URL_Panel = "Magistrado.html";
+                break;    
+            default:
+                $Mensaje = new Mensaje();
+                $this->Cerrar_Sesion();
+                $Mensaje->EnviarError("No existe ese tipo de rol");
+                break;
+        }
     }
 }
 

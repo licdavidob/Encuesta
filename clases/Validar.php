@@ -50,8 +50,9 @@
         }
 
         public function Validar_Variables_False($Variables){
+           
             while (($Faltante = current($Variables)) !== false){
-                if($Faltante == 0){
+                if($Faltante === 0){
                     $Error = new Mensaje();
                     $Error->EnviarError("Falta definir la variable: ".key($Variables));
                     exit();
@@ -63,11 +64,9 @@
 
         public function Validar_Sesion_Activa(){
             if(isset($_SESSION['Sesion_ID']) ){
-                $Mensaje = new Mensaje();
-                $Mensaje->EnviarCorrecto("Ya existe una sesión iniciada");
-                exit();
-            }else{
                 return true;
+            }else{
+                return false;
             }  
         }
 
