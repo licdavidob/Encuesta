@@ -78,7 +78,7 @@
             foreach ($Totales_Juzgado as $Juzgado => $Valor) {
                 $Top_10[$Juzgado] = $Valor;
                 $Detener_Foreach++;
-                if($Detener_Foreach == 10){break;}
+                if($Detener_Foreach == 5){break;}
             }
 
             $Datos['data'] = $General_Encuestas;
@@ -134,7 +134,7 @@
             foreach ($Totales_Juzgado as $Juzgado => $Valor) {
                 $Top_10[$Juzgado] = $Valor;
                 $Detener_Foreach++;
-                if($Detener_Foreach == 10){break;}
+                if($Detener_Foreach == 5){break;}
             }
 
             $Datos['data'] = $General_Encuestas;
