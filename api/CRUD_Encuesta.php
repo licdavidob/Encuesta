@@ -37,6 +37,7 @@
                 "P6" => $P6,
                 "P7" => $P7
             );
+            echo json_encode($Obligatorias);
             $Validar->Validar_Variables_Obligatorias($Obligatorias);
             $Obtener_Juez = new Juzgado();
             $Juez = $Obtener_Juez->Obtener_Juez($Juzgado);
