@@ -1,16 +1,17 @@
 function Iniciar() {
-  var Dia_Actual = moment().startOf("day").format("YYYY-MM-DD");
-  var Fecha_Inicio = "2022-01-01";
-  var Tabla = DataTable(Fecha_Inicio, Dia_Actual);
+  let Dia_Actual = moment().startOf("day").format("YYYY-MM-DD");
+  let Fecha_Inicio = "2022-01-01";
+  let Tabla = DataTable(Fecha_Inicio, Dia_Actual);
+  Datos(Tabla);
 }
 
 function DataTable(Fecha_Inicio, Dia_Actual) {
-  var table = $("#tabla").DataTable({
+  let table = $("#tabla").DataTable({
     language: {
       url: "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json",
     },
     ajax: {
-      url: "api/CRUD_Encuesta.php",
+      url: "http://172.19.40.90/api/CRUD_Encuesta.php",
       data: function (d) {
         d.Fecha_Inicio = Fecha_Inicio;
         d.Fecha_Fin = Dia_Actual;
@@ -60,9 +61,26 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
         width: "10%",
         data: null,
         defaultContent:
-          "<div class 'row justify-content-between'> <button class='btn btn-outline-primary text-center'><i class='fa-solid fa-circle-info'></i></i></button><div/>",
+          `<div class ='row'> <button class='btn btn-outline-primary text-center' id='btn${id}' ><i class='fa-solid fa-circle-info'></i></i></button><div/>`,
       },
     ],
   });
   return table;
 }
+
+function Datos(table) {
+  table.on("xhr", function () {
+    //Todos los datos recibidos en mi AJAX, se encuentran en esta variable "data"
+    var data = table.ajax.json();
+
+    $("#Tarjeta_Total_Encuestas").html(data["Total_Encuestas"]);
+    $("#Tarjeta_Total_Actor").html(data["Total_Actor"]);
+    $("#Tarjeta_Total_Demandado").html(data["Total_Demandado"]);
+    $("#Tarjeta_Total_Otro").html(data["Total_Otro"]);
+
+  });
+}
+
+
+
+
