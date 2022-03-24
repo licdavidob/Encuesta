@@ -76,7 +76,7 @@ function AgregarEncuesta(
 
   $.ajax({
     data: parametros,
-    url: "/api/CRUD_Encuesta.php",
+    url: "http://172.19.40.90/api/CRUD_Encuesta.php",
     dataType: "json",
     type: "post",
     beforeSend: function () {
