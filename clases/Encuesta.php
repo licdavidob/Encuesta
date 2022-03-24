@@ -55,6 +55,7 @@
                 $Encuesta['ID_Encuesta'] = $Resultado[0];
                 $Encuesta['Juzgado'] = $Resultado[1];
                 $Encuesta['Expediente'] = $Resultado[2];
+                $Encuesta['Parte'] = $Resultado[3];
                 $Encuesta['Fecha'] = $Resultado[4];
                 $General_Encuestas[$Contador] = $Encuesta;
                 foreach ($Juzgados as $Juzgado) {
@@ -80,7 +81,7 @@
                 if($Detener_Foreach == 10){break;}
             }
 
-            $Datos['Encuestas'] = $General_Encuestas;
+            $Datos['data'] = $General_Encuestas;
             $Datos['Total_Encuestas'] = $Contador;
             $Datos['Total_Actor'] = $Total_Actor;
             $Datos['Total_Demandado'] = $Total_Demandado;
@@ -110,6 +111,7 @@
                 $Encuesta['ID_Encuesta'] = $Resultado[0];
                 $Encuesta['Juzgado'] = $Resultado[1];
                 $Encuesta['Expediente'] = $Resultado[2];
+                $Encuesta['Parte'] = $Resultado[3];
                 $Encuesta['Fecha'] = $Resultado[4];
                 $General_Encuestas[$Contador] = $Encuesta;
                 foreach ($Juzgados as $Juzgado) {
@@ -135,7 +137,7 @@
                 if($Detener_Foreach == 10){break;}
             }
 
-            $Datos['Encuestas'] = $General_Encuestas;
+            $Datos['data'] = $General_Encuestas;
             $Datos['Total_Encuestas'] = $Contador;
             $Datos['Total_Actor'] = $Total_Actor;
             $Datos['Total_Demandado'] = $Total_Demandado;
