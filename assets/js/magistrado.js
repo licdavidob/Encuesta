@@ -67,16 +67,55 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
   });
   return table;
 }
+// Gráfica pastel (Chart) Top 10
+function grafica_top_juzgados(id, data) {
+  var chart_top_juzgados = new Chart(id, {
+    type: "doughnut",
+    data: {
+      labels: [data],
+      datasets: [
+        {
+          label: "Population",
+          data: [
+            data["Total_Masculino"],
+            data["Total_Femenino"],
+            data["Total_Indefinido"],
+          ],
+          backgroundColor: [
+            "rgba(54, 162, 235, 0.6)",
+            "rgba(255, 99, 132, 0.6)",
+            "rgba(75, 192, 192, 0.6)",
+          ],
+        },
+      ],
+    },
+    options: {
+      maintainAspectRatio: false,
+    },
+  });
+  return chart_top_juzgados;
+}
+
 
 function Datos(table) {
   table.on("xhr", function () {
     //Todos los datos recibidos en mi AJAX, se encuentran en esta variable "data"
     var data = table.ajax.json();
-
+    // Datos de tarjetas 
     $("#Tarjeta_Total_Encuestas").html(data["Total_Encuestas"]);
     $("#Tarjeta_Total_Actor").html(data["Total_Actor"]);
     $("#Tarjeta_Total_Demandado").html(data["Total_Demandado"]);
     $("#Tarjeta_Total_Otro").html(data["Total_Otro"]);
+
+    // Datos gráfica
+    var general = data["Top_10"];
+
+
+    var idTopDiez = $("#Chart_Top10");
+    globalThis.objeto_grafica_top_juzgado = grafica_top_juzgados(
+      idTopDiez,
+      general
+    );
 
   });
 }
