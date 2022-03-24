@@ -79,9 +79,6 @@ function AgregarEncuesta(
     url: "http://172.19.40.90/api/CRUD_Encuesta.php",
     dataType: "json",
     type: "post",
-    beforeSend: function () {
-      console.log(parametros);
-    },
     success: function (response) {
       console.log(response.Bandera);
       if (response.Bandera == false) {
