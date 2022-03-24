@@ -61,7 +61,7 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
         width: "10%",
         data: null,
         defaultContent:
-          `<div class ='row'> <button class='btn btn-outline-primary text-center' id='btn${id}' ><i class='fa-solid fa-circle-info'></i></i></button><div/>`,
+          `<div class ='row'> <button class='btn btn-outline-primary text-center'><i class='fa-solid fa-circle-info'></i></i></button><div/>`,
       },
     ],
   });
