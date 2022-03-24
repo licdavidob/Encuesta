@@ -32,20 +32,24 @@ switch ($Peticion) {
                 $Mensaje->EnviarError("Ya se encuentra una sesion iniciada, pero puedes volver a intentar");
             }
         }else{
-            if ($Sesion->Validar_Sesion($URL)) {
+            if ($Sesion->Validar_Sesion_Panel($URL)) {
                 $Mensaje->EnviarCorrecto("Todo bien");
             }else {
+                $Sesion->Cerrar_Sesion();
                 $Mensaje->EnviarFalloValidarSesion($Sesion->URL_Index,"Error al validar sesion");
             }
         }
         break;
-    case 'GET':
+    case 'DELETE':
         if($Sesion->Cerrar_Sesion()){
            $Mensaje->EnviarCorrecto("Se ha cerrado la sesión de manera exitosa"); 
         }else{
             $Mensaje->EnviarError("No existe ninguna sesión iniciada");
         }
-        break;    
+        break;
+    case 'GET':
+        $Sesion->Imprimir_Datos_Sesion();
+        break;        
     default:
         $Mensaje->EnviarError("No se encuentra definida esa petición");
         break;
