@@ -69,27 +69,37 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
 }
 // Gráfica pastel (Chart) Top 10
 function grafica_top_juzgados(id, data) {
+  // console.log(typeof data);
+  
+
+  let nombres = Object.keys(data);
+  let numeros = Object.values(data);
+  // console.log(numeros);
+  
+
+
   var chart_top_juzgados = new Chart(id, {
     type: "doughnut",
     data: {
-      labels: [data],
+      labels: nombres,
       datasets: [
         {
-          label: "Population",
-          data: [
-            data["Total_Masculino"],
-            data["Total_Femenino"],
-            data["Total_Indefinido"],
-          ],
+          label: [""],
+          data: numeros,
           backgroundColor: [
-            "rgba(54, 162, 235, 0.6)",
-            "rgba(255, 99, 132, 0.6)",
-            "rgba(75, 192, 192, 0.6)",
+            "#2E6661",
+            "#26707F",
+            "#3C789A",
+            "#697BAD",
+            "#997BB0",
           ],
         },
       ],
     },
     options: {
+      legend: {
+        display: false
+      },
       maintainAspectRatio: false,
     },
   });
