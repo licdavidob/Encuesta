@@ -14,7 +14,65 @@ function miVal() {
   const in7 = parseInt(document.full_form.questionSeven.value);
   const in8 = document.full_form.comments.value;
 
-  // const respuestas = [
+  let pparte = isNaN(parte);
+  let p1 = isNaN(in1);
+  let p2 = isNaN(in2);
+  let p3 = isNaN(in3);
+  let p4 = isNaN(in4);
+  let p5 = isNaN(in5);
+  let p6 = isNaN(in6);
+  let p7 = isNaN(in7);
+
+  let validador = false;
+  if (pparte === true) {
+    console.log('Falta definir la parte');
+    return validador
+  } else if (p1 === true) {
+    console.log('Falta definir la pregunta 1');
+    return validador
+  } else if (p2 === true) {
+      console.log('Falta definir la pregunta 2');
+
+      return validador
+    } else if (p3 === true) {
+      console.log('Falta definir la pregunta 3');
+
+      return validador
+    } else if (p4 === true) {
+      console.log('Falta definir la pregunta 4');
+
+      return validador
+    } else if (p5 === true) {
+      console.log('Falta definir la pregunta 5');
+
+      return validador
+    } else if (p6 === true) {
+      console.log('Falta definir la pregunta 6');
+
+      return validador
+    } else if (p7 === true) {
+      console.log('Falta definir la pregunta 7');
+
+      return validador
+    } else {
+    console.log("All ok");
+    AgregarEncuesta(
+      juzgado,
+      expediente,
+      parte,
+      in1,
+      in2,
+      in3,
+      in4,
+      in5,
+      in6,
+      in7,
+      in8
+    );
+  }
+
+
+  // AgregarEncuesta(
   //   juzgado,
   //   expediente,
   //   parte,
@@ -25,22 +83,9 @@ function miVal() {
   //   in5,
   //   in6,
   //   in7,
-  //   in8,
-  // ];
-  // console.log(respuestas);
-  AgregarEncuesta(
-    juzgado,
-    expediente,
-    parte,
-    in1,
-    in2,
-    in3,
-    in4,
-    in5,
-    in6,
-    in7,
-    in8
-  );
+  //   in8
+  // );
+  // return validador
 }
 function AgregarEncuesta(
   juzgado,
@@ -81,7 +126,8 @@ function AgregarEncuesta(
     type: "post",
     success: function (response) {
       console.log(response.Bandera);
-      if (response.Bandera == false) {
+      if (response.Bandera === false) {
+        console.log(response.Mensaje);
         document
           .getElementById("formulario__mensaje")
           .classList.add("formulario__mensaje-activo");
