@@ -61,9 +61,10 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
         width: "10%",
         data: null,
         defaultContent:
+        // <button type="button" class='btn btn-outline-primary text-center consultar'>
           `
           <div class ='row'>
-          <button type="button" class='btn btn-outline-primary text-center consultar'>
+          <button type="button" class='consultar'>
           <i class='fa-solid fa-circle-info'></i>
           </button>
           `,
@@ -87,16 +88,19 @@ function grafica_top_juzgados(id, data) {
         {
           data: numeros,
           backgroundColor: [
-            "#2E6661",
-            "#26707F",
-            "#3C789A",
-            "#697BAD",
-            "#997BB0",
+            "#3D3E40",
+            "#7794A6",
+            "#93B3BF",
+            "#F2BC8D",
+            "#F2F2F2",
           ],
         },
       ],
     },
     options: {
+      legend: {
+        position: 'center',
+      },
       maintainAspectRatio: false,
     },
   });

@@ -4,8 +4,9 @@
     --d-blue:     #0D6EFD;
     --m-green:    #7B9C5F;
     --soft-blue:  #bfe0f5;
-    --light-white:#EDEDED;
     --tribunal:   rgba(25,88,82,.9);
+    --red-warning:rgb(226, 34, 34);
+    --light-white:#EDEDED;
 }
 * {
     box-sizing: border-box;
@@ -91,6 +92,12 @@ h6 {
     max-width: 1200px;
     font-size: 1.6rem;
 }
+
+.chart-area {
+    width: 100%;
+    height: 550px;
+}
+
 /* Estilos de modal  */
 
 .field:nth-child(1) {
@@ -98,13 +105,10 @@ h6 {
 }
 .field {
     display: flex;
-    /* margin-left: 75px; */
-    /* width: 90%; */
     justify-content: space-between;
     align-items: center;
 
     border-bottom: 2px solid var(--tribunal);
-    /* border-radius: 5px; */
     padding-top: 0.5rem;
 }
 
@@ -113,9 +117,7 @@ h6 {
     font-size: 1.4rem;
     font-weight: 500;
     color: var(--tribunal);
-    /* border: 3px solid transparent; */
     border-radius: 10px;
-    /* background-color: rgba(25, 88, 82, 0.37); */
     padding: 1rem;
     width: 350px;
 }
@@ -153,12 +155,22 @@ h6 {
     font-size: 1.5rem;
     font-weight: 700;
     border-radius: 5px;
-    /* background-color: var(--tribunal); */
     color: var(--tribunal);
     padding: 1rem;
-    /* padding-top: 50px; */
     width: 200px;
     text-align: center;
     margin-bottom: 10px;
     
+}
+.consultar {
+    margin-left: 0;
+    margin-right: 0;
+    margin: auto;
+    border: none;
+    width: 50px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: var(--tribunal);
+    color: var(--light-white);
+
 }

@@ -11,13 +11,20 @@ header {
 }
 
 .cards-section {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    width: 92%;
 }
 
 .cards-section .text-xs {
-    font-size: .8rem;
+    font-size: 1rem;
 }
 h6 {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     text-align: center;
+}
+.graph-section {
+    width: 93%;
+}
+.display {
+    font-size: 1.4rem;
 }

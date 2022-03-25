@@ -1,23 +1,16 @@
-/* header {
-    height: 150px;
-    padding-top: 0px;
+header {
+    height: 100px;
 }
-.logo {
-    padding: 0;
-    width: 90%;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 0px 50px;
-}
-
 .cards-section {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
+    width: 97%;
 }
-
 .cards-section .text-xs {
-    font-size: .8rem;
-}
-h6 {
     font-size: 1.4rem;
-    text-align: center;
-} */
+}
+.graph-section {
+    width: 98%;
+}
+.display {
+    font-size: 1.6rem;
+}
