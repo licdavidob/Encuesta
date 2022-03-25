@@ -1,86 +1,84 @@
 /* Valores iniciales */
 :root {
-    --m-blue:     #313553;
-    --d-blue:     #0D6EFD;
-    --m-green:    #7B9C5F;
-    --soft-blue:  #bfe0f5;
-    --light-white:#EDEDED;
-    --tribunal:   rgba(25,88,82,.9);
-    --tb-light-green: #00a98e;
+  --m-blue: #313553;
+  --d-blue: #0d6efd;
+  --m-green: #7b9c5f;
+  --soft-blue: #bfe0f5;
+  --light-white: #ededed;
+  --tribunal: rgba(25, 88, 82, 0.9);
+  --tb-light-green: #00a98e;
 }
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 html {
-    font-size: 62.5%;
-    font-family: 'Nunito', sans-serif;
+  font-size: 62.5%;
+  font-family: "Nunito", sans-serif;
 }
 body {
-    background-color: var(--tribunal);
+  background-color: var(--tribunal);
 }
 /* Fin Valores iniciales */
 .img-p {
-    padding: 5px;
+  padding: 5px;
 }
 .form-group .input-p {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .cerrar_sesion {
-    width: 7rem;
+  width: 7rem;
 }
 .pantalla {
-    width: 70%;
-    height: 50rem;
-  }
-  
-  .Estado {
-    width: 500px;
-  }
-  
-  #wrapper {
-    /* background-color: #343853; */
-  }
-  
-  /* Index */
-  #Usuario, #Contraseña {
-    font-size: 1.6rem;
-    border-radius: 10px;
-    padding: 0.8rem 1rem;
-    min-width: 300px;
-  }
+  width: 70%;
+  height: 50rem;
+}
+
+.Estado {
+  width: 500px;
+}
+
+#wrapper {
+  /* background-color: #343853; */
+}
+
+/* Index */
+#Usuario,
+#Contraseña {
+  font-size: 1.6rem;
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  min-width: 300px;
+}
 .formulario {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .formulario .btn-p {
-    margin-top: 10px;
-    height: 40px;
-    width: 150px;
-    font-size: 1.6rem;
-    color: white;
-    border: 2px solid transparent;
-    background-color: var(--tb-light-green);
-    border-radius: 5px;
-    font-weight: 500;
-    cursor: pointer;
+  margin-top: 10px;
+  height: 40px;
+  width: 150px;
+  font-size: 1.6rem;
+  color: white;
+  border: 2px solid transparent;
+  background-color: var(--tb-light-green);
+  border-radius: 5px;
+  font-weight: 500;
+  cursor: pointer;
 }
 .formulario .btn-p:hover {
-
 }
-
-
 
 .item-1 {
-    background-image: url("/assets/img/cover5.jpg");
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
+  background-image: url("/assets/img/cover5.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
 }
 .renglon_index {
-    height: 100vh;
+  height: 100vh;
 }
