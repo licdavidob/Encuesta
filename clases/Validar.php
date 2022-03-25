@@ -25,24 +25,30 @@
             }    
         }
 
-        public function Validar_Variables_Registro_Usuario($Nombre,$Apellido_P,$Apellido_M,$Telefono,$Correo,$Rol){
-            if($Nombre == false || $Apellido_P == false || $Apellido_M == false || $Telefono == false || $Correo == false || $Rol == false){
+        public function Validar_Correo_Usuario($Correo){
+            if(!filter_var($Correo, FILTER_VALIDATE_EMAIL)){
                 $Error = new Mensaje();
-                $Error->EnviarError("No se definio una variable");
-                exit();
-            }elseif(!filter_var($Correo, FILTER_VALIDATE_EMAIL)){
-                $Error = new Mensaje();
-                $Error->EnviarError("El correo electrónico no es válido");
+                $Error->EnviarError("No es válido el correo electrónico");
                 exit();
             }else{
                 return true;
             }
         }
 
+        public function Validar_Variables_Obligatorias_NAN($Variables){
+            foreach ($Variables as $key => $value) {
+                if(is_nan($key)){
+                    $Error = new Mensaje();
+                    $Error->EnviarError("Falta definir la variable: ". $key);
+                    exit();
+                }
+            }
+            return true;
+        }
+
         public function Validar_Variables_Obligatorias($Variables){
-           
             while (($Faltante = current($Variables)) !== false){
-                if($Faltante === 0){
+                if($Faltante === 0 ){
                     $Error = new Mensaje();
                     $Error->EnviarError("Falta definir la variable: ".key($Variables));
                     exit();

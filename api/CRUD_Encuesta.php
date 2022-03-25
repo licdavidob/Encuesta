@@ -39,6 +39,7 @@
             );
             
             $Validar->Validar_Variables_Obligatorias($Obligatorias);
+            $Validar->Validar_Variables_Obligatorias_NAN($Obligatorias);
             $Obtener_Juez = new Juzgado();
             $Juez = $Obtener_Juez->Obtener_Juez($Juzgado);
             $Encuesta->Registrar_Encuesta_Publico($Juzgado,$Juez,$Expediente,$Parte,$P1,$P2,$P3,$P4,$P5,$P6,$P7,$P8);

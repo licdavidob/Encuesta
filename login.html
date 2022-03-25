@@ -63,7 +63,7 @@
                 name="go"
                 value="Iniciar Sesion"
                 class="btn-p"
-                onclick="Iniciar_Sesion($('#Usuario').val(), $('#Contraseña').val());"
+                onclick="Iniciar_Sesion($('#Usuario').val(), $('#Contraseña').val());return false;"
               />
             </form>
 
@@ -99,6 +99,6 @@
       crossorigin="anonymous"
     ></script>
     <!-- Mis funciones AJAX-->
-    <script src="/assets/js/Login.js"></script>
+    <script src="assets/js/REST_Sesion.js"></script>
   </body>
 </html>

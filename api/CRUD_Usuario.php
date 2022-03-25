@@ -1,4 +1,5 @@
 <?php
+ header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 include_once "../clases/Usuario.php";
 include_once "../clases/Validar.php";
