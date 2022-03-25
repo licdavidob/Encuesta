@@ -33,11 +33,24 @@
 
     <!-- Plantilla Estilos-->
     <link rel="stylesheet" href="assets/base/css/sb-admin-2.min.css" />
+    <!-- Plantillas personalizadas -->
+    <link rel="stylesheet" href="assets/css/magistrados.css">
+    <link
+      rel="stylesheet"
+      href="assets/css/mtablet.css"
+      media="(min-width:768px)"
+    />
   </head>
   <body onload="Iniciar();">
+    <header>
+      <div class="logo">
+        <span></span>
+        <button type="button" id="btn-out"><img src="/assets/img/exit-svgrepo-com.svg" alt=""></button>
+      </div>
+    </header>
     <main>
       <!-- Seccion: Tarjetas -->
-      <section>
+      <section class="cards-section">
         <div class="row mt-4">
           <div class="col-xl-3 col-md-3 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
@@ -133,9 +146,9 @@
         </div>
       </section>
       <!-- Seccion: Gráficas -->
-      <section>
+      <section class="graph-section">
         <div class="d-flex flex-row justify-content-center alig-items-center">
-          <div class="col-lg-6 col-sm-6 col-xs-12">
+          <div class="col-lg-10 col-sm-10 col-xs-12">
             <div class="card shadow h-100">
               <div
                 class="card-header py-3 align-items-center justify-content-between"
@@ -158,7 +171,7 @@
         <div
           class="d-flex flex-row justify-content-center alig-items-center mt-4"
         >
-          <div class="col-lg-6 col-sm-6 col-xs-12">
+          <div class="col-lg-10 col-sm-10 col-xs-12">
             <div class="card shadow mb-4">
               <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Encuestas</h6>
@@ -166,6 +179,7 @@
               <div class="card-body">
                 <div class="table-responsive">
                   <table id="tabla" class="display" style="width: 100%">
+                  <!-- <table id="tabla" class="display"> -->
                     <thead class="text-center">
                       <tr>
                         <th>N°</th>
@@ -191,10 +205,11 @@
           aria-labelledby="infoLabel"
           aria-hidden="true"
         >
-          <div class="modal-dialog">
+          <div class="modal-dialog modal-dialog-scrollable modal-lg modal-fullscreen-sm-down">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="infoLabel">Datos encuesta</h5>
+                <p class="h3">Datos Encuesta</p>
+                <!-- <h5 class="modal-title fs-2" id="infoLabel">Datos encuesta</h5> -->
                 <button
                   type="button"
                   class="btn-close"
@@ -203,31 +218,58 @@
                 ></button>
               </div>
               <div class="modal-body">
-                <div>
-                  <p id="juzgado"></p>
-                  <p id="expediente"></p>
-                  <p id="parte"></p>
-                  <p id="p1"></p>
-                  <p id="p2"></p>
-                  <p id="p3"></p>
-                  <p id="p4"></p>
-                  <p id="p5"></p>
-                  <p id="p6"></p>
-                  <p id="p7"></p>
-                  <p id="comentario"></p>
-                  <!-- <p id="expediente"></p>
-                  <p id="expediente"></p>
-                  <p id="expediente"></p>
-                  <p id="expediente"></p>
-                  <p id="expediente"></p>
-                  <p id="expediente"></p>
-                  <p id="expediente"></p> -->
+
+                <div class="field">
+                  <p class="juzgado" id="juzgado"></p>
                 </div>
-              </div>
+                <div class="field">
+                  <p class="preguntas">Expediente:</p>
+                  <p class="respuestas" id="expediente"></p>
+                </div>
+                <div class="field">
+                  <p class="preguntas">Parte:</p>
+                  <p class="respuestas" id="parte"></p>
+                </div>
+                <div class="field">
+                  <p class="preguntas">¿La Juez o el Juez utilizó un lenguaje claro y entendible?</p>
+                  <p class="respuestas" id="p1"></p>
+                </div>
+                <div class="field">
+                  <p class="preguntas">¿La Juez o el Juez explicó el motivo de la audiencia?</p>
+                  <p class="respuestas" id="p2"></p>
+                </div>
+                <div class="field">
+                  <p class="preguntas">¿La Juez o el Juez, durante la audiencia, se comunicó en forma
+                    directa y constante con usted?</p>
+                  <p class="respuestas" id="p3"></p>
+                </div>
+                <div class="field">
+                  <p class="preguntas">¿La Juez o el Juez le permitió hablar, si usted pidió el uso de
+                    la palabra?</p>
+                  <p class="respuestas" id="p4"></p>
+                </div>
+                <div class="field">
+                  <p class="preguntas">¿Por parte de la Jueza o Juez, recibió usted el mismo trato que
+                    su contrarío?</p>
+                  <p class="respuestas" id="p5"></p>
+                </div>
+                <div class="field">
+                  <p class="preguntas">¿La Jueza o el Juez le preguntarón si quería hacer uso de la
+                    palabra?</p>
+                  <p class="respuestas" id="p6"></p>
+                </div>
+                <div class="field">
+                  <p class="preguntas">¿Usted entendió y comprendió lo sucedido en la audiencia?</p>
+                  <p class="respuestas" id="p7"></p>
+                </div>
+                <div class="field">
+                  <textarea class="comentario" id="comentario" placeholder="Comentarios" disabled></textarea>
+                </div>
+
               <div class="modal-footer">
                 <button
                   type="button"
-                  class="btn btn-secondary"
+                  class="btn btn-lg btn-secondary"
                   data-bs-dismiss="modal"
                 >
                   Close

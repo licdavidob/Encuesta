@@ -142,8 +142,6 @@ function modalEncuesta(tbody, table) {
       dataType: "json",
       type: "get",
       success: function (response) {
-        // console.log(response);
-        // $("#expediente").html(response["P1"]);
         encuestabyId(response);
         $("#info").modal("show");
       },
