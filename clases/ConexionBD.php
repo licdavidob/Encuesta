@@ -2,9 +2,9 @@
 	//Conexion Base de Datos
 	class ConexionBD{
 		//Atributos de mi clase
-		protected $Servidor = "localhost";
+		protected $Servidor = "172.19.202.107";
 		protected $Usuario = "root";
-		protected $Contraseña = "conatrib150";
+		protected $Contraseña = "0r4lid4d2021$";
 		protected $DB = "encuesta_qr";
 		
 		public function Conectar(){
