@@ -25,36 +25,36 @@ function miVal() {
 
   let validador = false;
   if (pparte === true) {
-    console.log('Falta definir la parte');
-    return validador
+    console.log("Falta definir la parte");
+    return validador;
   } else if (p1 === true) {
-    console.log('Falta definir la pregunta 1');
-    return validador
+    console.log("Falta definir la pregunta 1");
+    return validador;
   } else if (p2 === true) {
-      console.log('Falta definir la pregunta 2');
+    console.log("Falta definir la pregunta 2");
 
-      return validador
-    } else if (p3 === true) {
-      console.log('Falta definir la pregunta 3');
+    return validador;
+  } else if (p3 === true) {
+    console.log("Falta definir la pregunta 3");
 
-      return validador
-    } else if (p4 === true) {
-      console.log('Falta definir la pregunta 4');
+    return validador;
+  } else if (p4 === true) {
+    console.log("Falta definir la pregunta 4");
 
-      return validador
-    } else if (p5 === true) {
-      console.log('Falta definir la pregunta 5');
+    return validador;
+  } else if (p5 === true) {
+    console.log("Falta definir la pregunta 5");
 
-      return validador
-    } else if (p6 === true) {
-      console.log('Falta definir la pregunta 6');
+    return validador;
+  } else if (p6 === true) {
+    console.log("Falta definir la pregunta 6");
 
-      return validador
-    } else if (p7 === true) {
-      console.log('Falta definir la pregunta 7');
+    return validador;
+  } else if (p7 === true) {
+    console.log("Falta definir la pregunta 7");
 
-      return validador
-    } else {
+    return validador;
+  } else {
     console.log("All ok");
     AgregarEncuesta(
       juzgado,
@@ -70,7 +70,6 @@ function miVal() {
       in8
     );
   }
-
 
   // AgregarEncuesta(
   //   juzgado,
@@ -121,7 +120,7 @@ function AgregarEncuesta(
 
   $.ajax({
     data: parametros,
-    url: "http://172.19.40.90/api/CRUD_Encuesta.php",
+    url: "http://172.19.202.101:9090/Encuesta/api/CRUD_Encuesta.php",
     dataType: "json",
     type: "post",
     success: function (response) {
@@ -131,11 +130,11 @@ function AgregarEncuesta(
         document
           .getElementById("formulario__mensaje")
           .classList.add("formulario__mensaje-activo");
-          setTimeout(() => {
-            document
-              .getElementById("formulario__mensaje")
-              .classList.remove("formulario__mensaje-activo");
-          }, 4000);
+        setTimeout(() => {
+          document
+            .getElementById("formulario__mensaje")
+            .classList.remove("formulario__mensaje-activo");
+        }, 4000);
       } else {
         document
           .getElementById("formulario__mensaje-exito")

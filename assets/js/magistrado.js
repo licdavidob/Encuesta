@@ -11,7 +11,7 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
       url: "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json",
     },
     ajax: {
-      url: "http://172.19.40.90/api/CRUD_Encuesta.php",
+      url: "http://172.19.202.101:9090/Encuesta/api/CRUD_Encuesta.php",
       data: function (d) {
         d.Fecha_Inicio = Fecha_Inicio;
         d.Fecha_Fin = Dia_Actual;
@@ -61,7 +61,7 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
         width: "10%",
         data: null,
         defaultContent:
-        // <button type="button" class='btn btn-outline-primary text-center consultar'>
+          // <button type="button" class='btn btn-outline-primary text-center consultar'>
           `
           <div class ='row'>
           <button type="button" class='consultar'>
@@ -75,10 +75,8 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
 }
 // Gráfica pastel (Chart) Top 10
 function grafica_top_juzgados(id, data) {
-
   let nombres = Object.keys(data);
   let numeros = Object.values(data);
-
 
   let chart_top_juzgados = new Chart(id, {
     type: "doughnut",
@@ -99,7 +97,7 @@ function grafica_top_juzgados(id, data) {
     },
     options: {
       legend: {
-        position: 'center',
+        position: "center",
       },
       maintainAspectRatio: false,
     },
@@ -113,7 +111,7 @@ function Datos(table) {
   table.on("xhr", function () {
     //Todos los datos recibidos en mi AJAX, se encuentran en esta variable "data"
     let data = table.ajax.json();
-    // Datos de tarjetas 
+    // Datos de tarjetas
     $("#Tarjeta_Total_Encuestas").html(data["Total_Encuestas"]);
     $("#Tarjeta_Total_Actor").html(data["Total_Actor"]);
     $("#Tarjeta_Total_Demandado").html(data["Total_Demandado"]);
@@ -126,7 +124,6 @@ function Datos(table) {
       idTopDiez,
       general
     );
-
   });
 }
 
@@ -136,10 +133,9 @@ function modalEncuesta(tbody, table) {
     // console.log(data);
 
     const parametros = {
-      Encuesta: data['ID_Encuesta']
+      Encuesta: data["ID_Encuesta"],
     };
-  
-  
+
     $.ajax({
       data: parametros,
       url: "http://172.19.40.90/api/CRUD_Encuesta.php",
@@ -158,44 +154,38 @@ function encuestabyId(datos) {
 
   $("#juzgado").html(datos["Juzgado"]);
   $("#expediente").html(datos["Expediente"]);
-  let parte  = '';
-  if (datos['Parte']==='1') {
-    parte = 'Actor'
-  } else if(datos['Parte']==='2') {
-    parte = 'Demandado'
+  let parte = "";
+  if (datos["Parte"] === "1") {
+    parte = "Actor";
+  } else if (datos["Parte"] === "2") {
+    parte = "Demandado";
   } else {
-    parte = 'Otros'
+    parte = "Otros";
   }
   $("#parte").html(parte);
-  
-  let p1 = asignarPregunta(datos['P1']);
+
+  let p1 = asignarPregunta(datos["P1"]);
   $("#p1").html(p1);
-  let p2 = asignarPregunta(datos['P2']);
+  let p2 = asignarPregunta(datos["P2"]);
   $("#p2").html(p2);
-  let p3 = asignarPregunta(datos['P3']);
+  let p3 = asignarPregunta(datos["P3"]);
   $("#p3").html(p3);
-  let p4 = asignarPregunta(datos['P4']);
+  let p4 = asignarPregunta(datos["P4"]);
   $("#p4").html(p4);
-  let p5 = asignarPregunta(datos['P5']);
+  let p5 = asignarPregunta(datos["P5"]);
   $("#p5").html(p5);
-  let p6 = asignarPregunta(datos['P6']);
+  let p6 = asignarPregunta(datos["P6"]);
   $("#p6").html(p6);
-  let p7 = asignarPregunta(datos['P7']);
+  let p7 = asignarPregunta(datos["P7"]);
   $("#p7").html(p7);
   $("#comentario").html(datos["P8"]);
 
-  
   console.log(datos);
-
-
 }
 function asignarPregunta(respuesta) {
-  if (respuesta === '1') {
-    return 'Si';
-  }
-  else {
-    return 'No';
+  if (respuesta === "1") {
+    return "Si";
+  } else {
+    return "No";
   }
 }
-
-
