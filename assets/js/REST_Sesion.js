@@ -31,7 +31,8 @@ function Cerrar_Sesion() {
 
     success: function (response) {
       if (response.Bandera) {
-        window.location.replace(response.URL);
+        console.log(response.URL);
+        // window.location.replace(response.URL);
       } else {
         console.log(response.Mensaje);
       }
