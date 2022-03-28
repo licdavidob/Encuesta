@@ -33,29 +33,57 @@ function miVal() {
     return validador;
   } else if (p1 === true) {
     console.log("Falta definir la pregunta 1");
+    document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
+  setTimeout(() => {
+    document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
+  }, 4000);
     return validador;
   } else if (p2 === true) {
     console.log("Falta definir la pregunta 2");
+    document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
+  setTimeout(() => {
+    document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
+  }, 4000);
 
     return validador;
   } else if (p3 === true) {
     console.log("Falta definir la pregunta 3");
+    document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
+  setTimeout(() => {
+    document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
+  }, 4000);
 
     return validador;
   } else if (p4 === true) {
     console.log("Falta definir la pregunta 4");
+    document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
+  setTimeout(() => {
+    document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
+  }, 4000);
 
     return validador;
   } else if (p5 === true) {
     console.log("Falta definir la pregunta 5");
+    document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
+  setTimeout(() => {
+    document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
+  }, 4000);
 
     return validador;
   } else if (p6 === true) {
     console.log("Falta definir la pregunta 6");
+    document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
+  setTimeout(() => {
+    document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
+  }, 4000);
 
     return validador;
   } else if (p7 === true) {
     console.log("Falta definir la pregunta 7");
+    document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
+  setTimeout(() => {
+    document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
+  }, 4000);
 
     return validador;
   } else {
