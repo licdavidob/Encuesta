@@ -15,8 +15,9 @@ function Iniciar_Sesion(Correo, Contraseña) {
       if (response.Bandera) {
         window.location.replace(response.URL);
       } else {
-        console.log(response.Mensaje);
-        alert(response.Mensaje)
+        alert("Por favor revisa tus datos")
+        // console.log(response.Mensaje);
+        // alert(response.Mensaje)
       }
     },
   });
