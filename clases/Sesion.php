@@ -5,6 +5,7 @@ include_once "../clases/Mensaje.php";
 class Sesion extends ConexionBD{
 
     public $URL_Index = "index.html";
+    public $URL_Login = "login.html";
     public $URL_Panel; 
 
     public function Iniciar_Sesion($Correo,$Contraseña){

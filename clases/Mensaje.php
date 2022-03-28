@@ -28,6 +28,16 @@
             exit();
         }
 
+        public function EnviarCorrectoCerrarSesion($URL,$Mensaje){            
+            $Respuesta = array(
+                "Mensaje" => $Mensaje,
+                "URL" => $URL,
+                "Bandera" => true
+            );
+            echo json_encode($Respuesta);
+            exit();
+        }
+
         public function EnviarFalloValidarSesion($URL,$Mensaje){            
             $Respuesta = array(
                 "Mensaje" => $Mensaje,

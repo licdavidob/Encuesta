@@ -43,7 +43,7 @@ switch ($Peticion) {
         break;
     case 'DELETE':
         if($Sesion->Cerrar_Sesion()){
-           $Mensaje->EnviarCorrecto("Se ha cerrado la sesión de manera exitosa"); 
+           $Mensaje->EnviarCorrectoCerrarSesion($Sesion->URL_Login,"Se ha cerrado la sesión de manera exitosa"); 
         }else{
             $Mensaje->EnviarError("No existe ninguna sesión iniciada");
         }
