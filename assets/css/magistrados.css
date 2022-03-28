@@ -46,7 +46,7 @@ header {
     margin-top: 30px;
 }
 .logo span {
-    background-image: url('./assets/img/PJCDMX.png');
+    background-image: url('../img/PJCDMX.png');
     background-size: cover;
     width: 150px;
     height: 75px;
