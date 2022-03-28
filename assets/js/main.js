@@ -26,6 +26,10 @@ function miVal() {
   let validador = false;
   if (pparte === true) {
     console.log("Falta definir la parte");
+    document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
+  setTimeout(() => {
+    document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
+  }, 4000);
     return validador;
   } else if (p1 === true) {
     console.log("Falta definir la pregunta 1");
