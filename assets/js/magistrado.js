@@ -1,3 +1,4 @@
+const URL = "http://172.19.40.90/api/CRUD_Encuesta.php";
 function Iniciar() {
   let Dia_Actual = moment().startOf("day").format("YYYY-MM-DD");
   let Fecha_Inicio = "2022-01-01";
@@ -11,7 +12,7 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
       url: "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json",
     },
     ajax: {
-      url: "http://172.19.202.101:9090/Encuesta/api/CRUD_Encuesta.php",
+      url: URL,
       data: function (d) {
         d.Fecha_Inicio = Fecha_Inicio;
         d.Fecha_Fin = Dia_Actual;
@@ -138,7 +139,7 @@ function modalEncuesta(tbody, table) {
 
     $.ajax({
       data: parametros,
-      url: "http://172.19.40.90/api/CRUD_Encuesta.php",
+      url: URL,
       dataType: "json",
       type: "get",
       success: function (response) {
