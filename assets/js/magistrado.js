@@ -1,4 +1,4 @@
-const URLW = "http://172.19.40.90/api/CRUD_Encuesta.php";
+const URLW = "http://172.19.202.101:9090/api/CRUD_Encuesta.php";
 function Iniciar() {
   let Dia_Actual = moment().startOf("day").format("YYYY-MM-DD");
   let Fecha_Inicio = "2022-01-01";
