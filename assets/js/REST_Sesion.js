@@ -16,6 +16,7 @@ function Iniciar_Sesion(Correo, Contraseña) {
         window.location.replace(response.URL);
       } else {
         console.log(response.Mensaje);
+        alert(response.Mensaje)
       }
     },
   });
