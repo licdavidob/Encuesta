@@ -124,28 +124,34 @@ function AgregarEncuesta(
     dataType: "json",
     type: "post",
     success: function (response) {
+
       console.log(response.Bandera);
-      if (response.Bandera === false) {
-        console.log(response.Mensaje);
-        document
-          .getElementById("formulario__mensaje")
-          .classList.add("formulario__mensaje-activo");
-        setTimeout(() => {
-          document
-            .getElementById("formulario__mensaje")
-            .classList.remove("formulario__mensaje-activo");
-        }, 4000);
-      } else {
-        document
-          .getElementById("formulario__mensaje-exito")
-          .classList.add("formulario__mensaje-exito-activo");
-        formulario.reset();
-        setTimeout(() => {
-          document
-            .getElementById("formulario__mensaje-exito")
-            .classList.remove("formulario__mensaje-exito-activo");
-        }, 4000);
-      }
+      document.getElementById("formulario__mensaje-exito").classList.add("formulario__mensaje-exito-activo");
+      formulario.reset();
+      setTimeout(() => {
+      document.getElementById("formulario__mensaje-exito").classList.remove("formulario__mensaje-exito-activo");
+      }, 4000);
+      // if (response.Bandera === false) {
+      //   console.log(response.Mensaje);
+      //   document
+      //     .getElementById("formulario__mensaje")
+      //     .classList.add("formulario__mensaje-activo");
+      //   setTimeout(() => {
+      //     document
+      //       .getElementById("formulario__mensaje")
+      //       .classList.remove("formulario__mensaje-activo");
+      //   }, 4000);
+      // } else {
+      //   document
+      //     .getElementById("formulario__mensaje-exito")
+      //     .classList.add("formulario__mensaje-exito-activo");
+      //   formulario.reset();
+      //   setTimeout(() => {
+      //     document
+      //       .getElementById("formulario__mensaje-exito")
+      //       .classList.remove("formulario__mensaje-exito-activo");
+      //   }, 4000);
+      // }
     },
   });
 }
