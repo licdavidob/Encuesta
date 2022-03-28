@@ -15,7 +15,11 @@ function Iniciar_Sesion(Correo, Contraseña) {
       if (response.Bandera) {
         window.location.replace(response.URL);
       } else {
-        alert("Por favor revisa tus datos")
+        document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
+        setTimeout(() => {
+          document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
+        }, 4000)
+        // alert("Por favor revisa tus datos")
         // console.log(response.Mensaje);
         // alert(response.Mensaje)
       }
