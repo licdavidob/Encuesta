@@ -1,59 +1,21 @@
 <?php
 
 class Usuario extends ConexionBD{
-    private $ID_Sesion;
-	private $ID_Usuario;
-    private $Contraseña;
-	private $Nombre;
-	private $Apellido_Paterno;
-	private $Apellido_Materno;
-	private $Telefono;
-	private $Correo;
-	
-	public function CrearUsuario($Nombre,$Apellido_P,$Apellido_M,$Correo,$Telefono,$Estado,$Rol){
+   	
+	public function CrearUsuario($Correo){
 
-		//Se valida que el usuario no exista
-		$Usuario = $this->Verificar_Existencia_Usuario($Correo);
-		if($Usuario > 0){
-			$Mensaje = "Ya existe un usuario registrado con ese correo";
-			$Bandera = false;
-			$Respuesta = array(
-				"Mensaje" => $Mensaje,
-				"Bandera" => $Bandera
-		);
-		echo json_encode($Respuesta);
-		exit();
-		}
-
-		$Contraseña_Aleatoria = $this->Generar_Contraseña(8);
+		$Conectar_Base = $this->Conectar();
+       	$Sentencias_Consulta = $this->Sentencias_Consultar_Usuario($ID = 0, $Correo);
+		$ResultadoConsulta = $Conectar_Base->query($Sentencias_Consulta["Consultar_Usuario_Correo"]);
+		$Numero_Resultados = $ResultadoConsulta->num_rows;
+		$Validar = new Validar();
+		$Validar->Validar_Creacion_Usuario($Numero_Resultados,$Correo);
+		$Contraseña_Aleatoria = $this->Generar_Contraseña(9);
 		$Contraseña = password_hash($Contraseña_Aleatoria, PASSWORD_DEFAULT);
-		
-		$ConexionDB = new ConexionDB;
-		$Conexion = $ConexionDB->Conectar();				
-		$Consulta_Crear = "INSERT INTO usuario (NOMBRE,APELLIDO_P,APELLIDO_M,CORREO,TELEFONO,ID_ESTADO,CONTRASENA,ROL) VALUES ('$Nombre','$Apellido_P','$Apellido_M','$Correo','$Telefono','$Estado','$Contraseña','$Rol');";
-		
-		if($Conexion->query($Consulta_Crear)){
-			$Conexion->close();
-			$Datos_Usuario["Nombre"] = $Nombre;	
-			$Datos_Usuario["Apellido_P"] = $Apellido_P;	
-			$Datos_Usuario["Apellido_M"] = $Apellido_M;	
-			$Datos_Usuario["Correo"] = $Correo;	
-			$Datos_Usuario["Contraseña"] = $Contraseña_Aleatoria;	
-			
-			//Se retornan los datos de usuario para ser notificado mediante correo electrónico
-			return $Datos_Usuario; 		
-		}else{
-			$Mensaje = "Ha ocurrido un error: " . $Conexion->error;
-			$Bandera = false;
-			$Respuesta = array(
-				"Mensaje" => $Mensaje,
-				"Bandera" => $Bandera 
-			);
-			$Conexion->close();
-			echo json_encode($Respuesta);
-			exit();
-		}
-
+		$Sentencia_Crear = $this->Sentencias_Crear_Usuario($Correo,$Contraseña);
+		$ResultadoConsulta = $Conectar_Base->query($Sentencia_Crear["Sentencias_Crear_Usuario"]);
+		$Conectar_Base->close();
+		return $Contraseña_Aleatoria;
 	}
 
 	public function ConsultarUsuario($SQL){
@@ -284,15 +246,6 @@ class Usuario extends ConexionBD{
 		   $password .= substr($str,rand(0,62),1);
 		}
 		return $password;
-	}
-
-	public function Obtener_Usuario_Correo($Correo){
-		$Conectar_Base = $this->Conectar();
-		$ConsultaExistencia = "SELECT * FROM `usuario` WHERE  `CORREO` = '$Correo' AND `ESTATUS` = 1;";
-        $VerificarExistencia = $Conexion->query($ConsultaExistencia);
-        $Numero_Resultados = $VerificarExistencia->num_rows;
-		$Conexion->close();
-		return $Numero_Resultados;
 	}
 
 	public function Info_Usuario($ID){

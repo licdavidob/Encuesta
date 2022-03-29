@@ -2,9 +2,9 @@
 	//Conexion Base de Datos
 	class ConexionBD{
 		//Atributos de mi clase
-		protected $Servidor = "127.0.0.1";
+		protected $Servidor = "localhost";
 		protected $Usuario = "root";
-		protected $Contraseña = "0r4lid@d2021$";
+		protected $Contraseña = "conatrib150";
 		protected $DB = "encuesta_qr";
 		
 		public function Conectar(){
@@ -58,6 +58,13 @@
 				"Consultar_Usuario_Activo" => "SELECT Nombre, Paterno, Materno, Correo FROM usuario WHERE (Estatus = 1)",
 			);
 			return $Sentencias_Consultar_Usuario;
+		}
+
+		public function Sentencias_Crear_Usuario($Correo,$Contraseña){
+			$Sentencias_Crear_Usuario = array(
+				"Sentencias_Crear_Usuario" => "INSERT INTO `usuario`(`Correo`,`Contraseña`,`Fecha_Creacion`) VALUES ('$Correo','$Contraseña',CURRENT_DATE());",
+			);
+			return $Sentencias_Crear_Usuario;
 		}
 
 		

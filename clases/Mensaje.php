@@ -48,5 +48,15 @@
             exit();
         }
 
+        public function EnviarContraseña($Contraseña,$Mensaje){            
+            $Respuesta = array(
+                "Mensaje" => $Mensaje,
+                "Contraseña" => $Contraseña,
+                "Bandera" => true
+            );
+            echo json_encode($Respuesta);
+            exit();
+        }
+
     }
 ?>

@@ -89,6 +89,16 @@
                 exit();
             }
         }
+
+        public function Validar_Creacion_Usuario($Numero_Resultados,$Correo){
+            if($Numero_Resultados >= 1){
+                $Error = new Mensaje();
+                $Error->EnviarError("Ya se encuentra registrado el usuario con el correo: " . $Correo);
+                exit();
+            }else {
+                return true;
+            }
+        }
         
     }
 
