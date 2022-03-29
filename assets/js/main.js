@@ -1,4 +1,14 @@
 const formulario = document.getElementById("full_form");
+const mensaje = document.getElementById('comment');
+const contador = document.getElementById('contador');
+
+mensaje.addEventListener('input', function(e) {
+  const target = e.target;
+  const longitudMax = target.getAttribute('maxlength');
+  const longitudAct = target.value.length;
+  contador.innerHTML = `${longitudAct}/${longitudMax}`;
+});
+
 // Preguntas
 function miVal() {
   const auxj = document.full_form.juzgado.value;

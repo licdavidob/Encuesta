@@ -262,6 +262,11 @@ main {
     color: var(--m-blue);
     border-color: var(--m-blue);
 }
+.main-section--form__container-comments p {
+    font-size: 1.6rem;
+    color: var(--m-blue);
+    letter-spacing: 0.1rem;
+}
 .btn {
     height: 40px;
     border-radius: 5px;
