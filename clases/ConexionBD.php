@@ -4,7 +4,8 @@
 		//Atributos de mi clase
 		protected $Servidor = "localhost";
 		protected $Usuario = "root";
-		protected $Contraseña = "conatrib150";
+		//protected $Contraseña = "conatrib150";
+		protected $Contraseña = "0r4lid@d2021$";
 		protected $DB = "encuesta_qr";
 		
 		public function Conectar(){
