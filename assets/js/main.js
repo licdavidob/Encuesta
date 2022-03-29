@@ -174,6 +174,7 @@ function AgregarEncuesta(
       setTimeout(() => {
       document.getElementById("formulario__mensaje-exito").classList.remove("formulario__mensaje-exito-activo");
       }, 4000);
+      contador.innerHTML = `0/255`;
       // if (response.Bandera === false) {
       //   console.log(response.Mensaje);
       //   document

@@ -75,8 +75,9 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
   });
   // Búsquedas personalizadas 
   // Búsqueda por juzgado por texto
-  $('.filter-input').keyup(function () {
+  $('.filter-select').change(function () {
     table.column($(this).data('column'))
+    // .search($(this).val())
     .search($(this).val())
     .draw();
   })
