@@ -266,6 +266,8 @@ main {
     font-size: 1.6rem;
     color: var(--m-blue);
     letter-spacing: 0.1rem;
+    text-align: end;
+    margin-right: 20px;
 }
 .btn {
     height: 40px;
