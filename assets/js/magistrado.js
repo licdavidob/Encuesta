@@ -3,6 +3,7 @@ function Iniciar() {
   let Dia_Actual = moment().startOf("day").format("YYYY-MM-DD");
   let Fecha_Inicio = "2022-01-01";
   let Tabla = DataTable(Fecha_Inicio, Dia_Actual);
+  // let juzgado = '';
   Datos(Tabla);
 }
 
@@ -16,6 +17,7 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
       data: function (d) {
         d.Fecha_Inicio = Fecha_Inicio;
         d.Fecha_Fin = Dia_Actual;
+        // d.Juzgado = juzgado;
       },
       type: "get",
     },
@@ -62,7 +64,6 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
         width: "10%",
         data: null,
         defaultContent:
-          // <button type="button" class='btn btn-outline-primary text-center consultar'>
           `
           <div class ='row'>
           <button type="button" class='consultar'>
@@ -131,7 +132,6 @@ function Datos(table) {
 function modalEncuesta(tbody, table) {
   $(tbody).on("click", "button.consultar", function () {
     var data = table.row($(this).parents("tr")).data();
-    // console.log(data);
 
     const parametros = {
       Encuesta: data["ID_Encuesta"],
@@ -151,7 +151,6 @@ function modalEncuesta(tbody, table) {
 }
 
 function encuestabyId(datos) {
-  console.log(typeof datos);
 
   $("#juzgado").html(datos["Juzgado"]);
   $("#expediente").html(datos["Expediente"]);
