@@ -6,7 +6,7 @@ function Iniciar_Sesion(Correo, Contraseña) {
 
   $.ajax({
     data: parametros,
-    url: "http://172.19.202.101:9090/Encuesta/api/REST_Sesion.php",
+    url: "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta/api/REST_Sesion.php",
     dataType: "json",
     type: "post",
     beforeSend: function () {},
@@ -30,7 +30,7 @@ function Iniciar_Sesion(Correo, Contraseña) {
 function Cerrar_Sesion() {
   $.ajax({
     data: "",
-    url: "http://172.19.202.101:9090/Encuesta/api/REST_Sesion.php",
+    url: "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta/api/REST_Sesion.php",
     dataType: "json",
     type: "delete",
     beforeSend: function () {},

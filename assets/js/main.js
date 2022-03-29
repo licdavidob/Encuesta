@@ -163,7 +163,7 @@ function AgregarEncuesta(
 
   $.ajax({
     data: parametros,
-    url: "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta//api/CRUD_Encuesta.php",
+    url: "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta/api/CRUD_Encuesta.php",
     dataType: "json",
     type: "post",
     success: function (response) {
