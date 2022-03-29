@@ -77,10 +77,16 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
   // Búsqueda por juzgado por texto
   $('.filter-select').change(function () {
     table.column($(this).data('column'))
-    // .search($(this).val())
     .search($(this).val())
     .draw();
   })
+  // $('.filter-select').change(function () {
+  //   if (table.column($(this).data('column')).search() !== this.value) {
+  //     table.column($(this).data('column'))
+  //     .search($(this).val())
+  //     .draw();
+  //   }
+  // })
   return table;
 }
 // Gráfica pastel (Chart) Top 10
