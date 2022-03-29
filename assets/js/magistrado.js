@@ -73,6 +73,12 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
       },
     ],
   });
+  // Búsquedas personalizadas 
+  $('.filter-input').keyup(function () {
+    table.column($(this).data('column'))
+    .search($(this).val())
+    .draw();
+  })
   return table;
 }
 // Gráfica pastel (Chart) Top 10
