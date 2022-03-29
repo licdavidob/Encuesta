@@ -2,6 +2,7 @@ const formulario = document.getElementById("full_form");
 const mensaje = document.getElementById('comment');
 const contador = document.getElementById('contador');
 
+// Funcionalidad del contador de caracteres
 mensaje.addEventListener('input', function(e) {
   const target = e.target;
   const longitudMax = target.getAttribute('maxlength');
@@ -162,7 +163,7 @@ function AgregarEncuesta(
 
   $.ajax({
     data: parametros,
-    url: "http://172.19.202.101:9090/Encuesta/api/CRUD_Encuesta.php",
+    url: "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta//api/CRUD_Encuesta.php",
     dataType: "json",
     type: "post",
     success: function (response) {

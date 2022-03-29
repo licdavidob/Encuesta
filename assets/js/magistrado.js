@@ -1,4 +1,4 @@
-const URLAPI = "http://172.19.202.101:9090/Encuesta/api/CRUD_Encuesta.php";
+const URLAPI = "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta/api/CRUD_Encuesta.php";
 function Iniciar() {
   let Dia_Actual = moment().startOf("day").format("YYYY-MM-DD");
   let Fecha_Inicio = "2022-01-01";
@@ -74,6 +74,7 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
     ],
   });
   // Búsquedas personalizadas 
+  // Búsqueda por juzgado por texto
   $('.filter-input').keyup(function () {
     table.column($(this).data('column'))
     .search($(this).val())
