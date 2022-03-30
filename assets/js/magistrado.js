@@ -12,6 +12,7 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
     language: {
       url: "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json",
     },
+    select: true,
     ajax: {
       url: URLAPI,
       data: function (d) {
@@ -76,7 +77,8 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
   // Búsquedas personalizadas 
   $('.filter-select').change(function () {
     table.column($(this).data('column'))
-    .search($(this).val())
+    .search(`"${$(this).val()}"`)
+    // .search($(this).val())
     .draw();
   })
   return table;
