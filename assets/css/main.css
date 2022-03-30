@@ -323,3 +323,7 @@ main {
 .formulario__mensaje-exito-activo {
 	display: block;
 }
+footer {
+    height: 70px;
+    background-color: var(--tribunal);
+}

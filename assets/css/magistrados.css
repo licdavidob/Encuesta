@@ -185,3 +185,7 @@ h6 {
 .section-table {
     padding-bottom: 50px;
 }
+footer {
+    height: 70px;
+    background-color: var(--tribunal);
+}
