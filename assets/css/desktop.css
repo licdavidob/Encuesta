@@ -4,12 +4,14 @@ header {
 .cards-section {
     font-size: 1.6rem;
     width: 97%;
+    margin-bottom: 50px;
 }
 .cards-section .text-xs {
     font-size: 1.4rem;
 }
 .graph-section {
     width: 98%;
+    margin-bottom: 50px;
 }
 .display {
     font-size: 1.6rem;

@@ -74,19 +74,11 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
     ],
   });
   // Búsquedas personalizadas 
-  // Búsqueda por juzgado por texto
   $('.filter-select').change(function () {
     table.column($(this).data('column'))
     .search($(this).val())
     .draw();
   })
-  // $('.filter-select').change(function () {
-  //   if (table.column($(this).data('column')).search() !== this.value) {
-  //     table.column($(this).data('column'))
-  //     .search($(this).val())
-  //     .draw();
-  //   }
-  // })
   return table;
 }
 // Gráfica pastel (Chart) Top 10
@@ -102,11 +94,11 @@ function grafica_top_juzgados(id, data) {
         {
           data: numeros,
           backgroundColor: [
-            "#3D3E40",
-            "#7794A6",
-            "#93B3BF",
-            "#F2BC8D",
-            "#F2F2F2",
+            "#92BCE7",
+            "#9292E7",
+            "#E7BC92",
+            "#E7E792",
+            "#BCE792",
           ],
         },
       ],
