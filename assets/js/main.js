@@ -9,8 +9,12 @@ mensaje.addEventListener('input', function(e) {
   const longitudAct = target.value.length;
   contador.innerHTML = `${longitudAct}/${longitudMax}`;
 });
+// Control del envío de encuesta
+formulario.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
 
-// Preguntas
+// Captura de preguntas
 function miVal() {
   const auxj = document.full_form.juzgado.value;
   const expediente = document.full_form.expediente.value;
@@ -34,115 +38,71 @@ function miVal() {
   let p6 = isNaN(in6);
   let p7 = isNaN(in7);
 
+  // Validación de las preguntas
   let validador = false;
+
   if (pparte === true) {
-    console.log("Falta definir la parte");
     document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
-  setTimeout(() => {
-    document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
+    setTimeout(() => {
+      document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
   }, 4000);
     return validador;
+
   } else if (p1 === true) {
-    console.log("Falta definir la pregunta 1");
     document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
-  setTimeout(() => {
-    document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
+    setTimeout(() => {
+      document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
   }, 4000);
     return validador;
+
   } else if (p2 === true) {
-    console.log("Falta definir la pregunta 2");
     document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
-  setTimeout(() => {
-    document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
+    setTimeout(() => {
+      document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
   }, 4000);
-
     return validador;
+
   } else if (p3 === true) {
-    console.log("Falta definir la pregunta 3");
     document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
-  setTimeout(() => {
-    document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
+    setTimeout(() => {
+      document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
   }, 4000);
-
     return validador;
+
   } else if (p4 === true) {
-    console.log("Falta definir la pregunta 4");
     document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
-  setTimeout(() => {
-    document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
+    setTimeout(() => {
+      document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
   }, 4000);
-
     return validador;
+
   } else if (p5 === true) {
-    console.log("Falta definir la pregunta 5");
     document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
-  setTimeout(() => {
-    document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
+    setTimeout(() => {
+      document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
   }, 4000);
-
     return validador;
+
   } else if (p6 === true) {
-    console.log("Falta definir la pregunta 6");
     document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
-  setTimeout(() => {
-    document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
+    setTimeout(() => {
+      document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
   }, 4000);
-
     return validador;
+
   } else if (p7 === true) {
-    console.log("Falta definir la pregunta 7");
     document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
-  setTimeout(() => {
-    document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
+    setTimeout(() => {
+      document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
   }, 4000);
-
     return validador;
-  } else {
-    console.log("All ok");
-    AgregarEncuesta(
-      juzgado,
-      expediente,
-      parte,
-      in1,
-      in2,
-      in3,
-      in4,
-      in5,
-      in6,
-      in7,
-      in8
-    );
-  }
 
-  // AgregarEncuesta(
-  //   juzgado,
-  //   expediente,
-  //   parte,
-  //   in1,
-  //   in2,
-  //   in3,
-  //   in4,
-  //   in5,
-  //   in6,
-  //   in7,
-  //   in8
-  // );
-  // return validador
+  } else {
+    AgregarEncuesta(juzgado, expediente, parte, in1, in2, in3, in4, in5, in6, in7, in8);
+  }
 }
-function AgregarEncuesta(
-  juzgado,
-  expediente,
-  parte,
-  in1,
-  in2,
-  in3,
-  in4,
-  in5,
-  in6,
-  in7,
-  in8
-) {
-  // function AgregarEncuesta() {
+// Asignación de los parámetros 
+function AgregarEncuesta(juzgado, expediente, parte, in1, in2, in3, in4, in5, in6, in7, in8) {
   const parametros = {
     Juzgado: juzgado,
     Expediente: expediente,
@@ -157,45 +117,19 @@ function AgregarEncuesta(
     Comentario: in8,
   };
 
-  formulario.addEventListener("submit", (e) => {
-    e.preventDefault();
-  });
-
+  // Comunicación con back
   $.ajax({
     data: parametros,
     url: "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta/api/CRUD_Encuesta.php",
     dataType: "json",
     type: "post",
     success: function (response) {
-
-      console.log(response.Bandera);
       document.getElementById("formulario__mensaje-exito").classList.add("formulario__mensaje-exito-activo");
       formulario.reset();
       setTimeout(() => {
       document.getElementById("formulario__mensaje-exito").classList.remove("formulario__mensaje-exito-activo");
       }, 4000);
       contador.innerHTML = `0/255`;
-      // if (response.Bandera === false) {
-      //   console.log(response.Mensaje);
-      //   document
-      //     .getElementById("formulario__mensaje")
-      //     .classList.add("formulario__mensaje-activo");
-      //   setTimeout(() => {
-      //     document
-      //       .getElementById("formulario__mensaje")
-      //       .classList.remove("formulario__mensaje-activo");
-      //   }, 4000);
-      // } else {
-      //   document
-      //     .getElementById("formulario__mensaje-exito")
-      //     .classList.add("formulario__mensaje-exito-activo");
-      //   formulario.reset();
-      //   setTimeout(() => {
-      //     document
-      //       .getElementById("formulario__mensaje-exito")
-      //       .classList.remove("formulario__mensaje-exito-activo");
-      //   }, 4000);
-      // }
     },
   });
 }

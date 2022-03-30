@@ -3,7 +3,6 @@ function Iniciar() {
   let Dia_Actual = moment().startOf("day").format("YYYY-MM-DD");
   let Fecha_Inicio = "2022-01-01";
   let Tabla = DataTable(Fecha_Inicio, Dia_Actual);
-  // let juzgado = '';
   Datos(Tabla);
 }
 
@@ -18,7 +17,6 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
       data: function (d) {
         d.Fecha_Inicio = Fecha_Inicio;
         d.Fecha_Fin = Dia_Actual;
-        // d.Juzgado = juzgado;
       },
       type: "get",
     },
@@ -78,7 +76,6 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
   $('.filter-select').change(function () {
     table.column($(this).data('column'))
     .search(`"${$(this).val()}"`)
-    // .search($(this).val())
     .draw();
   })
   return table;
@@ -114,7 +111,6 @@ function grafica_top_juzgados(id, data) {
   });
   return chart_top_juzgados;
 }
-
 function Datos(table) {
   // Modal
   modalEncuesta("#tabla", table);
@@ -187,8 +183,6 @@ function encuestabyId(datos) {
   let p7 = asignarPregunta(datos["P7"]);
   $("#p7").html(p7);
   $("#comentario").html(datos["P8"]);
-
-  console.log(datos);
 }
 function asignarPregunta(respuesta) {
   if (respuesta === "1") {

@@ -7,7 +7,8 @@
     <title>Login</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
+    <!-- Favicon -->
+    <link rel="icon" href="./assets/img/favicon_pj.png" type="image/x-icon">
     <!-- Custom fonts for this template-->
     <link
       href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -24,68 +25,68 @@
     <!-- Styles -->
     <link href="assets/css/login.css" rel="stylesheet" />
   </head>
-  <!-- <body onload="Validar_Sesion();"> -->
   <body>
-    <div class="container-fluid">
-      <div class="row renglon_index">
-        <div
-          class="col-lg-4 col-md-7 col-sm-12 align-self-center"
-          id="Formulario"
-        >
-          <div class="p-5">
-            <div class="text-center">
-              <img src="./assets/img/PJCDMX.png" class="img-fluid img-p" alt="" />
+    <main>
+      <!-- Contenedor principal -->
+      <div class="container-fluid">
+        <div class="row renglon_index">
+          <div
+            class="col-lg-4 col-md-7 col-sm-12 align-self-center"
+            id="Formulario"
+          >
+            <div class="p-5">
+              <div class="text-center">
+                <img src="./assets/img/PJCDMX.png" class="img-fluid img-p" alt="Logo del pjcdmx" />
+              </div>
+              <!-- Sección de las credenciales -->
+              <form class="formulario">
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control form-control-user input-p mt-3"
+                    id="Usuario"
+                    aria-describedby="emailHelp"
+                    placeholder="Correo Electrónico"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="password"
+                    class="form-control form-control-user mt-3"
+                    id="Contraseña"
+                    placeholder="Contraseña"
+                  />
+                </div>
+                <!-- Mensaje de error -->
+                <div class="formulario__mensaje" id="formulario__mensaje">
+                  <p><b>Error:</b> Revise sus datos de acceso.</p>
+                </div>
+                <input
+                  type="submit"
+                  name="go"
+                  value="Iniciar Sesion"
+                  class="btn-p"
+                  onclick="Iniciar_Sesion($('#Usuario').val(), $('#Contraseña').val());return false;"
+                />
+              </form>
+              <div class="text-center mt-3"></div>
             </div>
-            <form class="formulario">
-              <div class="form-group">
-                <input
-                  type="email"
-                  class="form-control form-control-user input-p mt-3"
-                  id="Usuario"
-                  aria-describedby="emailHelp"
-                  placeholder="Correo Electrónico"
-                />
-              </div>
-              <div class="form-group">
-                <input
-                  type="password"
-                  class="form-control form-control-user mt-3"
-                  id="Contraseña"
-                  placeholder="Contraseña"
-                />
-              </div>
-              <!-- Mensaje de error -->
-              <div class="formulario__mensaje" id="formulario__mensaje">
-                <p><b>Error:</b> Revise sus datos de acceso.</p>
-              </div>
-              <input
-                type="submit"
-                name="go"
-                value="Iniciar Sesion"
-                class="btn-p"
-                onclick="Iniciar_Sesion($('#Usuario').val(), $('#Contraseña').val());return false;"
-              />
-            </form>
-
-            <div class="text-center mt-3"></div>
+          </div>
+          <!-- Imagen -->
+          <div id="Imagen" class="col-lg-8 col-md-5 p-0 d-none d-md-block">
+            <div
+              id="carousel"
+              class="carousel slide carousel-fade"
+              data-bs-ride="carousel"
+            >
+            <div class="carousel-inner">
+              <div class="carousel-item item-1 active"></div>
+            </div>
           </div>
         </div>
-
-        <div id="Imagen" class="col-lg-8 col-md-5 p-0 d-none d-md-block">
-          <div
-            id="carousel"
-            class="carousel slide carousel-fade"
-            data-bs-ride="carousel"
-          >
-            <div class="carousel-inner">
-              <!-- Agregar cada item desde código CSS -->
-              <div class="carousel-item item-1 active"></div>
-              <!-- <div class="carousel-item item-2"></div> -->
-            </div>
-          </div>
         </div>
       </div>
-    </div>
+    </main>
     <!-- Bootstrap core JavaScript-->
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"

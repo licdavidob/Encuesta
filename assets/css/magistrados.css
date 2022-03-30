@@ -18,7 +18,6 @@ html {
     font-family: "Nunito", sans-serif;
     background-color: var(--light-white);
 }
-
 /* Fin Valores iniciales */
 
 header {
@@ -34,7 +33,6 @@ header {
     margin-bottom: 50px;
     background-color: var(--tribunal);
     padding-top: 15px;
-
 }
 .logo {
     padding: 0 50px;
@@ -68,7 +66,6 @@ header {
     margin-left: 0;
     margin-right: 0;
     margin: auto;
-
     margin-top: 35px;
     width: 90%;
     min-width: 288px;
@@ -82,7 +79,6 @@ h6 {
     font-size: 1.6rem;
     text-align: center;
 }
-
 .graph-section {
     margin-left: 0;
     margin-right: 0;
@@ -92,14 +88,11 @@ h6 {
     max-width: 1200px;
     font-size: 1.6rem;
 }
-
 .chart-area {
     width: 100%;
     height: 550px;
 }
-
 /* Estilos de modal  */
-
 .field:nth-child(1) {
     padding: 1rem;
 }
@@ -111,7 +104,6 @@ h6 {
     border-bottom: 2px solid var(--tribunal);
     padding-top: 0.5rem;
 }
-
 .field .preguntas {
     margin-left: 10px;
     font-size: 1.4rem;
@@ -121,7 +113,6 @@ h6 {
     padding: 1rem;
     width: 350px;
 }
-
 .field .respuestas {
     margin-right: 10px;
     font-size: 1.3rem;
@@ -133,7 +124,6 @@ h6 {
     width: 200px;
     text-align: center;
 }
-
 .field .juzgado {
     font-size: 1.4rem;
     font-weight: 300;
@@ -160,7 +150,6 @@ h6 {
     width: 200px;
     text-align: center;
     margin-bottom: 10px;
-    
 }
 .consultar {
     margin-left: 0;
@@ -172,7 +161,6 @@ h6 {
     border-radius: 5px;
     background-color: var(--tribunal);
     color: var(--light-white);
-
 }
 .filter-select {
     padding-left: 10px;

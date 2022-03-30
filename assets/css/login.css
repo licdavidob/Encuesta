@@ -27,7 +27,6 @@ body {
 .form-group .input-p {
   font-size: 2rem;
 }
-
 .cerrar_sesion {
   width: 7rem;
 }
@@ -35,15 +34,9 @@ body {
   width: 70%;
   height: 50rem;
 }
-
 .Estado {
   width: 500px;
 }
-
-#wrapper {
-  /* background-color: #343853; */
-}
-
 /* Index */
 #Usuario,
 #Contraseña {

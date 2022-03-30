@@ -109,6 +109,7 @@ main {
     font-size: 2rem;
     font-weight: 500;
     letter-spacing: 0.1rem;
+    margin-bottom: 15px;
 }
 .space {
     margin-left: 0;
@@ -281,15 +282,15 @@ main {
     color: white;
     background: var(--m-blue);
 }
-
-
-
-/* Experimentos */
+footer {
+    height: 70px;
+    background-color: var(--tribunal);
+}
+/* Mensajes de control de envío de formulario */
 .formulario__mensaje {
     margin-top: 10px;
     margin-bottom: 10px;
     height: 45px;
-    line-height: 45px;
     background: #F66060;
     padding: 0 15px;
     border-radius: 3px;
@@ -297,13 +298,13 @@ main {
 }
 .formulario__mensaje p {
     margin: auto;
+    padding-top: 5px;
     font-size: 1.4rem;
 	color: white;
 }
 .formulario__mensaje-activo {
     display: block;
 }
-
 .formulario__mensaje-exito {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -322,8 +323,4 @@ main {
 }
 .formulario__mensaje-exito-activo {
 	display: block;
-}
-footer {
-    height: 70px;
-    background-color: var(--tribunal);
 }
