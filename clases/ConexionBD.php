@@ -4,8 +4,9 @@
 		//Atributos de mi clase
 		protected $Servidor = "localhost";
 		protected $Usuario = "root";
-		//protected $Contraseña = "conatrib150";
+		// protected $Contraseña = "conatrib150";
 		protected $Contraseña = "0r4lid@d2021$";
+		// protected $Contraseña = "1q2w3e4r5t";
 		protected $DB = "encuesta_qr";
 		
 		public function Conectar(){
@@ -61,9 +62,9 @@
 			return $Sentencias_Consultar_Usuario;
 		}
 
-		public function Sentencias_Crear_Usuario($Correo,$Contraseña){
+		public function Sentencias_Crear_Usuario($Nombre,$Paterno,$Materno,$Correo,$Contraseña){
 			$Sentencias_Crear_Usuario = array(
-				"Sentencias_Crear_Usuario" => "INSERT INTO `usuario`(`Correo`,`Contraseña`,`Fecha_Creacion`) VALUES ('$Correo','$Contraseña',CURRENT_DATE());",
+				"Sentencias_Crear_Usuario" => "INSERT INTO `usuario`(`Nombre`,`Paterno`,`Materno`,`Correo`,`Contraseña`,`Rol`,`Fecha_Creacion`) VALUES ('$Nombre','$Paterno','$Materno','$Correo','$Contraseña',3,CURRENT_DATE());",
 			);
 			return $Sentencias_Crear_Usuario;
 		}

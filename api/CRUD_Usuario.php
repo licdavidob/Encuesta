@@ -15,13 +15,18 @@ $Mensaje = new Mensaje();
 
 switch ($Peticion){
     case 'POST':
+        $Nombre = (isset($_POST["Nombre"]) && !empty($_POST["Nombre"])) ? $_POST["Nombre"] : 0;
+        $Paterno = (isset($_POST["Paterno"]) && !empty($_POST["Paterno"])) ? $_POST["Paterno"] : 0;
+        $Materno = (isset($_POST["Materno"]) && !empty($_POST["Materno"])) ? $_POST["Materno"] : false;
         $Correo = (isset($_POST["Correo"]) && !empty($_POST["Correo"])) ? $_POST["Correo"] : 0;
         $Obligatorias = array(
+            "Nombre" => $Nombre,
+            "Paterno" => $Paterno,
             "Correo" => $Correo
         );
         $Validar->Validar_Variables_Obligatorias($Obligatorias);
         $Validar->Validar_Correo_Usuario($Correo);
-        $Contraseña = $Usuario->CrearUsuario($Correo);
+        $Contraseña = $Usuario->CrearUsuario($Nombre,$Paterno,$Materno,$Correo);
         $Mensaje->EnviarContraseña($Contraseña,"Se ha creado el usuario de manera exitosa");
         break;
 
