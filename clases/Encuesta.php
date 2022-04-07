@@ -41,7 +41,7 @@
             $Encuesta = array();
             $General_Encuestas = array();
             $Totales_Juzgado = array();
-            $Top_10 = array();
+            $Top_Juzgados = array();
             $Total_Actor = 0;
             $Total_Demandado = 0;
             $Total_Otro = 0;
@@ -76,7 +76,7 @@
 
             arsort($Totales_Juzgado);
             foreach ($Totales_Juzgado as $Juzgado => $Valor) {
-                $Top_10[$Juzgado] = $Valor;
+                $Top_Juzgados[$Juzgado] = $Valor;
                 $Detener_Foreach++;
                 if($Detener_Foreach == 5){break;}
             }
@@ -87,7 +87,7 @@
             $Datos['Total_Demandado'] = $Total_Demandado;
             $Datos['Total_Otro'] = $Total_Otro;
             $Datos['Total_Juzgado'] = $Totales_Juzgado;
-            $Datos['Top_10'] = $Top_10;
+            $Datos['Top_Juzgados'] = $Top_Juzgados;
             echo json_encode($Datos);
         }
 
