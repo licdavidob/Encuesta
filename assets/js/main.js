@@ -120,7 +120,7 @@ function AgregarEncuesta(juzgado, expediente, parte, in1, in2, in3, in4, in5, in
   // Comunicación con back
   $.ajax({
     data: parametros,
-    url: "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta/api/CRUD_Encuesta.php",
+    url: "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta/api/CRUD_Encuesta_Prueba.php",
     dataType: "json",
     type: "post",
     success: function (response) {

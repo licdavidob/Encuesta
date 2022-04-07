@@ -1,4 +1,4 @@
-const URLAPI = "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta/api/CRUD_Encuesta.php";
+const URLAPI = "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta/api/CRUD_Encuesta_Prueba.php";
 function Iniciar() {
   let Dia_Actual = moment().startOf("day").format("YYYY-MM-DD");
   let Fecha_Inicio = "2022-01-01";
@@ -99,18 +99,65 @@ function grafica_top_juzgados(id, data) {
             "#E7E792",
             "#BCE792",
           ],
+          borderWidth:5,
+          cutout: '40%',
+          // borderRadius:20,
+          offset:5,
         },
       ],
     },
     options: {
-      legend: {
-        position: "center",
+      plugins: {
+        legend: {
+          // position: 'top',
+          labels: {
+            usePointStyle: true,
+            // font: {
+            //   size: 10
+            // }
+          }
+        }
       },
       maintainAspectRatio: false,
     },
   });
   return chart_top_juzgados;
 }
+// // Gráfica de prueba 
+// // function grafica_top_juzgados_test(id, data) {
+//   let test = document.getElementById('Chart_test');
+//   // let nombres = Object.keys(data);
+//   // let numeros = Object.values(data);
+
+//   let mychart = new Chart(test, {
+//     type: "doughnut",
+//     data: {
+//       labels: ['nombres','Comillas','Datos'],
+//       datasets: [
+//         {
+//           data: [14,14,17],
+//           backgroundColor: [
+//             "#92BCE7",
+//             "#9292E7",
+//             "#E7BC92",
+//             "#E7E792",
+//             "#BCE792",
+//           ],
+//         },
+//       ],
+//     },
+//     options: {
+//       legend: {
+//         position: "center",
+//       },
+//       maintainAspectRatio: false,
+//     },
+//   });
+//   // return chart_top_juzgados;
+// // }
+
+
+
 function Datos(table) {
   // Modal
   modalEncuesta("#tabla", table);
@@ -126,7 +173,6 @@ function Datos(table) {
     // Datos gráfica
     let general = data["Top_10"];
     let idTopDiez = $("#Chart_Top10");
-    // let idTopDiez = $("#Chart_Top10");
     globalThis.objeto_grafica_top_juzgado = grafica_top_juzgados(
       idTopDiez,
       general
