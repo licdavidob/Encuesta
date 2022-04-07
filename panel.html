@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PJCDMX</title>
+    <!-- Favicon -->
+    <link rel="icon" href="./assets/img/favicon_pj.png" type="image/x-icon">
+
+    <!-- Boostrap -->
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <!-- Font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+
+    <!-- Estilos Datatable-->
+    <link
+      rel="stylesheet"
+      href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"
+    />
+
+    <!-- Plantilla Estilos-->
+    <link rel="stylesheet" href="assets/base/css/sb-admin-2.min.css" />
+    <!-- Plantillas personalizadas -->
+    <link rel="stylesheet" href="assets/css/magistrados.css">
+    <link
+      rel="stylesheet"
+      href="assets/css/mtablet.css"
+      media="(min-width:768px)"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/css/desktop_p.css"
+      media="(min-width:1080px)"
+    />
+  </head>
+  <body onload="Iniciar();">
+    <header>
+      <div class="logo">
+        <span></span>
+        <button type="button" id="btn-out"  onclick="Cerrar_Sesion();return false;"><img src="./assets/img/exit-svgrepo-com.svg" alt=""></button>
+      </div>
+    </header>
+    <main>
+      <!-- Seccion: Tarjetas -->
+      <section class="cards-section">
+        <div class="row mt-4">
+          <div class="col-xl-3 col-md-3 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div
+                      class="text-xs font-weight-bold text-secondary text-uppercase mb-1"
+                    >
+                      Total de Encuestas
+                    </div>
+                    <div
+                      class="h5 mb-0 font-weight-bold text-gray-800"
+                      id="Tarjeta_Total_Encuestas"
+                    ></div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-md-3 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div
+                      class="text-xs font-weight-bold text-secondary text-uppercase mb-1"
+                    >
+                      Actor
+                    </div>
+                    <div
+                      class="h5 mb-0 font-weight-bold text-gray-800"
+                      id="Tarjeta_Total_Actor"
+                    ></div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-md-3 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div
+                      class="text-xs font-weight-bold text-secondary text-uppercase mb-1"
+                    >
+                      Demandado
+                    </div>
+                    <div
+                      class="h5 mb-0 font-weight-bold text-gray-800"
+                      id="Tarjeta_Total_Demandado"
+                    ></div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-md-3 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div
+                      class="text-xs font-weight-bold text-secondary text-uppercase mb-1"
+                    >
+                      Otro
+                    </div>
+                    <div
+                      class="h5 mb-0 font-weight-bold text-gray-800"
+                      id="Tarjeta_Total_Otro"
+                    ></div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Seccion: Gráficas -->
+      <section class="graph">
+        <div class="graph__card">
+          <div class="graph__card--header">
+            <p>Juzgados con mayores encuestas registradas</p>
+          </div>
+          <div class="graph__card--body">
+            <div class="chart-area">
+              <canvas id="Chart_Top10"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- <section class="graph-section">
+        <div class="d-flex flex-row justify-content-center alig-items-center">
+          <div class="col-lg-10 col-sm-10 col-xs-12">
+            <div class="card shadow h-100">
+              <div
+                class="card-header py-3"
+              >
+                <h6 class="m-0 font-weight-bold text-secondary">
+                  Juzgados con mayores encuestas registradas
+                </h6>
+              </div>
+              <!-- <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="Chart_Top10"></canvas>
+                </div>
+              </div> -->
+            <!-- </div>
+          </div>
+        </div>
+      </section> -->
+      <!-- Gráfica de prueba -->
+      <!-- <section class="graph-section">
+        <div class="d-flex flex-row justify-content-center alig-items-center">
+          <div class="col-lg-10 col-sm-10 col-xs-12">
+            <div class="card shadow h-100">
+              <div
+                class="card-header py-3"
+              >
+                <h6 class="m-0 font-weight-bold text-secondary">
+                  Testing
+                </h6>
+              </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="Chart_test"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section> -->
+      <!-- Seccion: Tabla -->
+      <section class="section-table">
+        <div class="d-flex flex-row justify-content-center alig-items-center mt-4">
+          <div class="col-lg-10 col-sm-10 col-xs-12">
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-secondary">Encuestas</h6>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table id="tabla" class="display" style="width: 100%">
+                  <!-- <table id="tabla" class="display"> -->
+                    <thead class="text-center">
+                      <tr>
+                        <td></td>
+                      <td>
+                        <select class="filter-select" data-column="1">
+                          <option value="">Todos</option>
+                          <option value="Juzgado Primero Civil de Proceso Oral">Juzgado Primero Civil de Proceso Oral</option>
+                          <option value="Juzgado Segundo Civil de Proceso Oral">Juzgado Segundo Civil de Proceso Oral</option>
+                          <option value="Juzgado Tercero Civil de Proceso Oral">Juzgado Tercero Civil de Proceso Oral</option>
+                          <option value="Juzgado Cuarto Civil de Proceso Oral">Juzgado Cuarto Civil de Proceso Oral</option>
+                          <option value="Juzgado Quinto Civil de Proceso Oral">Juzgado Quinto Civil de Proceso Oral</option>
+                          <option value="Juzgado Sexto Civil de Proceso Oral">Juzgado Sexto Civil de Proceso Oral</option>
+                          <option value="Juzgado Septimo Civil de Proceso Oral">Juzgado Septimo Civil de Proceso Oral</option>
+                          <option value="Juzgado Octavo Civil de Proceso Oral">Juzgado Octavo Civil de Proceso Oral</option>
+                          <option value="Juzgado Noveno Civil de Proceso Oral">Juzgado Noveno Civil de Proceso Oral</option>
+                          <option value="Juzgado Décimo Civil de Proceso Oral">Juzgado Décimo Civil de Proceso Oral</option>
+                          <option value="Juzgado Décimo Primero Civil de Proceso Oral">Juzgado Décimo Primero Civil de Proceso Oral</option>
+                          <option value="Juzgado Décimo Segundo Civil de Proceso Oral">Juzgado Décimo Segundo Civil de Proceso Oral</option>
+                          <option value="Juzgado Décimo Tercero Civil de Proceso Oral">Juzgado Décimo Tercero Civil de Proceso Oral</option>
+                          <option value="Juzgado Décimo Cuarto Civil de Proceso Oral">Juzgado Décimo Cuarto Civil de Proceso Oral</option>
+                          <option value="Juzgado Décimo Quinto Civil de Proceso Oral">Juzgado Décimo Quinto Civil de Proceso Oral</option>
+                          <option value="Juzgado Décimo Sexto Civil de Proceso Oral">Juzgado Décimo Sexto Civil de Proceso Oral</option>
+                          <option value="Juzgado Décimo Séptimo Civil de Proceso Oral">Juzgado Décimo Séptimo Civil de Proceso Oral</option>
+                          <option value="Juzgado Décimo Octavo Civil de Proceso Oral">Juzgado Décimo Octavo Civil de Proceso Oral</option>
+                          <option value="Juzgado Décimo Noveno Civil de Proceso Oral">Juzgado Décimo Noveno Civil de Proceso Oral</option>
+                          <option value="Juzgado Vigésimo Civil de Proceso Oral">Juzgado Vigésimo Civil de Proceso Oral</option>
+                          <option value="Juzgado Vigésimo Primero Civil de Proceso Oral">Juzgado Vigésimo Primero Civil de Proceso Oral</option>
+                          <option value="Juzgado Vigésimo Segundo Civil de Proceso Oral">Juzgado Vigésimo Segundo Civil de Proceso Oral</option>
+                          <option value="Juzgado Vigésimo Tercero Civil de Proceso Oral">Juzgado Vigésimo Tercero Civil de Proceso Oral</option>
+                          <option value="Juzgado Vigésimo Cuarto Civil de Proceso Oral">Juzgado Vigésimo Cuarto Civil de Proceso Oral</option>
+                          <option value="Juzgado Vigésimo Quinto Civil de Proceso Oral">Juzgado Vigésimo Quinto Civil de Proceso Oral</option>
+                          <option value="Juzgado Vigésimo Sexto Civil de Proceso Oral">Juzgado Vigésimo Sexto Civil de Proceso Oral</option>
+                          <option value="Juzgado Vigésimo Séptimo Civil de Proceso Oral">Juzgado Vigésimo Séptimo Civil de Proceso Oral</option>
+                          <option value="Juzgado Vigésimo Octavo Civil de Proceso Oral">Juzgado Vigésimo Octavo Civil de Proceso Oral</option>
+                          <option value="Juzgado Vigésimo Noveno Civil de Proceso Oral">Juzgado Vigésimo Noveno Civil de Proceso Oral</option>
+                          <option value="Juzgado Trigésimo Civil de Proceso Oral">Juzgado Trigésimo Civil de Proceso Oral</option>
+                          <option value="Juzgado Trigésimo Primero Civil de Proceso Oral">Juzgado Trigésimo Primero Civil de Proceso Oral</option>
+                          <option value="Juzgado Trigésimo Segundo Civil de Proceso Oral">Juzgado Trigésimo Segundo Civil de Proceso Oral</option>
+                          <option value="Juzgado Trigésimo Tercero Civil de Proceso Oral">Juzgado Trigésimo Tercero Civil de Proceso Oral</option>
+                          <option value="Juzgado Trigésimo Cuarto Civil de Proceso Oral">Juzgado Trigésimo Cuarto Civil de Proceso Oral</option>
+                          <option value="Juzgado Trigésimo Quinto Civil de Proceso Oral">Juzgado Trigésimo Quinto Civil de Proceso Oral</option>
+                          <option value="Juzgado Trigésimo Sexto Civil de Proceso Oral">Juzgado Trigésimo Sexto Civil de Proceso Oral</option>
+                          <option value="Juzgado Trigésimo Septimo Civil de Proceso Oral">Juzgado Trigésimo Septimo Civil de Proceso Oral</option>
+                          <option value="Juzgado Trigésimo Octavo Civil de Proceso Oral">Juzgado Trigésimo Octavo Civil de Proceso Oral</option>
+                          <option value="Juzgado Trigésimo Noveno Civil de Proceso Oral">Juzgado Trigésimo Noveno Civil de Proceso Oral</option>
+                          <option value="Juzgado Cuadragésimo Civil de Proceso Oral">Juzgado Cuadragésimo Civil de Proceso Oral</option>
+                          <option value="Juzgado Cuadragésimo Primero Civil de Proceso Oral">Juzgado Cuadragésimo Primero Civil de Proceso Oral</option>
+                          <option value="Juzgado Cuadragésimo Segundo Civil de Proceso Oral">Juzgado Cuadragésimo Segundo Civil de Proceso Oral</option>
+                          <option value="Juzgado Cuadragésimo Tercero Civil de Proceso Oral">Juzgado Cuadragésimo Tercero Civil de Proceso Oral</option>
+                          <option value="Juzgado Cuadragésimo Cuarto Civil de Proceso Oral">Juzgado Cuadragésimo Cuarto Civil de Proceso Oral</option>
+                        </select>
+                      </td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      </tr>
+                      <tr>
+                        <th>N°</th>
+                        <th>Juzgado</th>
+                        <th>Expediente</th>
+                        <th>Parte</th>
+                        <th>Fecha</th>
+                        <th>Consultar</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <tfoot>
+                      
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Modal para las respuestas -->
+      <section>
+        <div
+          class="modal fade"
+          id="info"
+          tabindex="-1"
+          aria-labelledby="infoLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-scrollable modal-lg modal-fullscreen-sm-down">
+            <div class="modal-content">
+              <div class="modal-header">
+                <p class="h3">Datos Encuesta</p>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+
+                <div class="field">
+                  <p class="juzgado" id="juzgado"></p>
+                </div>
+                <div class="field">
+                  <p class="preguntas">Expediente:</p>
+                  <p class="respuestas" id="expediente"></p>
+                </div>
+                <div class="field">
+                  <p class="preguntas">Parte:</p>
+                  <p class="respuestas" id="parte"></p>
+                </div>
+                <div class="field">
+                  <p class="preguntas">¿La Jueza o Juez utilizó un lenguaje claro y entendible?</p>
+                  <p class="respuestas" id="p1"></p>
+                </div>
+                <div class="field">
+                  <p class="preguntas">¿La Jueza o Juez explicó el motivo de la audiencia?</p>
+                  <p class="respuestas" id="p2"></p>
+                </div>
+                <div class="field">
+                  <p class="preguntas">¿La Jueza o Juez, durante la audiencia, se comunicó en forma
+                    directa y constante con usted?</p>
+                  <p class="respuestas" id="p3"></p>
+                </div>
+                <div class="field">
+                  <p class="preguntas">¿La Jueza o Juez le permitió hablar, si usted pidió el uso de
+                    la palabra?</p>
+                  <p class="respuestas" id="p4"></p>
+                </div>
+                <div class="field">
+                  <p class="preguntas">¿Por parte de la Jueza o Juez, recibió usted el mismo trato que
+                    su contrarío?</p>
+                  <p class="respuestas" id="p5"></p>
+                </div>
+                <div class="field">
+                  <p class="preguntas">¿La Jueza o Juez le preguntarón si quería hacer uso de la
+                    palabra?</p>
+                  <p class="respuestas" id="p6"></p>
+                </div>
+                <div class="field">
+                  <p class="preguntas">¿Usted entendió y comprendió lo sucedido en la audiencia?</p>
+                  <p class="respuestas" id="p7"></p>
+                </div>
+                <div class="field">
+                  <textarea class="comentario" id="comentario" placeholder="Comentarios" disabled></textarea>
+                </div>
+
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-lg btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cerrar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div />
+      </section>
+    </main>
+    <footer></footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <!-- datatables -->
+    <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/sl-1.3.4/datatables.min.js"></script>
+    <!-- JS librerias -->
+    <script src="assets/js/moment.min.js"></script>
+    <script src="assets/js/chart.min.js"></script>
+    <!-- Mis funciones AJAX-->
+    <script src="assets/js/panel.js"></script>
+    <script src="assets/js/REST_Sesion.js"></script>
+  </body>
+</html>
