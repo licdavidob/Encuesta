@@ -5,8 +5,8 @@
 		protected $Servidor = "localhost";
 		protected $Usuario = "root";
 		// protected $Contraseña = "conatrib150";
-		protected $Contraseña = "0r4lid@d2021$";
-		// protected $Contraseña = "1q2w3e4r5t";
+		// protected $Contraseña = "0r4lid@d2021$";
+		protected $Contraseña = "1q2w3e4r5t";
 		protected $DB = "encuesta_qr";
 		
 		public function Conectar(){
@@ -21,7 +21,7 @@
 
 		public function Sentencias_Consulta_Encuesta($ID = 0, $Inicio = "", $Fin = ""){
 			$Sentencias_Consulta_Encuesta = array(
-				"Consultar_Encuestas" => "SELECT ID_Encuesta, Juzgado, Expediente, Parte, Fecha_Registro FROM encuesta a INNER JOIN cat_juzgado b ON a.ID_Juzgado = b.ID_Juzgado WHERE (Estatus = 1 );",
+				"Consultar_Encuestas" => "SELECT ID_Encuesta, Juzgado, Expediente, Parte, Fecha_Registro, P1, P2, P3, P4, P5, P6, P7 FROM encuesta a INNER JOIN cat_juzgado b ON a.ID_Juzgado = b.ID_Juzgado WHERE (Estatus = 1 );",
 				"Consultar_Encuesta_ID" => "SELECT Juzgado, Expediente, Parte, P1, P2, P3, P4, P5, P6, P7, P8 FROM encuesta a INNER JOIN cat_juzgado b ON a.ID_Juzgado = b.ID_Juzgado WHERE (Estatus = 1 ) AND (ID_Encuesta ='$ID');",
 				"Consultar_Encuestas_Fecha" => "SELECT ID_Encuesta, Juzgado, Expediente, Parte, Fecha_Registro FROM encuesta a INNER JOIN cat_juzgado b ON a.ID_Juzgado = b.ID_Juzgado WHERE (Estatus = 1 ) AND (Fecha_Registro BETWEEN '$Inicio' AND '$Fin');",
 				"" => "",
