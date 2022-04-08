@@ -43,21 +43,23 @@
             $Totales_Juzgado = array();
             $Top_Juzgados = array();
             $Estadistica = array();
-            $Preguntas = array(
-                "P1-Si" => 0,
-                "P1-No" => 0,
-                "P2-Si" => 0,
-                "P2-No" => 0,
-                "P3-Si" => 0,
-                "P3-No" => 0,
-                "P4-Si" => 0,
-                "P4-No" => 0,
-                "P5-Si" => 0,
-                "P5-No" => 0,
-                "P6-Si" => 0,
-                "P6-No" => 0,
-                "P7-Si" => 0,
-                "P7-No" => 0,
+            $Preguntas_Si= array(
+                "P1" => 0,
+                "P2" => 0,
+                "P3" => 0,
+                "P4" => 0,
+                "P5" => 0,
+                "P6" => 0,
+                "P7" => 0,
+            );
+            $Preguntas_No= array(
+                "P1" => 0,
+                "P2" => 0,
+                "P3" => 0,
+                "P4" => 0,
+                "P5" => 0,
+                "P6" => 0,
+                "P7" => 0,
             );
             $Total_Actor = 0;
             $Total_Demandado = 0;
@@ -90,13 +92,13 @@
                 if($Resultado[3] == 3){$Total_Otro++;}
                 
                 // SI = 1 -- NO = 2 
-                if($Resultado[5] == 1){$Preguntas['P1-Si']++;}else{$Preguntas['P1-No']++;}
-                if($Resultado[6] == 1){$Preguntas['P2-Si']++;}else{$Preguntas['P2-No']++;}
-                if($Resultado[7] == 1){$Preguntas['P3-Si']++;}else{$Preguntas['P3-No']++;}
-                if($Resultado[8] == 1){$Preguntas['P4-Si']++;}else{$Preguntas['P4-No']++;}
-                if($Resultado[9] == 1){$Preguntas['P5-Si']++;}else{$Preguntas['P5-No']++;}
-                if($Resultado[10] == 1){$Preguntas['P6-Si']++;}else{$Preguntas['P6-No'] ++;}
-                if($Resultado[11] == 1){$Preguntas['P7-Si']++;}else{$Preguntas['P7-No'] ++;}
+                if($Resultado[5] == 1){$Preguntas_Si['P1']++;}else{$Preguntas_No['P1']++;}
+                if($Resultado[6] == 1){$Preguntas_Si['P2']++;}else{$Preguntas_No['P2']++;}
+                if($Resultado[7] == 1){$Preguntas_Si['P3']++;}else{$Preguntas_No['P3']++;}
+                if($Resultado[8] == 1){$Preguntas_Si['P4']++;}else{$Preguntas_No['P4']++;}
+                if($Resultado[9] == 1){$Preguntas_Si['P5']++;}else{$Preguntas_No['P5']++;}
+                if($Resultado[10] == 1){$Preguntas_Si['P6']++;}else{$Preguntas_No['P6']++;}
+                if($Resultado[11] == 1){$Preguntas_Si['P7']++;}else{$Preguntas_No['P7']++;}
                 
         		$Contador++;
             }
@@ -107,8 +109,12 @@
                 $Detener_Foreach++;
                 if($Detener_Foreach == 5){break;}
             }
+            $Preguntas_Si_No['Si'] = $Preguntas_Si;
+            $Preguntas_Si_No['No'] = $Preguntas_No;
+            
             $Estadistica['Top_Juzgados'] = $Top_Juzgados;
-            $Estadistica['Preguntas'] = $Preguntas;
+            $Estadistica['Preguntas'] = $Preguntas_Si_No;
+
             $Datos['data'] = $General_Encuestas;
             $Datos['Total_Encuestas'] = $Contador;
             $Datos['Total_Actor'] = $Total_Actor;

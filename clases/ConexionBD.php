@@ -68,8 +68,5 @@
 			);
 			return $Sentencias_Crear_Usuario;
 		}
-
-		
-
 	}
 ?> 
