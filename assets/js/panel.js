@@ -1,13 +1,13 @@
-const URLAPI = "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta/api/CRUD_Encuesta_Prueba.php";
-const PREGUNTAS = [
-  '¿La Jueza o Juez utilizó un lenguaje claro y entendible?', 
-  '¿La Jueza o Juez explicó el motivo de la audiencia?', 
-  '¿La Jueza o Juez, durante la audiencia, se comunicó en forma directa y constante con usted?',
-  '¿La Jueza o Juez le permitió hablar, si usted pidió el uso de la palabra?',
-  '¿Por parte de la Jueza o Juez, recibió usted el mismo trato que su contrarío?',
-  '¿La Jueza o Juez le preguntarón si quería hacer uso de la palabra?',
-  '¿Usted entendió y comprendió lo sucedido en la audiencia?'
-]
+const URLAPI = "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta/api/CRUD_Encuesta.php";
+// const PREGUNTAS = [
+//   {pregunta: '¿La Jueza o Juez utilizó un lenguaje claro y entendible?'}, 
+//   {pregunta: '¿La Jueza o Juez explicó el motivo de la audiencia?'}, 
+//   {pregunta: '¿La Jueza o Juez, durante la audiencia, se comunicó en forma directa y constante con usted?'},
+//   {pregunta: '¿La Jueza o Juez le permitió hablar, si usted pidió el uso de la palabra?'},
+//   {pregunta: '¿Por parte de la Jueza o Juez, recibió usted el mismo trato que su contrarío?'},
+//   {pregunta:'¿La Jueza o Juez le preguntarón si quería hacer uso de la palabra?'},
+//   {pregunta:'¿Usted entendió y comprendió lo sucedido en la audiencia?'}
+//   ];
 function Iniciar() {
   let Dia_Actual = moment().startOf("day").format("YYYY-MM-DD");
   let Fecha_Inicio = "2022-01-01";
@@ -134,46 +134,127 @@ function grafica_top_juzgados(id, data, type = 'doughnut') {
   return chart_top_juzgados;
 }
 function grafica_general(id, data, type = 'bar') {
-  // let nombres = Object.keys(data);
-  // let numeros = Object.values(data);
+  let pSi = Object.keys(data['Si']);
+  let valSi = Object.values(data['Si']);
+  // let pNo = Object.keys(data['No']);
+  let valNo = Object.values(data['No']);
+
+
+  // let titleTooltip = 'test';
+
+  // 
+  // const PREGUNTAS = [
+  //   '¿La Jueza o Juez utilizó un lenguaje claro y entendible?', 
+  //   '¿La Jueza o Juez explicó el motivo de la audiencia?', 
+  //   '¿La Jueza o Juez, durante la audiencia, se comunicó en forma directa y constante con usted?',
+  //   '¿La Jueza o Juez le permitió hablar, si usted pidió el uso de la palabra?',
+  //   '¿Por parte de la Jueza o Juez, recibió usted el mismo trato que su contrarío?',
+  //   '¿La Jueza o Juez le preguntarón si quería hacer uso de la palabra?',
+  //   '¿Usted entendió y comprendió lo sucedido en la audiencia?'
+  // ];
+// 
+// const titleTooltip = PREGUNTAS.map(({pregunta}) => pregunta); 
+const PREGUNTAS = {
+  P1: '¿La Jueza o Juez utilizó un lenguaje claro y entendible?', 
+  P2: '¿La Jueza o Juez explicó el motivo de la audiencia?', 
+  P3: '¿La Jueza o Juez, durante la audiencia, se comunicó en forma directa y constante con usted?',
+  P4: '¿La Jueza o Juez le permitió hablar, si usted pidió el uso de la palabra?',
+  P5: '¿Por parte de la Jueza o Juez, recibió usted el mismo trato que su contrarío?',
+  P6: '¿La Jueza o Juez le preguntarón si quería hacer uso de la palabra?',
+  P7: '¿Usted entendió y comprendió lo sucedido en la audiencia?'
+};
+// console.log(a);
+
+const titleTooltip = (item) => {
+  // let b = item;
+  // console.log(b);
+  let a = `${item[0]['label']}`;
+  // console.log(a);
+  // console.log( typeof a);
+  // console.log(PREGUNTAS[a]);
+  return PREGUNTAS[a];
+  // item.forEach(i => {
+  //   console.log(item[0]['label']=PREGUNTAS[i]);
+  //   return item[0]['label'] = PREGUNTAS[i]; 
+  // });
+  // return item[0]['label'];
+}
 
   let chart_bar = new Chart(id, {
     type: type,
     data: {
-      labels: PREGUNTAS,
+      // labels: PREGUNTAS,
+      labels: pSi,
       // labels: ['P1','P2','P3','P4','P5','P6','P7'],
       datasets: [
         {
-          // data: numeros,
+          label: 'Preguntas con si',
+          data: valSi,
           // data: [11,24,45,12,10,130,1],
           backgroundColor: [
-            "#92BCE7",
-            "#9292E7",
-            "#E7BC92",
-            "#E7E792",
-            "#BCE792",
+            "#ADB4C4",
+            "#F17455",
+            "#F1F1CF",
+            "#324833",
+            "#0F4B49",
+            "#366A68",
+            "#8DBBBA",
+          ],
+          // order:1,
+          // borderWidth:5,
+          // cutout: '40%',
+          // borderRadius:20,
+          // offset:5,
+        },
+        {
+          label: 'Preguntas con no',
+          data: valNo,
+          borderColor:"#9292E7",
+          // data: [11,24,45,12,10,130,1],
+          backgroundColor: [
+            "#101919",
+            "#224443",
+            "#115552",
+            "#27B9B4",
+            "#66E1DD",
+            "#67A2A2",
+            "#7EB4B2",
           ],
           // borderWidth:5,
           // cutout: '40%',
           // borderRadius:20,
           // offset:5,
         },
+
       ],
     },
-    // options: {
-    //   plugins: {
-    //     legend: {
-    //       position: 'bottom',
-    //       labels: {
-    //         usePointStyle: true,
-    //         // font: {
-    //         //   size: 10
-    //         // }
-    //       }
-    //     }
-    //   },
-    //   maintainAspectRatio: false,
-    // },
+    // 
+    options: {
+      sccales: {
+        y: {
+          beginAtZero: true,
+        }
+      },
+      plugins: {
+        tooltip: {
+          // yAlign:'bottom',
+          displayColors:false,
+          callbacks: {
+            title: titleTooltip,
+          }
+        },
+        legend: {
+          position: 'top',
+          labels: {
+            usePointStyle: true,
+            // font: {
+            //   size: 10
+            // }
+          }
+        }
+      },
+      maintainAspectRatio: false,
+    },
   });
   return chart_bar;
 }
@@ -202,18 +283,19 @@ function Datos(table) {
       let idYes = $("#Chart_Yes");
       let datosPreguntas = data["Estadistica"];
       let pregunta = datosPreguntas["Preguntas"];
+      // let preguntaSi = pregunta["Si"];
       globalThis.objeto_grafica_top_juzgado = grafica_general(
         idYes,
         pregunta,
         'bar'
         );
-      // Tabla Yes
-      let idNo = $("#Chart_No");
-      globalThis.objeto_grafica_top_juzgado = grafica_general(
-        idNo,
-        pregunta,
-        'bar'
-        );
+      // // Tabla No
+      // let idNo = $("#Chart_No");
+      // globalThis.objeto_grafica_top_juzgado = grafica_general(
+      //   idNo,
+      //   pregunta,
+      //   'bar'
+      //   );
     });
 }
 

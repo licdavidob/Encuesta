@@ -86,14 +86,10 @@ h6 {
     width: 90%;
     margin: 50px auto;
     text-align: center;
-    /* border: 1px solid var(--tribunal); */
-    /* box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px; */
-    /* box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px; */
-    /* box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px; */
-    /* box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
-     */
-     box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+.graph__card {
+    padding-top: 20px;
 }
 .graph__card--header {
     width: 100%;
@@ -115,12 +111,16 @@ h6 {
 .chart-area {
     padding-top: 20px;
     margin: 20px auto;
-    width: 90%;
+    width: 100%;
+    padding: 0 10px;
     height: 550px;
-
 }
-#Chart_Top10 {
-    height: 20px;
+.chart-area-resume {
+    /* padding-top: 50px; */
+    height: 300px;
+}
+.chart_labels {
+    display: block;
 }
 
 
