@@ -1,4 +1,13 @@
 const URLAPI = "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta/api/CRUD_Encuesta_Prueba.php";
+const PREGUNTAS = [
+  '¿La Jueza o Juez utilizó un lenguaje claro y entendible?', 
+  '¿La Jueza o Juez explicó el motivo de la audiencia?', 
+  '¿La Jueza o Juez, durante la audiencia, se comunicó en forma directa y constante con usted?',
+  '¿La Jueza o Juez le permitió hablar, si usted pidió el uso de la palabra?',
+  '¿Por parte de la Jueza o Juez, recibió usted el mismo trato que su contrarío?',
+  '¿La Jueza o Juez le preguntarón si quería hacer uso de la palabra?',
+  '¿Usted entendió y comprendió lo sucedido en la audiencia?'
+]
 function Iniciar() {
   let Dia_Actual = moment().startOf("day").format("YYYY-MM-DD");
   let Fecha_Inicio = "2022-01-01";
@@ -15,8 +24,8 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
     ajax: {
       url: URLAPI,
       data: function (d) {
-        d.Fecha_Inicio = Fecha_Inicio;
-        d.Fecha_Fin = Dia_Actual;
+        // d.Fecha_Inicio = Fecha_Inicio;
+        // d.Fecha_Fin = Dia_Actual;
       },
       type: "get",
     },
@@ -80,13 +89,14 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
   })
   return table;
 }
+
 // Gráfica pastel (Chart) Top 10
-function grafica_top_juzgados(id, data) {
+function grafica_top_juzgados(id, data, type = 'doughnut') {
   let nombres = Object.keys(data);
   let numeros = Object.values(data);
 
   let chart_top_juzgados = new Chart(id, {
-    type: "doughnut",
+    type: type,
     data: {
       labels: nombres,
       datasets: [
@@ -100,7 +110,7 @@ function grafica_top_juzgados(id, data) {
             "#BCE792",
           ],
           borderWidth:5,
-          cutout: '40%',
+          // cutout: '40%',
           // borderRadius:20,
           offset:5,
         },
@@ -109,7 +119,7 @@ function grafica_top_juzgados(id, data) {
     options: {
       plugins: {
         legend: {
-          // position: 'top',
+          position: 'bottom',
           labels: {
             usePointStyle: true,
             // font: {
@@ -123,40 +133,50 @@ function grafica_top_juzgados(id, data) {
   });
   return chart_top_juzgados;
 }
-// // Gráfica de prueba 
-// // function grafica_top_juzgados_test(id, data) {
-//   let test = document.getElementById('Chart_test');
-//   // let nombres = Object.keys(data);
-//   // let numeros = Object.values(data);
+function grafica_general(id, data, type = 'bar') {
+  // let nombres = Object.keys(data);
+  // let numeros = Object.values(data);
 
-//   let mychart = new Chart(test, {
-//     type: "doughnut",
-//     data: {
-//       labels: ['nombres','Comillas','Datos'],
-//       datasets: [
-//         {
-//           data: [14,14,17],
-//           backgroundColor: [
-//             "#92BCE7",
-//             "#9292E7",
-//             "#E7BC92",
-//             "#E7E792",
-//             "#BCE792",
-//           ],
-//         },
-//       ],
-//     },
-//     options: {
-//       legend: {
-//         position: "center",
-//       },
-//       maintainAspectRatio: false,
-//     },
-//   });
-//   // return chart_top_juzgados;
-// // }
-
-
+  let chart_bar = new Chart(id, {
+    type: type,
+    data: {
+      labels: PREGUNTAS,
+      // labels: ['P1','P2','P3','P4','P5','P6','P7'],
+      datasets: [
+        {
+          // data: numeros,
+          // data: [11,24,45,12,10,130,1],
+          backgroundColor: [
+            "#92BCE7",
+            "#9292E7",
+            "#E7BC92",
+            "#E7E792",
+            "#BCE792",
+          ],
+          // borderWidth:5,
+          // cutout: '40%',
+          // borderRadius:20,
+          // offset:5,
+        },
+      ],
+    },
+    // options: {
+    //   plugins: {
+    //     legend: {
+    //       position: 'bottom',
+    //       labels: {
+    //         usePointStyle: true,
+    //         // font: {
+    //         //   size: 10
+    //         // }
+    //       }
+    //     }
+    //   },
+    //   maintainAspectRatio: false,
+    // },
+  });
+  return chart_bar;
+}
 
 function Datos(table) {
   // Modal
@@ -171,13 +191,30 @@ function Datos(table) {
     $("#Tarjeta_Total_Otro").html(data["Total_Otro"]);
 
     // Datos gráfica
-    let general = data["Top_10"];
-    let idTopDiez = $("#Chart_Top10");
+    let estadistica = data["Estadistica"];
+    let general = estadistica["Top_Juzgados"];
+    let idTop = $("#Chart_Top10");
     globalThis.objeto_grafica_top_juzgado = grafica_top_juzgados(
-      idTopDiez,
+      idTop,
       general
-    );
-  });
+      );
+      // Tabla Yes
+      let idYes = $("#Chart_Yes");
+      let datosPreguntas = data["Estadistica"];
+      let pregunta = datosPreguntas["Preguntas"];
+      globalThis.objeto_grafica_top_juzgado = grafica_general(
+        idYes,
+        pregunta,
+        'bar'
+        );
+      // Tabla Yes
+      let idNo = $("#Chart_No");
+      globalThis.objeto_grafica_top_juzgado = grafica_general(
+        idNo,
+        pregunta,
+        'bar'
+        );
+    });
 }
 
 function modalEncuesta(tbody, table) {

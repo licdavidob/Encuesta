@@ -86,42 +86,42 @@ h6 {
     width: 90%;
     margin: 50px auto;
     text-align: center;
+    /* border: 1px solid var(--tribunal); */
+    /* box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px; */
+    /* box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px; */
+    /* box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px; */
+    /* box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+     */
+     box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+
 }
 .graph__card--header {
     width: 100%;
     background-color: var(--tribunal);
-    box-shadow: 1px 0px 2px var(--tribunal);
 }
 .graph__card--header p {
     padding: 10px;
     margin: 0;
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     color: white;
     font-weight: 600;
 }
 .graph__card--body {
     margin: 0px auto;
     width: 100%;
-    border: 10px solid var(--tribunal);
-    box-shadow: 1px 0px 2px var(--tribunal);
+    border-top: none;
+    /* box-shadow: 1px 0px 2px var(--tribunal); */
 }
 .chart-area {
+    padding-top: 20px;
     margin: 20px auto;
     width: 90%;
     height: 550px;
+
 }
-
-/* .graph-section {
-    margin-left: 0;
-    margin-right: 0;
-    margin: auto;
-    width: 90%;
-    min-width: 288px;
-    max-width: 1200px;
-    font-size: 1.6rem;
-} */
-
-
+#Chart_Top10 {
+    height: 20px;
+}
 
 
 
