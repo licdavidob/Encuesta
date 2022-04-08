@@ -15,8 +15,8 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
     ajax: {
       url: URLAPI,
       data: function (d) {
-        d.Fecha_Inicio = Fecha_Inicio;
-        d.Fecha_Fin = Dia_Actual;
+        // d.Fecha_Inicio = Fecha_Inicio;
+        // d.Fecha_Fin = Dia_Actual;
       },
       type: "get",
     },
@@ -124,9 +124,12 @@ function Datos(table) {
     $("#Tarjeta_Total_Otro").html(data["Total_Otro"]);
 
     // Datos gráfica
-    let general = data["Top_10"];
+    let estadistica = data["Estadistica"];
+    console.log(data);
+    console.log(estadistica);
+    let general = estadistica["Top_Juzgados"];
+    console.log(general);
     let idTopDiez = $("#Chart_Top10");
-    // let idTopDiez = $("#Chart_Top10");
     globalThis.objeto_grafica_top_juzgado = grafica_top_juzgados(
       idTopDiez,
       general
