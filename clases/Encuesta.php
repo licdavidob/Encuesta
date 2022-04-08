@@ -42,6 +42,23 @@
             $General_Encuestas = array();
             $Totales_Juzgado = array();
             $Top_Juzgados = array();
+            $Estadistica = array();
+            $Preguntas = array(
+                "P1-Si" => 0,
+                "P1-No" => 0,
+                "P2-Si" => 0,
+                "P2-No" => 0,
+                "P3-Si" => 0,
+                "P3-No" => 0,
+                "P4-Si" => 0,
+                "P4-No" => 0,
+                "P5-Si" => 0,
+                "P5-No" => 0,
+                "P6-Si" => 0,
+                "P6-No" => 0,
+                "P7-Si" => 0,
+                "P7-No" => 0,
+            );
             $Total_Actor = 0;
             $Total_Demandado = 0;
             $Total_Otro = 0;
@@ -70,7 +87,17 @@
                 }
                 if($Resultado[3] == 1){$Total_Actor++;} 
                 if($Resultado[3] == 2){$Total_Demandado++;} 
-                if($Resultado[3] == 3){$Total_Otro++;} 
+                if($Resultado[3] == 3){$Total_Otro++;}
+                
+                // SI = 1 -- NO = 2 
+                if($Resultado[5] == 1){$Preguntas['P1-Si']++;}else{$Preguntas['P1-No']++;}
+                if($Resultado[6] == 1){$Preguntas['P2-Si']++;}else{$Preguntas['P2-No']++;}
+                if($Resultado[7] == 1){$Preguntas['P3-Si']++;}else{$Preguntas['P3-No']++;}
+                if($Resultado[8] == 1){$Preguntas['P4-Si']++;}else{$Preguntas['P4-No']++;}
+                if($Resultado[9] == 1){$Preguntas['P5-Si']++;}else{$Preguntas['P5-No']++;}
+                if($Resultado[10] == 1){$Preguntas['P6-Si']++;}else{$Preguntas['P6-No'] ++;}
+                if($Resultado[11] == 1){$Preguntas['P7-Si']++;}else{$Preguntas['P7-No'] ++;}
+                
         		$Contador++;
             }
 
@@ -80,14 +107,15 @@
                 $Detener_Foreach++;
                 if($Detener_Foreach == 5){break;}
             }
-
+            $Estadistica['Top_Juzgados'] = $Top_Juzgados;
+            $Estadistica['Preguntas'] = $Preguntas;
             $Datos['data'] = $General_Encuestas;
             $Datos['Total_Encuestas'] = $Contador;
             $Datos['Total_Actor'] = $Total_Actor;
             $Datos['Total_Demandado'] = $Total_Demandado;
             $Datos['Total_Otro'] = $Total_Otro;
-            $Datos['Total_Juzgado'] = $Totales_Juzgado;
-            $Datos['Top_Juzgados'] = $Top_Juzgados;
+            // $Datos['Total_Juzgado'] = $Totales_Juzgado;
+            $Datos['Estadistica'] = $Estadistica;
             echo json_encode($Datos);
         }
 
