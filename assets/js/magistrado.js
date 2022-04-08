@@ -125,10 +125,7 @@ function Datos(table) {
 
     // Datos gráfica
     let estadistica = data["Estadistica"];
-    console.log(data);
-    console.log(estadistica);
     let general = estadistica["Top_Juzgados"];
-    console.log(general);
     let idTopDiez = $("#Chart_Top10");
     globalThis.objeto_grafica_top_juzgado = grafica_top_juzgados(
       idTopDiez,
