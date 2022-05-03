@@ -44,7 +44,7 @@
     />
     <link
       rel="stylesheet"
-      href="assets/css/desktop.css"
+      href="assets/css/desktop_p.css"
       media="(min-width:1080px)"
     />
   </head>
@@ -153,26 +153,32 @@
         </div>
       </section>
       <!-- Seccion: Gráficas -->
-      <section class="graph-section">
-        <div class="d-flex flex-row justify-content-center alig-items-center">
-          <div class="col-lg-10 col-sm-10 col-xs-12">
-            <div class="card shadow h-100">
-              <div
-                class="card-header py-3"
-              >
-                <h6 class="m-0 font-weight-bold text-secondary">
-                  Juzgados con mayores encuestas registradas
-                </h6>
-              </div>
-              <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="Chart_Top10"></canvas>
-                </div>
-              </div>
+      <section class="graph">
+        <div class="graph__card">
+          <div class="graph__card--body">
+            <div class="chart-area">
+              <canvas id="Chart_Top10"></canvas>
             </div>
+          </div>
+          <div class="graph__card--header">
+            <p>Juzgados con mayores encuestas registradas</p>
           </div>
         </div>
       </section>
+      <!-- Graph 2 Respuestas positivas -->
+      <section class="graph">
+        <div class="graph__card">
+          <div class="graph__card--body">
+            <div class="chart-area chart-area-resume">
+              <canvas id="Chart_Yes"></canvas>
+            </div>
+          </div>
+          <div class="graph__card--header">
+            <p>Resumen de encuestas</p>
+          </div>
+        </div>
+      </section>
+
       <!-- Seccion: Tabla -->
       <section class="section-table">
         <div class="d-flex flex-row justify-content-center alig-items-center mt-4">
@@ -370,7 +376,7 @@
     <script src="assets/js/moment.min.js"></script>
     <script src="assets/js/chart.min.js"></script>
     <!-- Mis funciones AJAX-->
-    <script src="assets/js/magistrado.js"></script>
+    <script src="assets/js/panel.js"></script>
     <script src="assets/js/REST_Sesion.js"></script>
   </body>
 </html>
