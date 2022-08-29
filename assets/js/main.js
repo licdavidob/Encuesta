@@ -19,7 +19,7 @@ function miVal() {
   const auxj = document.full_form.juzgado.value;
   const expediente = document.full_form.expediente.value;
   const juzgado = parseInt(auxj.substring(0, 2));
-  const parte = parseInt(document.full_form.parte.value);
+  let parte = parseInt(document.full_form.parte.value);
   const in1 = parseInt(document.full_form.questionOne.value);
   const in2 = parseInt(document.full_form.questionTwo.value);
   const in3 = parseInt(document.full_form.questionThree.value);
@@ -29,7 +29,8 @@ function miVal() {
   const in7 = parseInt(document.full_form.questionSeven.value);
   const in8 = document.full_form.comments.value;
 
-  let pparte = isNaN(parte);
+  let pparte = isNaN(parte) ? parte=3: parte;
+  
   let p1 = isNaN(in1);
   let p2 = isNaN(in2);
   let p3 = isNaN(in3);
@@ -41,16 +42,17 @@ function miVal() {
   // Validación de las preguntas
   let validador = false;
 
-  // if (pparte === true) {
-  //   document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
-  //   setTimeout(() => {
-  //     document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
-  // }, 4000);
-  //   return validador;
+  if (pparte === true) {
+    // parte = "dave";
+    document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
+    setTimeout(() => {
+      document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
+  }, 4000);
+    // return validador;
 
-  // }
+  }
 
-  if (p1 === true) {
+  else if (p1 === true) {
     document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
     setTimeout(() => {
       document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
@@ -118,6 +120,7 @@ function AgregarEncuesta(juzgado, expediente, parte, in1, in2, in3, in4, in5, in
     P7: in7,
     Comentario: in8,
   };
+  console.log(parametros);
 
   // Comunicación con back
   $.ajax({

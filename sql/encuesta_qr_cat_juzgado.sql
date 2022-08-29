@@ -27,7 +27,7 @@ CREATE TABLE `cat_juzgado` (
   `Juzgado` char(255) NOT NULL,
   `Juez` char(255) NOT NULL,
   PRIMARY KEY (`ID_Juzgado`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

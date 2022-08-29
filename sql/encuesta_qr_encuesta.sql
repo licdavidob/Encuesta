@@ -41,7 +41,7 @@ CREATE TABLE `encuesta` (
   PRIMARY KEY (`ID_Encuesta`),
   KEY `encuesta_ibfk_1_idx` (`ID_Juzgado`),
   CONSTRAINT `encuesta_ibfk_1` FOREIGN KEY (`ID_Juzgado`) REFERENCES `cat_juzgado` (`ID_Juzgado`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
