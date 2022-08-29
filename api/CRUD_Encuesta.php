@@ -15,7 +15,7 @@ $Validar = new Validar();
 switch ($Peticion) {
     case 'POST':
         $Juzgado = (isset($_POST["Juzgado"]) && !empty($_POST["Juzgado"])) ? $_POST["Juzgado"] : 0;
-        $Expediente = (isset($_POST["Expediente"]) && !empty($_POST["Expediente"])) ? $_POST["Expediente"] : "Sin definir";
+        $Expediente = (isset($_POST["Expediente"]) && !empty($_POST["Expediente"])) ? $_POST["Expediente"] : 0;
         $Parte = (isset($_POST["Parte"]) && !empty($_POST["Parte"])) ? $_POST["Parte"] : 3; //En caso de no enviar parte, se registra como "otro"
         $P1 = (isset($_POST["P1"]) && !empty($_POST["P1"])) ? $_POST["P1"] : 0;
         $P2 = (isset($_POST["P2"]) && !empty($_POST["P2"])) ? $_POST["P2"] : 0;
@@ -27,8 +27,6 @@ switch ($Peticion) {
         $P8 = (isset($_POST["Comentario"]) && !empty($_POST["Comentario"])) ? $_POST["Comentario"] : "";
         $Obligatorias = array(
             "Juzgado" => $Juzgado,
-            "Expediente" => $Expediente,
-            "Parte" => $Parte,
             "P1" => $P1,
             "P2" => $P2,
             "P3" => $P3,
