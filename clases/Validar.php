@@ -42,10 +42,9 @@ class Validar
     public function Validar_Variables_Obligatorias_NAN($Variables)
     {
         foreach ($Variables as $Key => $Valor) {
-            echo "Key: $Key con el valor: $Valor \n";
             if (is_nan($Valor)) {
                 $Error = new Mensaje();
-                $Error->EnviarError("Falta definir la variable: " . $Key);
+                $Error->EnviarError("Falta definir la variable: $Key ya que su valor es NAN");
                 exit();
             }
         }

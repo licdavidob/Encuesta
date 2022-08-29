@@ -25,7 +25,19 @@
             $P6 = (isset($_POST["P6"]) && !empty($_POST["P6"])) ? $_POST["P6"] : 0;
             $P7 = (isset($_POST["P7"]) && !empty($_POST["P7"])) ? $_POST["P7"] : 0;
             $P8 = (isset($_POST["Comentario"]) && !empty($_POST["Comentario"])) ? $_POST["Comentario"] : "";
-            $Obligatorias = array(
+            
+            $Registro_Obligatorias = array(
+                "Juzgado" => $Juzgado,
+                "P1" => $P1,
+                "P2" => $P2,
+                "P3" => $P3,
+                "P4" => $P4,
+                "P5" => $P5,
+                "P6" => $P6,
+                "P7" => $P7
+            );
+
+            $Validar_NAN = array(
                 "Juzgado" => $Juzgado,
                 "Expediente" => $Expediente,
                 "Parte" => $Parte,
@@ -39,7 +51,7 @@
             );
             
             $Validar->Validar_Variables_Obligatorias($Obligatorias);
-            $Validar->Validar_Variables_Obligatorias_NAN($Obligatorias);
+            $Validar->Validar_Variables_Obligatorias_NAN($Validar_NAN);
             $Obtener_Juez = new Juzgado();
             $Juez = $Obtener_Juez->Obtener_Juez($Juzgado);
             $Encuesta->Registrar_Encuesta_Publico($Juzgado,$Juez,$Expediente,$Parte,$P1,$P2,$P3,$P4,$P5,$P6,$P7,$P8);
@@ -72,4 +84,3 @@
             $Mensaje->EnviarError("No se encuentra definida la petición");
             break;
     }
-?>
