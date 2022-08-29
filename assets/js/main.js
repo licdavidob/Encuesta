@@ -41,14 +41,16 @@ function miVal() {
   // Validación de las preguntas
   let validador = false;
 
-  if (pparte === true) {
-    document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
-    setTimeout(() => {
-      document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
-  }, 4000);
-    return validador;
+  // if (pparte === true) {
+  //   document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
+  //   setTimeout(() => {
+  //     document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
+  // }, 4000);
+  //   return validador;
 
-  } else if (p1 === true) {
+  // }
+
+  if (p1 === true) {
     document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
     setTimeout(() => {
       document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
