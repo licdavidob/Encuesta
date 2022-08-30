@@ -6,8 +6,8 @@ class ConexionBD
 	protected $Servidor = "localhost";
 	protected $Usuario = "root";
 	// protected $Contraseña = "conatrib150";
-	protected $Contraseña = "0r4lid@d2021$";
-	// protected $Contraseña = "1q2w3e4r5t";
+	// protected $Contraseña = "0r4lid@d2021$";
+	protected $Contraseña = "1q2w3e4r5t";
 	protected $DB = "encuesta_qr";
 
 	public function Conectar()
@@ -18,6 +18,29 @@ class ConexionBD
 			$Validar_Conexion_Base->Validar_Conexion_Base($Conectar_Base->connect_error);
 		}
 		return $Conectar_Base;
+	}
+
+	//Se encarga de construir el query que se usará para registrar una nueva encuesta
+	public function QueryBuilder_Registro($Variables_Registro)
+	{
+		//Se define el INSERT INTO de la encuesta con las variables recibidas
+		$Query = "INSERT INTO encuesta(";
+		foreach ($Variables_Registro as $Columna => $Valor) {
+			$Query = $Query . "`" . $Columna . "`,";
+		}
+
+		//Se define la columna fecha registro
+		$Query = $Query . "`Fecha_Registro`" . ") VALUES (";
+
+		//Se definen los valores que van a llevar cada VALUE
+		foreach ($Variables_Registro as $Columna => $Valor) {
+			$Query = $Query . "'" . $Valor . "',";
+		}
+
+		//Se define el valor de la columna Fecha_Registro
+		$Query = $Query . "CURRENT_DATE());";
+
+		return $Query;
 	}
 
 	public function Sentencias_Consulta_Encuesta($ID = 0, $Inicio = "", $Fin = "")
@@ -31,12 +54,10 @@ class ConexionBD
 		return $Sentencias_Consulta_Encuesta;
 	}
 
-	public function Sentencias_Registro_Encuesta($Juzgado, $Juez, $Expediente, $Parte, $P1, $P2, $P3, $P4, $P5, $P6, $P7, $P8)
+	public function Sentencias_Registro_Encuesta($Variables_Registro)
 	{
-		$Sentencias_Registro_Encuesta = array(
-			"Registrar_Encuesta_Publico" => "INSERT INTO `encuesta`(`ID_Juzgado`,`Juez`,`Expediente`,`Parte`,`P1`,`P2`,`P3`,`P4`,`P5`,`P6`,`P7`,`P8`,`Fecha_Registro`) VALUES ('$Juzgado','$Juez','$Expediente','$Parte','$P1','$P2','$P3','$P4','$P5','$P6','$P7','$P8',CURRENT_DATE());",
-		);
-		return $Sentencias_Registro_Encuesta;
+		//Se llama al Query Builder que se encarga de armar el query para registrar una encuesta
+		return $this->QueryBuilder_Registro($Variables_Registro);
 	}
 
 	public function Sentencias_Eliminar_Encuesta($ID)

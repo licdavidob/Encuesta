@@ -42,6 +42,13 @@ class Validar
     public function Validar_Variables_Obligatorias_NAN($Variables)
     {
         foreach ($Variables as $Key => $Valor) {
+
+            //Si la variable es de tipo STRING, se salta la validación y conitnua con la siguiente
+            if (is_string($Valor)) {
+                continue;
+            }
+
+            //Valida que la variable no sea de un tipo NAN
             if (is_nan($Valor)) {
                 $Error = new Mensaje();
                 $Error->EnviarError("Falta definir la variable: $Key ya que su valor es NAN");

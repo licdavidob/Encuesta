@@ -3,11 +3,13 @@
 class Encuesta extends ConexionBD
 {
 
-    public function Registrar_Encuesta_Publico($Juzgado, $Juez, $Expediente, $Parte, $P1, $P2, $P3, $P4, $P5, $P6, $P7, $P8)
+    public function Registrar_Encuesta_Publico($Registro_Encuesta)
     {
         $Conectar_Base = $this->Conectar();
-        $Sentencias_Registro = $this->Sentencias_Registro_Encuesta($Juzgado, $Juez, $Expediente, $Parte, $P1, $P2, $P3, $P4, $P5, $P6, $P7, $P8);
-        $Conectar_Base->query($Sentencias_Registro["Registrar_Encuesta_Publico"]);
+
+        //Se obtiene el query para registrar una encuesta
+        $Sentencias_Registro = $this->Sentencias_Registro_Encuesta($Registro_Encuesta);
+        $Conectar_Base->query($Sentencias_Registro);
         $Conectar_Base->close();
     }
 

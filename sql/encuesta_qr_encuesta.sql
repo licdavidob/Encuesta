@@ -35,7 +35,7 @@ CREATE TABLE `encuesta` (
   `P5` tinyint(1) NOT NULL DEFAULT '0',
   `P6` tinyint(1) NOT NULL DEFAULT '0',
   `P7` tinyint(1) NOT NULL DEFAULT '0',
-  `P8` char(255) DEFAULT NULL,
+  `Comentario` char(255) DEFAULT NULL,
   `Estatus` tinyint(1) NOT NULL DEFAULT '1',
   `Fecha_Registro` date NOT NULL,
   PRIMARY KEY (`ID_Encuesta`),
