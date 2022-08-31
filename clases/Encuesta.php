@@ -10,6 +10,9 @@ class Encuesta extends ConexionBD
         //Se obtiene el query para registrar una encuesta
         $Sentencias_Registro = $this->Sentencias_Registro_Encuesta($Registro_Encuesta);
         $Conectar_Base->query($Sentencias_Registro);
+        if (!$Conectar_Base->query($Sentencias_Registro)) {
+            echo $Conectar_Base->error;
+        }
         $Conectar_Base->close();
     }
 
