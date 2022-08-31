@@ -80,7 +80,6 @@ class Encuesta extends ConexionBD
             $Encuesta['ID_Encuesta'] = $Resultado[0];
             $Encuesta['Juzgado'] = $Resultado[1];
             $Encuesta['Expediente'] = $Resultado[2];
-            $Encuesta['Expediente'] = $Resultado[2] == 0 ? "Sin definir" : $Resultado[2];
             $Encuesta['Parte'] = $Resultado[3];
             $Encuesta['Fecha'] = $Resultado[4];
             $General_Encuestas[$Contador] = $Encuesta;

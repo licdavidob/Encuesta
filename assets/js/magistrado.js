@@ -1,4 +1,5 @@
-const URLAPI = "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta/api/CRUD_Encuesta.php";
+const URLAPI =
+  "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta/api/CRUD_Encuesta.php";
 function Iniciar() {
   let Dia_Actual = moment().startOf("day").format("YYYY-MM-DD");
   let Fecha_Inicio = "2022-01-01";
@@ -62,8 +63,7 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
         targets: 5, //Celda Acciones
         width: "10%",
         data: null,
-        defaultContent:
-          `
+        defaultContent: `
           <div class ='row'>
           <button type="button" class='consultar'>
           <i class='fa-solid fa-circle-info'></i>
@@ -72,12 +72,13 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
       },
     ],
   });
-  // Búsquedas personalizadas 
-  $('.filter-select').change(function () {
-    table.column($(this).data('column'))
-    .search(`"${$(this).val()}"`)
-    .draw();
-  })
+  // Búsquedas personalizadas
+  $(".filter-select").change(function () {
+    table
+      .column($(this).data("column"))
+      .search(`"${$(this).val()}"`)
+      .draw();
+  });
   return table;
 }
 // Gráfica pastel (Chart) Top 10
@@ -156,7 +157,6 @@ function modalEncuesta(tbody, table) {
 }
 
 function encuestabyId(datos) {
-
   $("#juzgado").html(datos["Juzgado"]);
   $("#expediente").html(datos["Expediente"]);
   let parte = "";

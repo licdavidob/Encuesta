@@ -1,4 +1,5 @@
-const api = "api/CRUD_Encuesta.php";
+const api =
+  "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta/api/CRUD_Encuesta.php";
 
 const formulario = document.getElementById("full_form");
 const mensaje = document.getElementById("comment");
@@ -17,74 +18,141 @@ formulario.addEventListener("submit", (e) => {
   e.preventDefault();
 });
 
-// Captura de preguntas
-function miVal() {
-  var Variables_Encuesta = {};
+/**
+ * Se encarga de inicializar las funciones
+ * necesarias para capturar y enviar la
+ * encuesta
+ */
+function main() {
+  var Encuesta = CapturaEncuesta();
+  Encuesta = AsignarDefaultValoresEncuesta(Encuesta);
+  if (!DefinirVariablesObligatorias(Encuesta)) {
+    return false;
+  }
+  AgregarEncuesta(Encuesta);
+}
+
+/**
+ * Captura los valores del formulario de la encuesta
+ * @returns array
+ */
+function CapturaEncuesta() {
   const auxj = document.full_form.juzgado.value;
+  var Encuesta = {
+    Juzgado: parseInt(auxj.substring(0, 2)),
+    Expediente: document.full_form.expediente.value,
+    Parte: document.full_form.parte.value,
+    P1: document.full_form.questionOne.value,
+    P2: document.full_form.questionTwo.value,
+    P3: document.full_form.questionThree.value,
+    P4: document.full_form.questionFour.value,
+    P5: document.full_form.questionFive.value,
+    P6: document.full_form.questionSix.value,
+    P7: document.full_form.questionSeven.value,
+    Comentario: document.full_form.comments.value,
+  };
 
-  Variables_Encuesta["Juzgado"] = parseInt(auxj.substring(0, 2));
-  Variables_Encuesta["Expediente"] = document.full_form.expediente.value
-    ? document.full_form.expediente.value
-    : 0;
-  Variables_Encuesta["Parte"] = document.full_form.parte.value
-    ? document.full_form.expediente.value
-    : 3;
-  Variables_Encuesta["P1"] = document.full_form.questionOne.value
-    ? document.full_form.questionOne.value
-    : 0;
-  Variables_Encuesta["P2"] = document.full_form.questionTwo.value;
-  Variables_Encuesta["P3"] = document.full_form.questionThree.value;
-  Variables_Encuesta["P4"] = document.full_form.questionFour.value;
-  Variables_Encuesta["P5"] = document.full_form.questionFive.value;
-  Variables_Encuesta["P6"] = document.full_form.questionSix.value;
-  Variables_Encuesta["P7"] = document.full_form.questionSeven.value;
-  Variables_Encuesta["Comentario"] = document.full_form.comments.value;
+  return Encuesta;
+}
 
-  //Valida que ninguna variable sea de tipo NAN
-  for (var Variable in Variables_Encuesta) {
-    console.log(typeof Variables_Encuesta[Variable]);
-    if (typeof Variables_Encuesta[Variable] === "string") {
-      continue;
+/**
+ * Se encarga de asignar los valores del formulario
+ * que no hayan sido contestados
+ * @param {array} Encuesta
+ * @returns array
+ */
+function AsignarDefaultValoresEncuesta(Encuesta) {
+  for (var Variable in Encuesta) {
+    if (Encuesta[Variable] == "" || isNaN(Encuesta[Variable])) {
+      Encuesta[Variable] = 0;
     }
+  }
+  return Encuesta;
+}
 
-    if (isNaN(Variables_Encuesta[Variable])) {
-      document
-        .getElementById("formulario__mensaje")
-        .classList.add("formulario__mensaje-activo");
-      setTimeout(() => {
-        document
-          .getElementById("formulario__mensaje")
-          .classList.remove("formulario__mensaje-activo");
-      }, 4000);
-      console.log("La variable " + Variable + " tiene el valor NAN");
+/**
+ * Define las variables obligatorias y las valida posteriormente
+ * @param {array} Encuesta
+ * @returns bool
+ */
+function DefinirVariablesObligatorias(Encuesta) {
+  const Obligatorias = {
+    Juzgado: Encuesta["Juzgado"],
+    P1: Encuesta["P1"],
+    P2: Encuesta["P2"],
+    P3: Encuesta["P3"],
+    P4: Encuesta["P4"],
+    P5: Encuesta["P5"],
+    P6: Encuesta["P6"],
+    P7: Encuesta["P7"],
+  };
+  return ValidarObligatorias(Obligatorias);
+}
+
+/**
+ * Se encarga de validar que hayan sido registradas las variables
+ * obligatorias
+ * @param {array} Obligatorias
+ * @returns bool
+ */
+function ValidarObligatorias(Obligatorias) {
+  for (var Variable in Obligatorias) {
+    if (Obligatorias[Variable] == 0) {
+      console.log("Falto definir la variable: " + Variable);
+      MostrarError();
       return false;
     }
   }
-
-  //Se envia la petición de registrar la encuesta
-  AgregarEncuesta(Variables_Encuesta);
+  return true;
 }
 
-// Asignación de los parámetros
-function AgregarEncuesta(Variables_Encuesta) {
+/**
+ * Consulta la API para registrar los datos de la
+ * encuesta
+ * @param {array} Encuesta
+ */
+function AgregarEncuesta(Encuesta) {
   // Comunicación con back
   $.ajax({
-    data: Variables_Encuesta,
+    data: Encuesta,
     url: api,
     dataType: "json",
     type: "post",
     success: function (response) {
       console.log(response);
-      document
-        .getElementById("formulario__mensaje-exito")
-        .classList.add("formulario__mensaje-exito-activo");
-      formulario.reset();
-      setTimeout(() => {
-        document
-          .getElementById("formulario__mensaje-exito")
-          .classList.remove("formulario__mensaje-exito-activo");
-      }, 4000);
-      contador.innerHTML = `0/255`;
+      MostrarExito();
     },
   });
+}
+
+/**
+ * Muestra un mensaje de error si falto registrar un
+ * campo del formulario
+ */
+function MostrarError() {
+  document
+    .getElementById("formulario__mensaje")
+    .classList.add("formulario__mensaje-activo");
+  setTimeout(() => {
+    document
+      .getElementById("formulario__mensaje")
+      .classList.remove("formulario__mensaje-activo");
+  }, 4000);
+}
+
+/**
+ * Muestra un mensaje de exito una vez que haya sido
+ * registrada la encuesta
+ */
+function MostrarExito() {
+  document
+    .getElementById("formulario__mensaje-exito")
+    .classList.add("formulario__mensaje-exito-activo");
+  formulario.reset();
+  setTimeout(() => {
+    document
+      .getElementById("formulario__mensaje-exito")
+      .classList.remove("formulario__mensaje-exito-activo");
+  }, 4000);
+  contador.innerHTML = `0/255`;
 }
