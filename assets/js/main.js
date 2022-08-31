@@ -1,6 +1,6 @@
-// const api =
-//   "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta/api/CRUD_Encuesta.php";
-const api = "api/CRUD_Encuesta.php";
+const api =
+  "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta/api/CRUD_Encuesta.php";
+// const api = "api/CRUD_Encuesta.php";
 
 const formulario = document.getElementById("full_form");
 const mensaje = document.getElementById("comment");
