@@ -17,7 +17,7 @@ switch ($Peticion) {
     case 'POST':
         //Se definene que variables voy a recibir para mi registro de encuesta
         $Variable_Encuesta["ID_Juzgado"] = (isset($_POST["Juzgado"]) && !empty($_POST["Juzgado"])) ? $_POST["Juzgado"] : 0;
-        $Variable_Encuesta["Expediente"] = (isset($_POST["Expediente"]) && !empty($_POST["Expediente"])) && $_POST["Expediente"] == 0 ? $_POST["Expediente"] : "Sin definir";
+        $Variable_Encuesta["Expediente"] = (isset($_POST["Expediente"]) && !empty($_POST["Expediente"])) ? $_POST["Expediente"] : "Sin definir";
         $Variable_Encuesta["Parte"] = (isset($_POST["Parte"]) && !empty($_POST["Parte"])) && $_POST["Parte"] == 0 ? $_POST["Parte"] : 3;
         $Variable_Encuesta["P1"] = (isset($_POST["P1"]) && !empty($_POST["P1"])) ? $_POST["P1"] : 0;
         $Variable_Encuesta["P2"] = (isset($_POST["P2"]) && !empty($_POST["P2"])) ? $_POST["P2"] : 0;
@@ -26,7 +26,7 @@ switch ($Peticion) {
         $Variable_Encuesta["P5"] = (isset($_POST["P5"]) && !empty($_POST["P5"])) ? $_POST["P5"] : 0;
         $Variable_Encuesta["P6"] = (isset($_POST["P6"]) && !empty($_POST["P6"])) ? $_POST["P6"] : 0;
         $Variable_Encuesta["P7"] = (isset($_POST["P7"]) && !empty($_POST["P7"])) ? $_POST["P7"] : 0;
-        $Variable_Encuesta["Comentario"] = (isset($_POST["Comentario"]) && !empty($_POST["Comentario"])) && $_POST["Comentario"] == 0 ? $_POST["Comentario"] : "";
+        $Variable_Encuesta["Comentario"] = (isset($_POST["Comentario"]) && !empty($_POST["Comentario"])) ? $_POST["Comentario"] : "";
 
         //Se definen que variables deseo que sean obligatorias para poder registrar
         $Obligatorias = array(
