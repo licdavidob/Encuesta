@@ -1,5 +1,6 @@
-const api =
-  "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta/api/CRUD_Encuesta.php";
+// const api =
+//   "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta/api/CRUD_Encuesta.php";
+const api = "api/CRUD_Encuesta.php";
 
 const formulario = document.getElementById("full_form");
 const mensaje = document.getElementById("comment");
@@ -63,10 +64,11 @@ function CapturaEncuesta() {
  */
 function AsignarDefaultValoresEncuesta(Encuesta) {
   for (var Variable in Encuesta) {
-    if (Encuesta[Variable] == "" || isNaN(Encuesta[Variable])) {
+    if (Encuesta[Variable] == "" || Number.isNaN(Encuesta[Variable])) {
       Encuesta[Variable] = 0;
     }
   }
+
   return Encuesta;
 }
 
