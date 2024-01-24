@@ -1,5 +1,3 @@
-const URLAPI =
-  "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta/api/CRUD_Encuesta.php";
 // const PREGUNTAS = [
 //   {pregunta: '¿La Jueza o Juez utilizó un lenguaje claro y entendible?'},
 //   {pregunta: '¿La Jueza o Juez explicó el motivo de la audiencia?'},
@@ -23,7 +21,7 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
     },
     select: true,
     ajax: {
-      url: URLAPI,
+      url: consultarPanel,
       data: function (d) {
         // d.Fecha_Inicio = Fecha_Inicio;
         // d.Fecha_Fin = Dia_Actual;
@@ -308,7 +306,7 @@ function modalEncuesta(tbody, table) {
 
     $.ajax({
       data: parametros,
-      url: URLAPI,
+      url: consultarPanel,
       dataType: "json",
       type: "get",
       success: function (response) {

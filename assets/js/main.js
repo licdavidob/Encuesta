@@ -1,5 +1,5 @@
-const api =
-  "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta/api/CRUD_Encuesta.php";
+// const api =
+// "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta/api/CRUD_Encuesta.php";
 // const api = "api/CRUD_Encuesta.php";
 
 const formulario = document.getElementById("full_form");
@@ -117,7 +117,7 @@ function AgregarEncuesta(Encuesta) {
   // Comunicación con back
   $.ajax({
     data: Encuesta,
-    url: api,
+    url: registroEncuesta,
     dataType: "json",
     type: "post",
     success: function (response) {

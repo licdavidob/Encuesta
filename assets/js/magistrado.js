@@ -1,5 +1,3 @@
-const URLAPI =
-  "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta/api/CRUD_Encuesta.php";
 function Iniciar() {
   let Dia_Actual = moment().startOf("day").format("YYYY-MM-DD");
   let Fecha_Inicio = "2022-01-01";
@@ -14,7 +12,7 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
     },
     select: true,
     ajax: {
-      url: URLAPI,
+      url: consultarPanel,
       data: function (d) {
         // d.Fecha_Inicio = Fecha_Inicio;
         // d.Fecha_Fin = Dia_Actual;
@@ -81,7 +79,7 @@ function DataTable(Fecha_Inicio, Dia_Actual) {
   });
   return table;
 }
-// Gráfica pastel (Chart) Top 10
+
 function grafica_top_juzgados(id, data) {
   let nombres = Object.keys(data);
   let numeros = Object.values(data);
@@ -112,6 +110,7 @@ function grafica_top_juzgados(id, data) {
   });
   return chart_top_juzgados;
 }
+
 function Datos(table) {
   // Modal
   modalEncuesta("#tabla", table);
@@ -145,7 +144,7 @@ function modalEncuesta(tbody, table) {
 
     $.ajax({
       data: parametros,
-      url: URLAPI,
+      url: consultarPanel,
       dataType: "json",
       type: "get",
       success: function (response) {
@@ -185,6 +184,7 @@ function encuestabyId(datos) {
   $("#p7").html(p7);
   $("#comentario").html(datos["P8"]);
 }
+
 function asignarPregunta(respuesta) {
   if (respuesta === "1") {
     return "Si";

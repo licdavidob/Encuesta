@@ -6,25 +6,33 @@ function Iniciar_Sesion(Correo, Contraseña) {
 
   $.ajax({
     data: parametros,
-    url: "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta/api/REST_Sesion.php",
+    url: REST_Sesion,
     dataType: "json",
-    type: "post",
+    type: "POST",
     success: function (response) {
       if (response.Bandera) {
         window.location.replace(response.URL);
       } else {
-        document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
+        document
+          .getElementById("formulario__mensaje")
+          .classList.add("formulario__mensaje-activo");
         setTimeout(() => {
-          document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
-        }, 4000)
+          document
+            .getElementById("formulario__mensaje")
+            .classList.remove("formulario__mensaje-activo");
+        }, 4000);
       }
+    },
+    complete: function () {
+      console.log("Petición finalizada");
     },
   });
 }
+
 function Cerrar_Sesion() {
   $.ajax({
     data: "",
-    url: "https://encuestaoralidadcivil.poderjudicialcdmx.gob.mx:2087/Encuesta/api/REST_Sesion.php",
+    url: REST_Sesion,
     dataType: "json",
     type: "delete",
     success: function (response) {
