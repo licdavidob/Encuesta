@@ -3,6 +3,8 @@
 // const api = "api/CRUD_Encuesta.php";
 
 const formulario = document.getElementById("full_form");
+
+//Estas variables solo son para contar los caracteres
 const mensaje = document.getElementById("comment");
 const contador = document.getElementById("contador");
 
@@ -38,7 +40,10 @@ function main() {
  * @returns array
  */
 function CapturaEncuesta() {
+  //Obtener el valor del select
   const auxj = document.full_form.juzgado.value;
+
+  //Obtener el valor de los radio buttons
   var Encuesta = {
     Juzgado: parseInt(auxj.substring(0, 2)),
     Expediente: document.full_form.expediente.value,
@@ -158,3 +163,5 @@ function MostrarExito() {
   }, 4000);
   contador.innerHTML = `0/255`;
 }
+
+// Aqui comienza mi código
